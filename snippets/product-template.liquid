@@ -1,0 +1,281 @@
+{%- for option in product.options_with_values -%}
+  {%- liquid
+          assign optionName = option.name | downcase
+         if optionName contains 'taille' or optionName contains 'size'
+           assign IsSize = true
+         break
+         else
+          assign IsSize = false
+         endif
+      -%}
+{% endfor %}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+
+  unless thumbnail_position
+    assign thumbnail_position = 'beside'
+  endunless
+
+  assign product_zoom_size = '1800x1800'
+
+  assign enableHistory = true
+  if isModal or isAjax
+    assign enableHistory = false
+  endif
+
+  case image_container_width
+    when 'small'
+      assign product_image_width = 'medium-up--two-fifths'
+      assign product_description_width = 'medium-up--three-fifths'
+    when 'medium'
+      assign product_image_width = 'medium-up--one-half'
+      assign product_description_width = 'medium-up--one-half'
+    when 'large'
+      assign product_image_width = 'medium-up--three-fifths'
+      assign product_description_width = 'medium-up--two-fifths'
+  endcase
+-%}
+{% if product.tags contains 'FLASH' %}
+  {% render 'flash-sales' %}
+{% endif %}
+<div id="ProductSection-{{ section_id }}" class="product-section" data-section-id="{{ section_id }}" data-section-type="product" data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}" data-product-title="{{ product.title | escape }}"
+  {% if settings.product_zoom_enable %}
+  data-image-zoom="true"
+  {% endif %}
+  {% if settings.inventory_enable %}
+  data-inventory="true"
+  {% endif %}
+  {% if settings.inventory_transfers_enable %}
+  data-incoming-inventory="true"
+  {% endif %}
+  data-history="{{ enableHistory }}" data-modal="{{ isModal }}">
+
+  {%- render 'product-template-variables', product: product, current_variant: current_variant -%}
+
+  {%- capture product_header -%}
+    <div class="grid-tags top-grid-tag">
+      {% comment %}
+        {% for tag in product.tags %}
+        {% if tag == 'promotion' %}
+        <div class="grid-tag {% if product.tags contains 'no-stock' %} hide {% endif %}">PROMOTION</div>
+        <img  src="https://cdn.shopify.com/s/files/1/2545/2656/files/NEW_PROMO_RUPTURE_1.png?v=1657194218">
+
+        {% elsif tag == 'new' %}
+        <img {% if product.tags contains 'promotion' or product.tags contains 'no-stock' %} class="hide" {% endif %} src="https://cdn.shopify.com/s/files/1/2545/2656/files/NEW_PROMO_RUPTURE_2.png?v=1657194218">
+        {% elsif tag == 'best'%}
+        <img {% if product.tags contains 'promotion' or product.tags contains 'new' or product.tags contains 'no-stock' %} class="hide" {% endif %} src="https://cdn.shopify.com/s/files/1/2545/2656/files/NEW_PROMO_RUPTURE.png?v=1657187703">
+        {% elsif tag == 'no-stock' %}
+        <img class="nostock-img" src="https://cdn.shopify.com/s/files/1/2545/2656/files/NEW_PROMO_RUPTURE_3.png?v=1657194296">
+        {% endif %}
+        {% endfor %}
+      {% endcomment %}
+      {% if product.available %}
+        {% if product.tags contains 'promotion' %}
+          <div class="grid-tag grid-tag-promo">PROMOTION</div>
+        {% elsif product.tags contains 'new' %}
+          <div class="grid-tag grid-tag-new">NOUVEAUTÉS</div>
+        {% elsif product.tags contains 'best'%}
+          <div class="grid-tag grid-tag-best">BEST SELLER</div>
+        {% endif %}
+      {% else %}
+        {% if product.tags contains 'no-stock' %}
+          <div class="grid-tag grid-tag-rupture">RUPTURE DE STOCK</div>
+        {% endif %}
+      {% endif %}
+    </div>
+    {%- if isModal -%}
+      <p class="h2 product-single__title">
+        {{ product.title }}
+      </p>
+    {%- else -%}
+      <h1 class="h2 product-single__title">
+        {{ product.title }}
+      </h1>
+    {%- endif -%}
+    {%- if settings.enable_product_reviews -%}
+      <span class="shopify-product-reviews-badge abc" data-id="{{ product.id }}"></span>
+    {%- endif -%}
+    {%- if settings.vendor_enable or settings.sku_enable -%}
+      <div class="product-single__vendor-sku">
+        {%- if settings.vendor_enable -%}
+          <span class="product-single__vendor">
+            {%- assign vendor_handle = product.vendor | handleize -%}
+            {%- if collections[vendor_handle] != empty -%}
+              <a href="{{ routes.collections_url }}/{{ collections[vendor_handle].handle }}">
+                {{ collections[vendor_handle].title }}
+              </a>
+            {%- else -%}
+              {{ product.vendor | link_to_vendor }}
+            {%- endif -%}
+          </span>
+        {%- endif -%}
+        <div></div>
+        {%- if settings.sku_enable -%}
+          <span data-sku id="Sku-{{ section_id }}" class="product-single__sku{% if current_variant.sku == blank %} hide{% endif %}">
+            SKU:
+            <span data-sku-id>{{ current_variant.sku }}</span>
+          </span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+
+  <div class="page-content page-content--product product-template">
+    <div class="page-width">
+
+      <div class="product-single__header--mobile medium-up--hide">
+        {%- if settings.show_breadcrumbs and isModal != true -%}
+          {%- render 'breadcrumbs' -%}
+        {%- endif -%}
+        {{ product_header }}
+        <div class="mobile-header-price">dès
+          <span class="price-in-atc">
+            <span>{{ current_variant.price | money_with_currency }}</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="product-grid__container grid{% unless image_position == 'left' %} grid--product-images-right{% endunless %}{% if mobile_layout == 'partial' %} grid--product-images--partial{% endif %}">
+        {%- if settings.show_breadcrumbs and isModal != true -%}
+          {%- render 'breadcrumbs' -%}
+        {%- endif -%}
+        {%- if image_position == 'left' -%}
+          <div class="grid__item {{ product_image_width }} product-single__sticky">
+            {%- render 'product-images'
+              , section_id: section_id
+              , product: product
+              , isModal: isModal
+              , image_position: image_position
+              , image_size: image_size
+              , product_zoom_size: product_zoom_size
+              , thumbnail_arrows: thumbnail_arrows
+              , thumbnail_position: thumbnail_position
+              , video_looping: video_looping
+              , video_style: video_style
+              -%}
+            <div class="grid-tag-ice">
+              {% for tag in product.tags %}
+                {% if tag == 'cold-1' %}
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23.png?v=1657187845" loading="lazy" width="23" hieght="23">
+                {% elsif tag == 'cold-2' %}
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23.png?v=1657187845" loading="lazy" width="23" hieght="23">
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23.png?v=1657187845" loading="lazy" width="23" hieght="23">
+                {% elsif tag == 'cold-3' %}
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23.png?v=1657187845" loading="lazy" width="23" hieght="23">
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23.png?v=1657187845" loading="lazy" width="23" hieght="23">
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23.png?v=1657187845" loading="lazy" width="23" hieght="23">
+                {% elsif tag == 'hot-1' %}
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23_1.png?v=1657262415" loading="lazy" width="23" hieght="23">
+                {% elsif tag == 'hot-2' %}
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23_1.png?v=1657262415" loading="lazy" width="23" hieght="23">
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23_1.png?v=1657262415" loading="lazy" width="23" hieght="23">
+                {% elsif tag == 'hot-3' %}
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23_1.png?v=1657262415" loading="lazy" width="23" hieght="23">
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23_1.png?v=1657262415" loading="lazy" width="23" hieght="23">
+                  <img src="https://cdn.shopify.com/s/files/1/2545/2656/files/image_23_1.png?v=1657262415" loading="lazy" width="23" hieght="23">
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        {%- endif -%}
+
+        <div class="product-grid__content product-single__sticky grid__item {{ product_description_width }}">
+
+          <div class="product-single__meta">
+            <div class="product-single__header small--hide">
+              <div class="quick-add-image"><img src="{{ product.featured_image | img_url:"master" }}"></div>
+              {{ product_header }}
+            </div>
+
+            {%- if settings.inventory_enable or settings.inventory_transfers_enable -%}
+              {%- assign variants_with_inventory_tracking = product.variants | where: 'inventory_management', 'shopify' -%}
+
+              <script>
+                // Store inventory quantities in JS because they're no longer
+// available directly in JS when a variant changes.
+// Have an object that holds all potential products so it works
+// with quick view or with multiple featured products.
+                window.inventories = window.inventories || {};
+                window.inventories['{{ section_id }}'] = {};{% for variant in variants_with_inventory_tracking %}window.inventories['{{ section_id }}'][{{ variant.id }}] = {
+                    'quantity': {{ variant.inventory_quantity | default: 0 }},
+                    'incoming': '{{ variant.incoming | default: false }}',
+                    'next_incoming_date': {{ variant.next_incoming_date | date: format: 'date' | json }}
+                  };{% endfor %}
+              </script>
+
+              {% comment %}
+                If loaded in quick view, it might be from a JS-loaded function
+                that loads recommended products. If that's the case, the above
+                JS will not set the variant inventory. Add it to an accessible
+                data div to read later instead.
+              {% endcomment %}
+              {%- if isModal or isAjax -%}
+                <div data-section-id="{{ section_id }}" class="hide js-product-inventory-data" aria-hidden="true">
+                  {%- for variant in variants_with_inventory_tracking -%}
+                    <div class="js-variant-inventory-data" data-id="{{ variant.id }}" data-quantity="{{ variant.inventory_quantity | default: 0 }}" data-incoming="{{ variant.incoming | default: false }}" data-date="{{ variant.next_incoming_date | date: format: 'date' }}"></div>
+                  {%- endfor -%}
+                </div>
+              {%- endif -%}
+            {%- endif -%}
+
+            {%- unless isModal -%}
+              {% comment %}
+                Shopify's product form attaches a number of tracking
+                scripts that cause slower load times and false statistics.
+                Quick view modals request these on-demand.
+              {% endcomment %}
+              {%- render 'product-form'
+                , section_id: section_id
+                , product: product
+                , current_variant: current_variant
+                , IsSize:IsSize
+                , description_position: section.settings.description_position
+                -%}
+            {%- else -%}
+              <div id="ProductFormHolder-{{ section_id }}" class="product-form-holder" data-url="{{ product.url }}" data-template="{{ product.template_suffix }}">
+                {%- if product.options.size > 0 -%}
+                  {%- for i in (1..product.options.size) -%}
+                    <div class="placeholder-content" style="min-height: 86px; max-width: 66%;"></div>
+                  {%- endfor -%}
+                {%- endif -%}
+                <div class="placeholder-content" style="min-height: 86px;"></div>
+              </div>
+            {%- endunless -%}
+
+            {%- if settings.surface_pickup_enable -%}
+              <div id="StoreAvailabilityHolder-{{ section_id }}" data-product-name="{{ product.title | escape }}" data-base-url="{{ shop.url }}{{ routes.root_url }}"></div>
+            {%- endif -%}
+
+
+
+            {%- if social -%}
+              {%- render 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product -%}
+            {%- endif -%}
+          </div>
+        </div>
+
+        {%- unless image_position == 'left' -%}
+          <div class="grid__item {{ product_image_width }} product-single__sticky">
+            {%- render 'product-images'
+              , section_id: section_id
+              , product: product
+              , isModal: isModal
+              , image_position: image_position
+              , image_size: image_size
+              , product_zoom_size: product_zoom_size
+              , thumbnail_arrows: thumbnail_arrows
+              , thumbnail_position: thumbnail_position
+              , video_looping: video_looping
+              , video_style: video_style
+              -%}
+          </div>
+        {%- endunless -%}
+      </div>
+    </div>
+
+    <div class="page-width page-width--flush-small hide">
+      {%- render 'product-additional-content', product: product, section_id: section_id, description_position: description_position, description_style: description_style -%}
+    </div>
+  </div>
+  {% render 'sticky-cart', IsSize: IsSize %}
+</div>

@@ -1,0 +1,25 @@
+{%- liquid
+    assign dark_search_bg = true
+    assign lightness = settings.color_header_search | color_brightness
+  
+    if lightness > 100
+      assign dark_search_bg = false
+    endif
+  -%}
+  
+  <form action="{{ routes.search_url }}" method="get" role="search"
+    class="site-header__search-form site-header__search-mobile" data-dark="{{ dark_search_bg }}">
+    <input type="hidden" name="type" value="{{ settings.search_type }}">
+    <button type="submit" style="padding-top:6px;" class="text-link site-header__search-btn site-header__search-btn--submit">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M2 6C2 8.18933 2.40991 8.96916 2.75191 9.29895C3.11112 9.64533 3.9099 10 6 10C8.0901 10 8.88888 9.64533 9.24809 9.29895C9.59009 8.96916 10 8.18933 10 6C10 3.81067 9.59009 3.03084 9.24809 2.70105C8.88888 2.35467 8.0901 2 6 2C3.9099 2 3.11112 2.35467 2.75191 2.70105C2.40991 3.03084 2 3.81067 2 6ZM0 6C0 10.6364 1.63636 12 6 12C7.67263 12 8.94455 11.7996 9.8772 11.2914L13.9596 15.3738C14.3501 15.7643 14.9832 15.7643 15.3738 15.3738C15.7643 14.9832 15.7643 14.3501 15.3738 13.9596L11.287 9.87275C11.7802 8.95875 12 7.69915 12 6C12 1.36364 10.3636 0 6 0C1.63636 0 0 1.36364 0 6Z" fill="#7A7A7A"/>
+        </svg>
+        <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+    </button>
+    <input type="search" name="q" value="{{ search.terms | escape | replace: '*', '' }}" placeholder="{{ 'general.search.placeholder' | t }}" class="site-header__search-input" aria-label="{{ 'general.search.placeholder' | t }}">
+    <button type="button" class="text-link site-header__search-btn site-header__search-btn--cancel">
+      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/></svg>
+      <span class="icon__fallback-text">{{ 'general.accessibility.close' | t }}</span>
+    </button>
+  </form>
+   

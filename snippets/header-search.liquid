@@ -1,0 +1,25 @@
+{%- liquid
+  assign dark_search_bg = true
+  assign lightness = settings.color_header_search | color_brightness
+
+  if lightness > 100
+    assign dark_search_bg = false
+  endif
+-%}
+
+<form action="{{ routes.search_url }}" method="get" role="search"
+  class="site-header__search-form" data-dark="{{ dark_search_bg }}">
+  <input type="hidden" name="type" value="{{ settings.search_type }}">
+  <input type="search" name="q" value="{{ search.terms | escape | replace: '*', '' }}" placeholder="{{ 'general.search.placeholder' | t }}" class="site-header__search-input" aria-label="{{ 'general.search.placeholder' | t }}">
+  <button type="submit" style="padding-top:6px;" class="text-link site-header__search-btn site-header__search-btn--submit">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd" d="M2 9C2 12.3484 2.61445 13.8783 3.43373 14.6683C4.27021 15.4749 5.81899 16 9 16C12.181 16 13.7298 15.4749 14.5663 14.6683C15.3855 13.8783 16 12.3484 16 9C16 5.65158 15.3855 4.12175 14.5663 3.33173C13.7298 2.52512 12.181 2 9 2C5.81899 2 4.27021 2.52512 3.43373 3.33173C2.61445 4.12175 2 5.65158 2 9ZM0 9C0 15.9545 2.45455 18 9 18C11.7838 18 13.8276 17.63 15.2574 16.6697C15.2688 16.6824 15.2807 16.6949 15.2929 16.7071L22.2929 23.7071C22.6834 24.0976 23.3166 24.0976 23.7071 23.7071C24.0976 23.3166 24.0976 22.6834 23.7071 22.2929L16.7071 15.2929C16.6933 15.2791 16.6791 15.2657 16.6647 15.2529C17.5919 13.8554 18 11.8358 18 9C18 2.04545 15.5455 0 9 0C2.45455 0 0 2.04545 0 9Z" fill="#101010"/>
+    </svg>
+    <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+  </button>
+  <button type="button" class="text-link site-header__search-btn site-header__search-btn--cancel">
+    <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/></svg>
+    <span class="icon__fallback-text">{{ 'general.accessibility.close' | t }}</span>
+  </button>
+</form>
+ 

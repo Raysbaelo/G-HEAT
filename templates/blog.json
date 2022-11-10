@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "blog-template-v2",
+      "blocks": {
+        "1b1173a7-7e25-4dcc-9fe1-0f0d702a23d8": {
+          "type": "article",
+          "settings": {
+            "article": ""
+          }
+        }
+      },
+      "block_order": [
+        "1b1173a7-7e25-4dcc-9fe1-0f0d702a23d8"
+      ],
+      "settings": {
+        "blog_show_rss": false,
+        "blog_show_tags_main": true,
+        "blog_show_date_main": true,
+        "blog_show_comments_main": true,
+        "blog_show_author_main": false,
+        "blog_image_size_main": "wide",
+        "featured_product": "gants-de-ski-chauffants-evo-3",
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": true,
+        "blog_show_author": false,
+        "social_sharing_blog": true,
+        "blog_image_size": "wide"
+      }
+    },
+    "162883944545180a31": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Produits phares",
+        "home_featured_products": "moto",
+        "count": 5,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "162883944545180a31"
+  ]
+}

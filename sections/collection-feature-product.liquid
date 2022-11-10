@@ -1,0 +1,220 @@
+{%- liquid
+  assign collection = collections[section.settings.home_featured_products]
+  assign product_limit = section.settings.count | plus: 1
+  if section.settings.mobile_scrollable
+    assign product_limit = section.settings.count
+  endif
+-%}
+
+{%- if section.settings.divider -%}<div class="section--divider">{%- endif -%}
+
+<div
+  id="CollectionSection-{{ section.id }}"
+     class="collection-feature-product"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template">
+  {%- if section.settings.title != blank -%}
+    <div class="page-width">
+      <div class="section-header{% if section.settings.view_all %} section-header--with-link{% endif %}">
+        <h2 class="section-header__title">
+          {{ section.settings.title }}
+        </h2>
+        {%- if section.settings.view_all -%}
+          <a href="{{ collections[section.settings.home_featured_products].url }}" class="section-header__link">{{ section.settings.view-all-text }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  <div class="page-width{% if section.settings.mobile_scrollable %} page-width--flush-small{% endif %}">
+<!--     scrollable-grid--small -->
+    <div
+      class="new-grid relatedProduct product-grid owl-carousel owl-theme {% if section.settings.mobile_scrollable %} {% endif %}"
+      data-view="{% if section.settings.mobile_scrollable %}scrollable-5{% else %}xsmall{% endif %}">
+      {% assign current_product = product %}
+        {%- liquid
+          for product in collection.products limit: product_limit
+            assign item_classes = ''
+            unless section.settings.mobile_scrollable
+              if forloop.index > section.settings.count
+                assign item_classes = 'hide'
+                assign mod = forloop.index | modulo: 2
+                if mod == 0
+                  assign item_classes = 'medium-up--hide'
+                endif
+              endif
+            endunless
+
+            unless product.handle == current_product.handle
+              render 'product-grid-item', product: product, collection: collection, classes: item_classes
+            endunless 
+            if settings.quick_shop_enable
+              render 'quick-shop-modal', product: product
+              render 'size-chart', product: product
+            endif
+
+          endfor
+        -%}
+
+    </div>
+  </div>
+</div>
+            <button class="am-next"><span>&#10095;</span></button>
+            <button class="am-prev"><span>&#10094;</span></button>
+
+{%- if section.settings.divider -%}</div>{%- endif -%}
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+<style>
+ .new-grid.owl-carousel .owl-stage{
+    display: flex;
+    height: 100%;
+    padding-left: 10px;
+  }
+  .new-grid.owl-carousel .grid-item{
+  height:100%;
+  }
+  .grid-tags img{
+  width:fit-content !important;
+  }
+  .grid-tag-ice {
+    display: flex;
+}
+  .collection-feature-product{
+      background: #F4F4F4;
+    padding: 40px 0;
+  }
+  .collection-feature-product .section-header__title {
+    text-align: center;
+}
+ .collection-feature-product .grid-item__content {
+    padding: 5px;
+    border-radius: 5px;
+  }
+ .collection-feature-product .grid-item__meta .btn {
+    border-radius: 5px;
+  }
+  .collection-feature-product .page-width{
+  max-width:990px;
+  }
+ .collection-feature-product .owl-prev{
+  margin-left:-45px;
+  }
+ .collection-feature-product .owl-next{
+  margin-right:-45px;
+  }
+ .collection-feature-product .grid-tags {
+    flex-wrap: wrap;
+}
+  .collection-feature-product .owl-nav{
+  display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .am-prev,
+  .am-next{
+  font-size: 16px;
+    background: #a92927;
+    color: white;
+    border-radius: 3px;
+    width: 30px;
+    height: 30px;
+  }
+  @media (max-width: 768px){
+   .collection-feature-product .owl-nav{
+   display:none;
+   }
+    .new-grid.owl-carousel .owl-stage {
+    padding-left: 0 !important;
+}
+  }
+</style>
+{% schema %}
+  {
+    "name": "Recommendations carousel",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Featured collection"
+      },
+      {
+        "type": "collection",
+        "id": "home_featured_products",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "count",
+        "label": "Products",
+        "default": 4,
+        "min": 4,
+        "max": 16,
+        "step": 1
+      },
+      {
+        "type": "checkbox",
+        "id": "mobile_scrollable",
+        "label": "Enable swipe on mobile",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "view_all",
+        "label": "Show 'View all' link",
+        "default": true
+      },
+{
+        "type": "text",
+        "id": "view-all-text",
+        "label": "Show 'View all' Text",
+        "default": "View All"
+      },
+      {
+        "type": "checkbox",
+        "id": "divider",
+        "label": "Show section divider",
+        "default": false
+      }
+    ],
+    "presets": [{
+      "name": "Collection Page Feature",
+      "category": "Collection"
+    }],
+    "blocks" : []
+  }
+{% endschema %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+{% javascript %}
+  $(".relatedProduct.owl-theme").owlCarousel({
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    nav: true,
+    dots: true,
+    loop:true,
+    navRewind: false,
+    autoplay: false,
+    navText: [$('.am-prev'),$('.am-next')],
+    autoplayTimeout: 5000,
+    responsive: {
+      0: {
+        items: 1,
+        stagePadding: 80,
+      },
+      589: {
+        items: 2,
+        stagePadding: 80,
+      },
+      768: {
+        items: 4,
+      },
+    },
+  });
+{% endjavascript %}

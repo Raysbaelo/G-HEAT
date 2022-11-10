@@ -1,0 +1,168 @@
+<section  class="opinion-wrapper" style="background: {{section.settings.bg-color}};">
+	<div class="section-container">
+      <div class="main-heading"><h4>{{section.settings.main-heading}}</h4></div>
+               <div  id="opinion"  class="owl-carousel owl-theme opinion-container">
+                 {% for block in section.blocks %}  
+                      <div class="opinion-cards">
+                            <div class="cutomer-title">
+                                    <div class="name">
+                                        <span class="first-letter">{{ block.settings.customer-title | slice: 0 }}</span>
+                                        <span class="name-title">{{ block.settings.customer-title }}</span>
+                                      </div>
+                                    <div class="date">{{ block.settings.date-picker | date: "%m/%d/%Y" }}</div>
+                              </div>
+                              <div class="rating">
+                                  <div class="rating-title">{{ block.settings.rating-title }}</div>
+                                 {% if block.settings.number-start != 0 %}
+                                <div class="stars">
+                                      <ul>
+                                        {% assign num = block.settings.stars %}
+                                        {% for i in (1..num) %} 
+                                            <li>{% render 'icon-star' %}</li>
+                                        {% endfor %}
+                                        {% if block.settings.half-star == true %}
+                                              <li><i class="fa-solid fa-star-half-stroke"></i></li>
+                                           {% endif%}
+                                      </ul>
+                                  </div>
+                                {% endif %}
+                              </div>
+                              <div class="feedback-1">{{ block.settings.feedback | truncate: 250 }}</div>
+                              <div class="feedback-2 hide">{{ block.settings.feedback }}</div>
+                           <div class="read-more-div" style="text-align: end;"><button class="read-more">Lire plus</button>
+                        	<button class="read-less hide">Lire Moins</button>
+                        </div>
+                      </div>
+                 {% endfor %}
+        			
+   			</div>		
+      </div>
+      {% if section.settings.button_text != blank  %}
+        <div class="more-pro" ><a href="{{block.settings.pro-link}}">{{ section.settings.button_text }}</a></div>
+      {% endif %}
+      
+ </section>
+
+{% schema %}
+  {
+    "name": "Customer Opinion",
+    "settings": [
+ {
+        "type": "text",
+        "id": "main-heading",
+        "label": "Section Heading",
+ 		"info": "Section Main Heading"
+      },
+      {
+        "type": "color",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "#1B2024"
+      },
+      {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button"
+      },
+       {
+          "type": "url",
+          "id": "pro-link",
+          "label": "MORE REVIEWS LINK",
+		      "info": "On click redirect to more review page"
+        }
+
+],
+  "blocks": [
+    {
+      "type": "feedback",
+      "name": "Customer Feedback",
+      "settings": [
+         {
+          "type": "text",
+          "id": "customer-title",
+          "label": "CUSTOMER TITLE",
+          "info": "Customer name or titel enter here."
+		},
+		 {
+            "type": "text",
+            "id": "date-picker",
+            "label": "CHOOSE DATE",
+            "info": "e.g. mm/dd/yyyy"
+        },
+       {
+          "type": "text",
+          "id": "rating-title",
+          "label": "RATING TITLE",
+          "info": "Rating title goes here."
+		},
+        
+         {
+          "type": "richtext",
+          "id": "feedback",
+          "label": "CUSTOMER FEEDBACK",
+          "info": "Customer feedback goes here."
+		},
+    {
+          "type": "number",
+          "id": "stars",
+          "label": "NUMBER OF STARS",
+          "default": 5
+        }
+      ]
+    }
+  ],
+      "presets": [
+      {
+      "name": "Customer Opinion",
+      "category": "Customer Opinion"
+      }
+      ]
+  }
+{% endschema %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+{% javascript %}
+  $(document).ready(function() {  
+    $(".read-more-div").click(function() {
+      $(this).find('.read-less').toggleClass('hide');
+      $(this).find('.read-more').toggleClass('hide');
+      $(this).siblings('.feedback-1').toggleClass('hide');
+      $(this).siblings('.feedback-2').toggleClass('hide');
+    });
+  });
+
+  $("#opinion").owlCarousel({
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    margin:20,
+    nav: true,
+    dots: false,
+    loop:true,
+    navRewind: false,
+    autoplay: false,
+    navText: [$('.am-prev'),$('.am-next')],
+    autoplayTimeout: 5000,
+       responsive: {
+        0:{
+            items:1,
+          stagePadding: 50,
+            
+        },
+        590:{
+            items:2,
+          stagePadding: 50,
+            
+        },
+        768:{
+            items:3,
+           
+        },
+       992:{
+            items:3,
+            
+        },
+      
+    },
+  });
+{% endjavascript %}

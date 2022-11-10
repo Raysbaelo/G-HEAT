@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "customers-login-v2",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

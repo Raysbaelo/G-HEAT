@@ -1,0 +1,113 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template",
+      "settings": {
+        "description_position": "below",
+        "description_style": "expandable",
+        "social_enable": true,
+        "image_position": "left",
+        "image_container_size": "medium",
+        "product_image_size": "square",
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "VOUS AIMEREZ AUSSI"
+      }
+    },
+    "more": {
+      "type": "more-products",
+      "settings": {
+        "show_vendor_section": true,
+        "show_collection_section": true
+      }
+    },
+    "recently": {
+      "type": "recently-viewed",
+      "settings": {
+        "show_section": true
+      }
+    },
+    "additional": {
+      "type": "product-template-additionnal",
+      "settings": {
+      }
+    },
+    "1628020738593cb170": {
+      "type": "advanced-content",
+      "blocks": {
+        "1628020738593cb170-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h2>GANTS CHAUFFANTS\n<\/h2><p><b>Comment choisir la taille de vos gants ?<\/b>\n<\/p>Choisissez de votre main directrice (droite pour un droitier)\nMesurez votre tour de main paume ouverte sans le pouce\n<br><br>\nConseil : Si vous avez les doigts longs, choisissez la taille supérieure à votre mesure.",
+            "width": "66%",
+            "alignment": "center"
+          }
+        },
+        "1628020738593cb170-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Gants_chauffants.png",
+            "link": "",
+            "width": "25%",
+            "alignment": "top-middle"
+          }
+        },
+        "07c89c35-a2ad-42e7-8b51-38d23115fc95": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "100%",
+            "alignment": "top-middle"
+          }
+        }
+      },
+      "block_order": [
+        "1628020738593cb170-1",
+        "1628020738593cb170-0",
+        "07c89c35-a2ad-42e7-8b51-38d23115fc95"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "162806232789ada518": {
+      "type": "advanced-content",
+      "blocks": {
+        "162806232789ada518-1": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"size-guide-row\" id=\"gloves\">\n<div class=\"size-guide-header\">\n<h2 class=\"size-guide-title\">Gants chauffants<\/h2>\n<h3 class=\"size-guide-subtitle\">Comment choisir la taille de vos gants ?<\/h3>\n<\/div>\n<div class=\"size-guide-explainer-row\">\n<div class=\"size-guide-explainer-content\">\nChoisissez de votre main directrice (droite pour un droitier)<br>\n  Mesurez votre tour de main <b>paume ouverte sans le pouce<\/b>\n<\/div>\n<div class=\"size-guide-explainer-image\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2545\/2656\/files\/icon-size-guide-gloves.svg?v=1598538156\" class=\"size-guide-explainer-content-image\"><\/div>\n<\/div>\n<div class=\"size-guide-advice\">\n<b>Conseil :<\/b> Si vous avez les doigts longs, choisissez la taille supérieure à votre mesure.\n<\/div>\n<div class=\"size-guide-notice\">\n<div class=\"size-guide-notice-preheader\"><\/div>\n<div class=\"size-guide-notice-table\">\n<table>\n<tbody>\n<tr>\n<td class=\"size-guide-notice-table-black\">Taille<\/td>\n<td class=\"size-guide-notice-table-normal\">XS<\/td>\n<td class=\"size-guide-notice-table-normal\">S<\/td>\n<td class=\"size-guide-notice-table-normal\">M<\/td>\n<td class=\"size-guide-notice-table-normal\">L<\/td>\n<td class=\"size-guide-notice-table-normal\">XL<\/td>\n<td class=\"size-guide-notice-table-normal\">XXL<\/td>\n<td class=\"size-guide-notice-table-normal\">XXXL<\/td>\n<\/tr>\n<tr>\n<td class=\"size-guide-notice-table-black\">Tour de main (en cm)<\/td>\n<td class=\"size-guide-notice-table-normal\">16 à 17,5<\/td>\n<td class=\"size-guide-notice-table-normal\">18 à 20<\/td>\n<td class=\"size-guide-notice-table-normal\">20,5 à 21,5<\/td>\n<td class=\"size-guide-notice-table-normal\">22 à 23<\/td> \n<td class=\"size-guide-notice-table-normal\">23,5 à 24,5<\/td>   \n<td class=\"size-guide-notice-table-normal\">25 à 26,5<\/td>  \n<td class=\"size-guide-notice-table-normal\">27 à 28<\/td>  \n<\/tr>\n<tr>\n<td class=\"size-guide-notice-table-black\">Taille universelle<\/td>\n<td class=\"size-guide-notice-table-normal\">6\/7<\/td>\n<td class=\"size-guide-notice-table-normal\">7\/8<\/td>\n<td class=\"size-guide-notice-table-normal\">8\/9<\/td>\n<td class=\"size-guide-notice-table-normal\">9\/10<\/td>\n<td class=\"size-guide-notice-table-normal\">10\/11<\/td>\n<td class=\"size-guide-notice-table-normal\">11\/12<\/td>\n<td class=\"size-guide-notice-table-normal\">12\/13<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<\/div>\n<\/div>    \n<\/div>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "162806232789ada518-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "recommendations",
+    "more",
+    "recently",
+    "additional",
+    "1628020738593cb170",
+    "162806232789ada518"
+  ]
+}

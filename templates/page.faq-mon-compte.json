@@ -1,0 +1,121 @@
+{
+  "sections": {
+    "1628864617ae2025d7": {
+      "type": "advanced-content",
+      "blocks": {
+        "1628864617ae2025d7-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><a href=\"https:\/\/www.g-heat.com\/pages\/faq-produits\" title=\"FAQ Gheat produits\"><u>Produit et technologie<\/u><\/a><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        },
+        "4597aa99-3806-47e6-adde-bfeb6fab2e78": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><a href=\"https:\/\/www.g-heat.com\/pages\/faq-sav\" title=\"FAQ SAV Gheat\">Expédition et garantie<\/a><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        },
+        "6317f8db-455b-4be3-8e92-e3082eb1c793": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><span style=\"color: #cb132d;\"><u>Mon compte<\/u><\/span><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "1628864617ae2025d7-1",
+        "4597aa99-3806-47e6-adde-bfeb6fab2e78",
+        "6317f8db-455b-4be3-8e92-e3082eb1c793"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "main": {
+      "type": "page-faq-template",
+      "blocks": {
+        "e473aca3-a8bb-4e58-a3c4-5723ee9ab9b5": {
+          "type": "question",
+          "settings": {
+            "title": "Comment m'inscrire et m'identifier sur mon compte? ",
+            "text": "<p>Vous pouvez créer un compte ou vous connecter à votre compte <a href=\"https:\/\/www.g-heat.com\/account\/login\" title=\"compte G-Heat\">ici<\/a><\/p>"
+          }
+        },
+        "f925b800-034f-4969-943c-6149229b2fb8": {
+          "type": "question",
+          "settings": {
+            "title": "Comment retrouver ma commande, mon numéro de suivi et ma facture?  ",
+            "text": "<p>Vous pouvez trouver ces informations sur votre compte mais aussi sur l'email reçu lors de votre commande.Vous pouvez suivre votre commande <a href=\"https:\/\/www.g-heat.com\/pages\/suivi-commande\" target=\"_blank\" title=\"Suivi commande G-Heat\">ici <\/a>avec le numéro de suivi fourni sur votre compte et sur votre email.<\/p>"
+          }
+        },
+        "2494b70a-2db4-4bff-b105-344d6d425990": {
+          "type": "question",
+          "settings": {
+            "title": "J'ai perdu mon mot de passe. ",
+            "text": "<p>Vous pouvez refaire votre mot de passe sur la page compte ci-dessus.<\/p>"
+          }
+        },
+        "337b502e-5226-45a0-bbca-6fb58162be04": {
+          "type": "question",
+          "settings": {
+            "title": "J'ai commandé chez vous sans créer de compte (avant l'été 2020). Comment faire ? ",
+            "text": "<p>N'hésitez pas à nous envoyer un message<\/p>"
+          }
+        },
+        "06bdaf82-a2df-4cd0-915a-ae713a700960": {
+          "type": "question",
+          "settings": {
+            "title": "Comment commander ? ",
+            "text": "<p>Pour commander, il vous suffit de vous rendre sur notre site:<a href=\"https:\/\/g-heat.com\/\" target=\"_blank\">https:\/\/www.g-heat.com\/ <\/a>.Vous n'avez alors plus qu'à choisir les articles de votre choix en cliquant sur \"Ajouter au panier\". Ensuite, vous allez dans votre panier (le petit chariot en haut à droite de notre site) et cliquez sur \"Paiement\".<\/p>"
+          }
+        },
+        "ead91ce4-9252-4ac3-ac52-3c459f709df9": {
+          "type": "question",
+          "settings": {
+            "title": "Quels sont les modes de paiement ? Les chèques sont-ils acceptés ?",
+            "text": "<p>Actuellement, vous pouvez régler par carte bancaire ou par Paypal. Nous n'acceptons pas les chèques bancaires et les virements SEPA sauf pour les commandes BtoB.<\/p>"
+          }
+        },
+        "3305bf44-85e1-467c-9100-6d500ef412d7": {
+          "type": "question",
+          "settings": {
+            "title": "Je n'arrive pas à commander, ma carte bleue ne marche pas. ",
+            "text": "<p>Nous travaillons avec des prestataires de paiement (Mollie, Paypal) qui acceptent toutes les cartes bleues. Vérifiez vos infos de paiement si votre paiement n'a pas abouti. Nous ne vous demanderons jamais vos informations de carte bleue.<\/p>"
+          }
+        },
+        "89757f8f-8daa-4855-8cab-569bc24c47d1": {
+          "type": "question",
+          "settings": {
+            "title": "Je suis professionnel\/distributeur et je souhaite m'équiper. ",
+            "text": "<p>Merci de vous inscrire dans l'Espace Professionnels <a href=\"https:\/\/www.g-heat.com\/pages\/professionnels\" title=\"Espace professionnels G-Heat\">ici<\/a>.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e473aca3-a8bb-4e58-a3c4-5723ee9ab9b5",
+        "f925b800-034f-4969-943c-6149229b2fb8",
+        "2494b70a-2db4-4bff-b105-344d6d425990",
+        "337b502e-5226-45a0-bbca-6fb58162be04",
+        "06bdaf82-a2df-4cd0-915a-ae713a700960",
+        "ead91ce4-9252-4ac3-ac52-3c459f709df9",
+        "3305bf44-85e1-467c-9100-6d500ef412d7",
+        "89757f8f-8daa-4855-8cab-569bc24c47d1"
+      ],
+      "settings": {
+        "page_title_enable": false,
+        "page_content_enable": false
+      }
+    }
+  },
+  "order": [
+    "1628864617ae2025d7",
+    "main"
+  ]
+}

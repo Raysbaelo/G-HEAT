@@ -1,0 +1,103 @@
+<section style=" padding-bottom:0px; background-color: {{ section.settings.bg_color }};">
+    <div class="container">
+      <div class="trust-icons-row-footer">   
+        {% for block in section.blocks %}
+            <div class="trust-icons-block">
+              <div class="footer-icons-picture trust-icons-picture">
+                {% unless block.settings.image == blank %}
+                <img src="{{ block.settings.image | img_url:'master' }}" alt="">
+                {% else %}
+                    {% if block.settings.picto == "truck" %}
+                        {% render 'icon-truck' %}
+                    {% elsif block.settings.picto == "hand" %}  
+                        {% render 'icon-hand' %}
+                    {% elsif block.settings.picto == "lock" %}    
+                        {% render 'icon-lock' %}
+                    {% elsif block.settings.picto == "badge" %} 
+                        {% render 'icon-badge' %}
+                    {% endif %}
+                {% endunless %} 
+              </div>
+              <div class="trust-icons-heading-footer">
+                {{ block.settings.title }}
+              </div> 
+            </div>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+{% schema %}
+  {
+    "name": "Pictos",
+    "settings": [
+     {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Background color",
+        "default": "#fff"
+     }
+    ],
+    "blocks": [
+      {
+        "type": "picto",
+        "name": "Picto",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "select",
+            "id": "picto",
+            "label": "Picto",
+            "options": [
+                {
+                    "value": "hand",
+                    "label": "Hand"
+                },
+                {
+                    "value": "truck",
+                    "label": "Truck"
+                },
+                {
+                    "value": "lock",
+                    "label": "Lock"
+                },
+                {
+                    "value": "badge",
+                    "label": "Badge"
+                }
+            ]
+          },
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Example title"
+          }
+        ]
+      }
+    ],
+    "default": {
+        "settings": {
+     
+        },
+        "blocks": [
+          {
+            "type": "picto"
+          },
+          {
+            "type": "picto"
+          },
+          {
+            "type": "picto"
+          },
+          {
+            "type": "picto"
+          }
+        ]
+      }
+  }
+{% endschema %}

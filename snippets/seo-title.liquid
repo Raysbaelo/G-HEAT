@@ -1,0 +1,31 @@
+{%- comment -%}
+This file has been modified by the Yoast SEO for Shopify app.
+You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+{%- endcomment -%}
+{%- liquid
+	assign disabled_by_yoast_seo = true
+	if content_for_header contains 'yoast-active-script'
+		assign disabled_by_yoast_seo = false
+	endif
+-%}
+{%- capture seo_title -%}
+  {{ page_title }}
+  {%- if current_tags -%}
+    {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+  {%- endif -%}
+  {%- if current_page != 1 -%}
+    &ndash; {{ 'general.meta.page' | t: page: current_page }}
+  {%- endif -%}
+  {%- if template == 'password' -%}
+    {{ shop.name }}
+  {%- else -%}
+    {%- unless page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endif -%}
+{%- endcapture -%}
+{%- comment -%}Auto-disabled. Yoast plugin is taking care of SEO output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<title>{{ seo_title }}</title>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}

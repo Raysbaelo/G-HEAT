@@ -1,0 +1,155 @@
+{
+  "sections": {
+    "main": {
+      "type": "product-template-simple",
+      "settings": {
+        "description_position": "below",
+        "description_style": "expandable",
+        "social_enable": false,
+        "image_position": "left",
+        "image_container_size": "medium",
+        "product_image_size": "square",
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "mobile_layout": "partial",
+        "enable_video_looping": true,
+        "product_video_style": "muted"
+      }
+    },
+    "166335593466e00865": {
+      "type": "section-custom-liquid",
+      "settings": {
+        "custom_liquid": "<script type=\"text\/javascript\">\nvar _learnq = _learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    _learnq.push(['track', 'Added to Cart', cart])\n  }))\n} \n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch))\n$(document).ajaxComplete(function(event, request, settings){\n  if(settings.url == \"\/cart\/add.js\"){\n      addedToCart()\n  }\n})<\/script>"
+      }
+    },
+    "1628062389b4167fe9": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "1628062389b4167fe9-1": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"size-guide-row\" id=\"gloves\">\n<div class=\"size-guide-header\">\n<h2 class=\"size-guide-title\">Gants chauffants<\/h2>\n<h3 class=\"size-guide-subtitle\">Comment choisir la taille de vos gants ?<\/h3>\n<\/div>\n<div class=\"size-guide-explainer-row\">\n<div class=\"size-guide-explainer-content\">\nChoisissez de votre main directrice (droite pour un droitier)<br>\n  Mesurez votre tour de main <b>paume ouverte sans le pouce<\/b>\n<\/div>\n<div class=\"size-guide-explainer-image\"><img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2545\/2656\/files\/icon-size-guide-gloves.svg?v=1598538156\" class=\"size-guide-explainer-content-image\"><\/div>\n<\/div>\n<div class=\"size-guide-advice\">\n<b>Conseil :<\/b> Si vous avez les doigts longs, choisissez la taille supérieure à votre mesure.\n<\/div>\n<div class=\"size-guide-notice\">\n<div class=\"size-guide-notice-preheader\"><\/div>\n<div class=\"size-guide-notice-table\">\n<table>\n<tbody>\n<tr>\n<td class=\"size-guide-notice-table-black\">Taille<\/td>\n<td class=\"size-guide-notice-table-normal\">XS<\/td>\n<td class=\"size-guide-notice-table-normal\">S<\/td>\n<td class=\"size-guide-notice-table-normal\">M<\/td>\n<td class=\"size-guide-notice-table-normal\">L<\/td>\n<td class=\"size-guide-notice-table-normal\">XL<\/td>\n<td class=\"size-guide-notice-table-normal\">XXL<\/td>\n<td class=\"size-guide-notice-table-normal\">XXXL<\/td>\n<\/tr>\n<tr>\n<td class=\"size-guide-notice-table-black\">Tour de main (en cm)<\/td>\n<td class=\"size-guide-notice-table-normal\">16 à 17,5<\/td>\n<td class=\"size-guide-notice-table-normal\">18 à 20<\/td>\n<td class=\"size-guide-notice-table-normal\">20,5 à 21,5<\/td>\n<td class=\"size-guide-notice-table-normal\">22 à 23<\/td> \n<td class=\"size-guide-notice-table-normal\">23,5 à 24,5<\/td>   \n<td class=\"size-guide-notice-table-normal\">25 à 26,5<\/td>  \n<td class=\"size-guide-notice-table-normal\">27 à 28<\/td>  \n<\/tr>\n<tr>\n<td class=\"size-guide-notice-table-black\">Taille universelle<\/td>\n<td class=\"size-guide-notice-table-normal\">6\/7<\/td>\n<td class=\"size-guide-notice-table-normal\">7\/8<\/td>\n<td class=\"size-guide-notice-table-normal\">8\/9<\/td>\n<td class=\"size-guide-notice-table-normal\">9\/10<\/td>\n<td class=\"size-guide-notice-table-normal\">10\/11<\/td>\n<td class=\"size-guide-notice-table-normal\">11\/12<\/td>\n<td class=\"size-guide-notice-table-normal\">12\/13<\/td>\n<\/tr>\n<\/tbody>\n<\/table>\n<\/div>\n<\/div>    \n<\/div>",
+            "width": "100%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "1628062389b4167fe9-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "1663176976105237af": {
+      "type": "tabbed-description",
+      "settings": {
+        "bg-color": "#1b2024",
+        "font-color": "#ffffff",
+        "show_description": true,
+        "show_guide_tailles": true
+      }
+    },
+    "165848595990edc998": {
+      "type": "side-by-side-image",
+      "settings": {
+      }
+    },
+    "16637460973d7ebae7": {
+      "type": "text-columns",
+      "blocks": {
+        "16637460973bc040a2-0": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/G-HEAT-HD-17_1_65c018e4-ddd1-458c-98a7-da6db480ec80.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        },
+        "16637460973bc040a2-1": {
+          "type": "text_block",
+          "settings": {
+            "enable_image": true,
+            "image": "shopify:\/\/shop_images\/G-HEAT-Web-25_2986ad7e-3bcc-474f-9e08-fe72f1ac8f57.png",
+            "image_width": 650,
+            "title": "",
+            "text": "",
+            "button_label": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16637460973bc040a2-0",
+        "16637460973bc040a2-1"
+      ],
+      "settings": {
+        "title": "",
+        "align_text": "left",
+        "divider": false,
+        "color_scheme": "none"
+      }
+    },
+    "165848533212a4ef47": {
+      "type": "collection-feature-product",
+      "settings": {
+        "title": "VOUS AIMEREZ AUSSI",
+        "home_featured_products": "equitation",
+        "count": 16,
+        "mobile_scrollable": true,
+        "view_all": false,
+        "view-all-text": "View All",
+        "divider": false
+      }
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "disabled": true,
+      "settings": {
+        "show_product_recommendations": true,
+        "product_recommendations_heading": "Vous aimerez aussi..."
+      }
+    },
+    "more": {
+      "type": "more-products",
+      "disabled": true,
+      "settings": {
+        "show_vendor_section": false,
+        "show_collection_section": false
+      }
+    },
+    "recently": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "product_recommendations_heading": "You may also like"
+      }
+    },
+    "additional": {
+      "type": "product-template-additionnal",
+      "disabled": true,
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "main",
+    "166335593466e00865",
+    "1628062389b4167fe9",
+    "1663176976105237af",
+    "165848595990edc998",
+    "16637460973d7ebae7",
+    "165848533212a4ef47",
+    "recommendations",
+    "more",
+    "recently",
+    "additional"
+  ]
+}

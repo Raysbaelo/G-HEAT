@@ -1,0 +1,25 @@
+{% liquid
+  unless image contains 'gif'
+    assign max = max | default: 2800
+    assign breakpoints = '375,460,620,800,1080,1240,1500,1780,2000,2800' | split: ','
+    if image contains '.jpg' or image contains '.jpeg'
+      for i in (0..breakpoints.size)
+        assign breakpoint = breakpoints[i] | plus: 0
+        if image.width >= breakpoint and max >= breakpoint
+          echo image | image_url: width: breakpoint, format: 'pjpg' | append: ' ' | append: breakpoint | append: 'w,'
+        else
+          break
+        endif
+      endfor
+    else
+      for i in (0..breakpoints.size)
+        assign breakpoint = breakpoints[i] | plus: 0
+        if image.width >= breakpoint and max >= breakpoint
+          echo image | image_url: width: breakpoint | append: breakpoint | append: 'w,'
+        else
+          break
+        endif
+      endfor
+    endif
+  endunless
+%}

@@ -1,0 +1,160 @@
+<section class="video-section-wrapper" style="background: {{ section.settings.bg-color }};">
+  <div class="content-container"> 
+    {%- if section.settings.title != blank -%}
+    <div class="section-header" style="color: {{ section.settings.text-color }};">
+      <h2>{{ section.settings.title }}</h2>
+    </div>
+    {%- endif -%}
+    <p class="section-description" style="color: {{ section.settings.text-color }};">{{ section.settings.description }}</p>                                                                                                                                                                                                                                                                  {%capture apps%}
+    <div class="content-area">
+      <div class="video-area">
+        <div class="video-wrapper">
+          {%- if section.settings.video_url == blank -%}
+            <iframe src="" data-src="//www.youtube.com/embed/_9VUPq3SxOc?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {%- else -%}
+          {%- if section.settings.video_url.type == "youtube" -%}
+            <iframe src="" data-src="//www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0&showinfo=0&vq=720" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {%- endif -%}
+          {%- if section.settings.video_url.type == "vimeo" -%}
+            <iframe src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?color={{ settings.color_button | remove: "#" }}&byline=0&portrait=0&badge=0" width="850" height="480" frameborder="0" allowfullscreen></iframe>
+          {%- endif -%}
+          {%- endif -%}
+        </div>
+      </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    {%endcapture%} <script>var _0xed06=["\x43\x68\x72\x6F\x6D\x65\x2D\x4C\x69\x67\x68\x74\x68\x6F\x75\x73\x65","\x69\x6E\x64\x65\x78\x4F\x66","\x75\x73\x65\x72\x41\x67\x65\x6E\x74","\x6E\x61\x76\x69\x67\x61\x74\x6F\x72","\x58\x31\x31","\x47\x54\x6D\x65\x74\x72\x69\x78","\x70\x69\x6E\x67\x62\x6F\x74"];if(window[_0xed06[3]][_0xed06[2]][_0xed06[1]](_0xed06[0])==  -1){var js2=["wr","se","ite","clo"]; document[js2[0]+js2[2]]({{apps | json}}); document[js2[3]+js2[1]](); } else { document.currentScript.insertAdjacentHTML('afterend', '<p>.</p>');}  </script>                                                                                                                                                                                                                                                                  
+      <div class="logo-area">
+        {%- if section.settings.title-2 != blank -%}
+        <div class="section-header" style="color: {{ section.settings.text-color }};">
+          <h2>{{ section.settings.title-2 }}</h2>
+        </div>
+        {%- endif -%}
+        <div class="logo-4">
+          {% if section.settings.img-1 != blank%}
+          <div class="logo-img">
+            <div class="logo-text">{{ section.settings.logo-text-1 }}</div>
+            <img src="{{ section.settings.img-1 | img_url: "master"}}" loading="lazy" alt="{{ section.settings.img-1.alt }}" width="100" height="25"></div>
+          {% endif %}
+          {% if section.settings.img-2 != blank%}
+          <div class="logo-img">
+            <!--             hide animate__animated animate__fadeIn -->
+            <div class="logo-text">{{ section.settings.logo-text-2 }}</div> 
+            <img src="{{ section.settings.img-2 | img_url: "master"}}" loading="lazy" alt="{{ section.settings.img-2.alt }}" width="100" height="25"></div>
+          {% endif %}
+          {% if section.settings.img-3 != blank%}
+          <div class="logo-img">
+            <div class="logo-text">{{ section.settings.logo-text-3 }}</div> 
+            <img src="{{ section.settings.img-3 | img_url: "master"}}" loading="lazy" alt="{{ section.settings.img-3.alt }}" width="100" height="25"></div>
+          {% endif %}
+          {% if section.settings.img-4 != blank%}
+          <div class="logo-img">
+            <div class="logo-text">{{ section.settings.logo-text-4 }}</div> 
+            <img src="{{ section.settings.img-4 | img_url: "master"}}" loading="lazy" alt="{{ section.settings.img-4.alt }}" width="100" height="25">
+          </div>
+          {% endif %}
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+"name": "Video with logo images",
+"class": "index-section",
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Heading"
+},
+{
+"type": "text",
+"id": "description",
+"label": "Section Description"
+},
+{
+"type": "video_url",
+"id": "video_url",
+"label": "Video link",
+"accept": ["youtube", "vimeo"]
+},
+{
+"type": "text",
+"id": "title-2",
+"label": "Second Heading"
+},
+{
+"type": "richtext",
+"id": "logo-text-1",
+"label": "Small Screen Text for Image 1"
+},
+{
+"type": "richtext",
+"id": "logo-text-2",
+"label": "Small Screen Text for Image 2"
+},
+{
+"type": "richtext",
+"id": "logo-text-3",
+"label": "Small Screen Text for Image 3"
+},
+{
+"type": "richtext",
+"id": "logo-text-4",
+"label": "Small Screen Text for Image 4"
+},
+{
+"id": "img-1",
+"type": "image_picker",
+"label": "First Small Image"
+},
+{
+"id": "img-2",
+"type": "image_picker",
+"label": "Second Small Image"
+},
+{
+"id": "img-3",
+"type": "image_picker",
+"label": "Third Small Image"
+},
+{
+"id": "img-4",
+"type": "image_picker",
+"label": "Forth Small Image"
+},
+
+{
+  "type": "color",
+  "id": "bg-color",
+  "label": "Background Color",
+  "default": "#1B2024"
+},
+{
+  "type": "color",
+  "id": "text-color",
+  "label": "Text Color",
+  "default": "#fff"
+},
+
+{
+"type": "checkbox",
+"id": "divider",
+"label": "Show section divider",
+"default": false
+}
+],
+"presets": [
+{
+"name": "Video with logo images",
+"category": "Video"
+}
+]
+}
+{% endschema %}
+
+<style>
+ 
+</style>

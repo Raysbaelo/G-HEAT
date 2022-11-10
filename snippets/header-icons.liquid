@@ -1,0 +1,64 @@
+{%- liquid
+  assign hide_icon_labels = true
+  if nav_position == 'below'
+    assign hide_icon_labels = false
+  endif
+-%}
+
+<div class="site-nav">
+  <div class="site-nav__icons">
+    <div class="weglot-wrapper"></div>
+    <a href="{{ routes.search_url }}" class="site-nav__link site-nav__link--icon small--hide js-search-header{% if nav_position == 'below' %} medium-up--hide{% endif %}">
+      {% comment %}
+       {%- render 'icon-search'-%} <!-- the svg doesnt have the good thickness -->
+      {% endcomment %}
+      <img style="max-width: 24px;" height="24" width="24" loading="lazy" src="{{ 'search.png' | asset_url }}&width=24" alt="">
+
+      <span class="icon__fallback-text">{{ 'general.search.title' | t }}</span>
+    </a>
+
+    {%- if shop.customer_accounts_enabled -%}
+      <a class="site-nav__link site-nav__link--icon" href="{{ routes.account_url }}">
+        {% comment %}
+         {%- render 'icon-account'-%} <!-- the svg doesnt have the good thickness -->
+        {% endcomment %}
+        <img style="max-width: 24px;" height="24" width="24" loading="lazy" src="{{ 'account.png' | asset_url }}&width=24" alt="">
+        <span class="site-nav__icon-label small--hide{% if hide_icon_labels %} icon__fallback-text{% endif %}">
+          {{ 'layout.customer.account' | t }}
+        </span>
+      </a>
+    {%- endif -%}
+
+    <a href="{{ routes.cart_url }}"
+      id="HeaderCartTrigger"
+      aria-controls="HeaderCart"
+      class="site-nav__link site-nav__link--icon"
+      data-icon="{{ settings.cart_icon }}">
+      <span class="cart-link">
+        {%- if settings.cart_icon == 'cart' -%}
+        {% comment %}
+          {%- render 'icon-cart'-%}  <!-- the svg doesnt have the good thickness -->
+        {% endcomment %}
+        <img style="max-width: 24px;" height="24" width="24" loading="lazy" src="{{ 'cart.png' | asset_url }}&width=24" alt="">
+
+        {%- elsif settings.cart_icon == 'bag-minimal' -%}
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag-minimal" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path id="svg_2" data-name="svg 2" class="cls-1" d="M22.53 16.61c0-7.1 4.35-9 9.75-9s9.75 1.9 9.75 9"/><path id="svg_4" data-name="svg 4" class="cls-1" d="M11.66 16.65h41.25V53.4H11.66z"/></svg>
+        {%- else -%}
+          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-bag" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-width:2px}</style></defs><path class="cls-1" d="M24.23 18c0-7.75 3.92-14 8.75-14s8.74 6.29 8.74 14M14.74 18h36.51l3.59 36.73h-43.7z"/></svg>
+        {%- endif -%}
+        <span class="cart-link__bubble{% if cart.item_count > 0 %} cart-link__bubble--visible{% endif %}">
+          <span class="cart-link__bubble-num">{{ cart.item_count }}</span>
+        </span>
+      </span>
+      <span class="site-nav__icon-label small--hide{% if hide_icon_labels %} icon__fallback-text{% endif %}">
+        {{ 'layout.cart.title' | t }}
+      </span>
+    </a>
+    <button type="button"
+      aria-controls="MobileNav"
+      class="site-nav__link site-nav__link--icon medium-up--hide mobile-nav-trigger icon-burger">
+        {%- render 'icon-burger'-%}
+      <span class="icon__fallback-text">{{ 'general.drawers.navigation' | t }}</span>
+    </button>
+  </div>
+</div>

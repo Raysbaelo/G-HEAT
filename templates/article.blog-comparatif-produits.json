@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "article-template-v2",
+      "blocks": {
+        "331d3af1-fd90-4834-b082-042ac0a6e143": {
+          "type": "article",
+          "settings": {
+            "article": ""
+          }
+        }
+      },
+      "block_order": [
+        "331d3af1-fd90-4834-b082-042ac0a6e143"
+      ],
+      "settings": {
+        "blog_capitalize_first": true,
+        "blog_show_tags_main": true,
+        "blog_show_date_main": true,
+        "blog_show_comments_main": false,
+        "blog_show_author_main": false,
+        "featured_product": "gants-chauffants-rando",
+        "blog_show_tags": false,
+        "blog_show_date": false,
+        "blog_show_comments": false,
+        "blog_show_author": false,
+        "social_sharing_blog": true,
+        "blog_image_size": "wide"
+      }
+    },
+    "1630661599aada71ac": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Produits en lien avec l'article",
+        "home_featured_products": "gants-chauffants",
+        "count": 4,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "view-all-text": "Voir tout",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1630661599aada71ac"
+  ]
+}

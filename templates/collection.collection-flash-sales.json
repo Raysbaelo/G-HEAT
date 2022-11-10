@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {
+        "enable": false,
+        "collection_image_enable": true,
+        "parallax": false
+      }
+    },
+    "16336116719e468af5": {
+      "type": "flash-sales",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "main": {
+      "type": "collection-flash-sales-template-v2",
+      "settings": {
+        "enable_sidebar": true,
+        "tags_combine": true,
+        "enable_sort": true,
+        "description_position": "top",
+        "subcollection_style": "above",
+        "grid_style": "small"
+      }
+    },
+    "recommendation": {
+      "type": "recently-viewed",
+      "settings": {
+        "show_section": true
+      }
+    }
+  },
+  "order": [
+    "header",
+    "16336116719e468af5",
+    "main",
+    "recommendation"
+  ]
+}

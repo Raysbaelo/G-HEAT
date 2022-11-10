@@ -1,0 +1,118 @@
+{%-liquid
+
+    assign blog = blogs[section.settings.blog] 
+     assign have_blog = true
+      if blog.empty? or blog.articles.size == 0
+        assign have_blog = false
+      endif
+    -%}
+
+<div class="cBlogs">
+  <div class="main-heading"><h4>{{ section.settings.main-heading }}</h4>
+    {% if section.settings.view-all != blank %}
+    <a class="section-header__link" href="{{ blog.url }}">{{ section.settings.view-all }}</a>
+    {% endif %}
+  </div>
+  <div class="cBlogs-wrapper owl-carousel owl-theme">
+    {% for article in blog.articles %}
+    <div class="cBlogs-grid">
+      <a  class="cBlog-images" href="{{ article.url | strip_html }}">
+        <img srcset="{% render 'image-srcset', image: article.image, max: 620 %}"
+          src="{{ article.image | image_url: width: 300 }}"
+          loading="lazy"
+          sizes="484px"
+          width="{{ article.image.width }}"
+          height="{{ article.image.height }}">
+      </a>
+      <a class="cBlog-content" href="{{ article.url | strip_html }}">
+        <div class="cBlog-tags">
+          {% for tag in article.tags limit: 2 %}
+            <div class="cBlog-tag">{{ tag | strip_html }}</div>
+          {% endfor%}
+          {% for tag in article.tags %}
+            <div class="cBlog-tag-desk">{{ tag | strip_html }}</div>
+          {% endfor%}
+        </div>
+        <div class="cBlog-title">
+          {{ article.title }}
+        </div>
+        <span class="cBlog-time">{{ article.content | strip_html | split: ' ' | size | times: 1.0 | divided_by: 250 | ceil }}min</span>
+        
+        {% if article.excerpt != blank %}
+          <div class="cBlog-excerpt">{{ article.excerpt | strip_html }}</div>
+        {% else %}
+           <div class="cBlog-excerpt">{{ article.content | strip_html | truncate: 200, '...' }}</div>
+        {% endif %}
+
+        <a class="cBlog-link" href="{{ article.url | strip_html }}">LIRE L’ARTICLE</a>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+"name": "BlogPost",
+"class": "Blog-Posts",
+"settings": [
+{
+"type": "blog",
+"id": "blog",
+"label": "Blog"
+},
+{
+"type": "text",
+"id": "main-heading",
+"label": "Section Heading",
+"info": "Section Main Heading"
+},
+{
+"type": "text",
+"id": "view-all",
+"label": "View All Text"
+},
+{
+"type": "text",
+"id": "view-all-url",
+"label": "View All Link"
+}
+],
+"presets": [
+{
+"name": "BlogPost",
+"category": "Blogs"
+}
+]
+}
+{% endschema %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+{% javascript %}
+  $(".cBlogs-wrapper").owlCarousel({
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    nav: false,
+    dots: false,
+    loop:true,
+    navRewind: false,
+    autoplay: false,
+    autoplayTimeout: 5000,
+    responsive: {
+      0:{
+        items:1,
+        stagePadding: 50, 
+      },
+      589:{
+        items:2,
+
+      },
+      768:{
+        items:3,
+
+      }
+
+    },
+  });
+{% endjavascript %}

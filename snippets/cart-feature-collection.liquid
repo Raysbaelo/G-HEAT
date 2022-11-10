@@ -1,0 +1,108 @@
+{% assign collection = collections[settings.cart_collection] %}
+<div
+  id="CollectionSection-{{ section.id }}"
+     class="collection-feature-product"
+  data-section-id="{{ section.id }}"
+  data-section-type="collection-template">
+  <div class="page-width">
+<!--     scrollable-grid--small -->
+    <div
+      class="new-grid cart-grid product-grid owl-carousel owl-theme">
+
+        {%- liquid
+          for product in collection.products limit: 6
+            assign item_classes = ''
+            unless section.settings.mobile_scrollable
+              if forloop.index > section.settings.count
+                assign item_classes = 'hide'
+                assign mod = forloop.index | modulo: 2
+                if mod == 0
+                  assign item_classes = 'medium-up--hide'
+                endif
+              endif
+            endunless
+
+            render 'product-grid-item', product: product, collection: collection, classes: item_classes
+
+            if settings.quick_shop_enable
+              render 'quick-shop-modal', product: product
+              render 'size-chart', product: product
+            endif
+            
+          endfor
+        -%}
+
+    </div>
+  </div>
+</div>
+<!--             <button class="am-next"><span>&#10095;</span></button>
+            <button class="am-prev"><span>&#10094;</span></button> -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+<style>
+ .new-grid.owl-carousel .owl-stage{
+    display: flex;
+    height: 100%;
+  }
+  .new-grid.owl-carousel .grid-item{
+  height:100%;
+  }
+  .grid-tags img{
+  width:fit-content !important;
+  }
+  .grid-tag-ice {
+    display: flex;
+}
+  .collection-feature-product{
+      background: #F4F4F4;
+    padding: 40px 0;
+  }
+ .collection-feature-product .grid-item__content {
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+@media (min-width: 768px){
+   .collection-feature-product .grid-item__content {
+    padding: 15px;
+  }
+}
+ .collection-feature-product .grid-item__meta .btn {
+    border-radius: 5px;
+  }
+  @media (max-width: 768px){
+    .new-grid.owl-carousel .owl-stage {
+    padding-left: 0 !important;
+}
+  }
+</style>
+ 
+   <script>
+//      if($(window).innerWidth() <= 768) {
+  $(".cart-grid.owl-theme").owlCarousel({
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    nav: false,
+    dots: true,
+    loop:true,
+    navRewind: false,
+    autoplay: false,
+    autoplayTimeout: 5000,
+    responsive: {
+      0: {
+        items: 1,
+         stagePadding: 80,
+      },
+      589: {
+        items: 2,
+        stagePadding: 80,
+      },
+      768: {
+        items: 2,
+        stagePadding: 80,
+      },
+    },
+  });
+//      }
+</script>

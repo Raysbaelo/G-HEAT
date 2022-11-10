@@ -1,0 +1,18 @@
+<div class="footer__toggle">
+<div class="footer__title">
+  {%- if block.settings.title == blank -%}
+    {{ linklists[block.settings.menu].title }}
+  {%- else -%}
+    {{ block.settings.title }}
+  {%- endif -%}
+  </div>
+<span class="arrow-down medium-up--hide"><svg width="32px" height="32px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M 4.21875 10.78125 L 2.78125 12.21875 L 15.28125 24.71875 L 16 25.40625 L 16.71875 24.71875 L 29.21875 12.21875 L 27.78125 10.78125 L 16 22.5625 Z"/></svg></span>
+</div>
+<ul class="footer__menu">
+  {%- for link in linklists[block.settings.menu].links -%}
+    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+  {%- endfor -%}
+  {%- if block.settings.enable_account_link -%}
+    <li><a href="{{ routes.account_url }}">{{ 'customer.account.title' | t }}</a></li>
+  {%- endif -%}
+</ul>

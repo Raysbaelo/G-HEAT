@@ -1,0 +1,121 @@
+{
+  "sections": {
+    "1628864617ae2025d7": {
+      "type": "advanced-content",
+      "blocks": {
+        "1628864617ae2025d7-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><a href=\"https:\/\/www.g-heat.com\/pages\/faq-produits\" title=\"FAQ Gheat produits\"><u>Produit et technologie<\/u><\/a><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        },
+        "4597aa99-3806-47e6-adde-bfeb6fab2e78": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><span style=\"color: #cb132d;\"><u>Expédition et garantie<\/u><\/span><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        },
+        "6317f8db-455b-4be3-8e92-e3082eb1c793": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><a href=\"https:\/\/www.g-heat.com\/pages\/faq-compte\" title=\"FAQ Gheat produits\"><u>Mon compte<\/u><\/a><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "1628864617ae2025d7-1",
+        "4597aa99-3806-47e6-adde-bfeb6fab2e78",
+        "6317f8db-455b-4be3-8e92-e3082eb1c793"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "main": {
+      "type": "page-faq-template",
+      "blocks": {
+        "e473aca3-a8bb-4e58-a3c4-5723ee9ab9b5": {
+          "type": "question",
+          "settings": {
+            "title": "Combien de temps faut-il pour recevoir une commande ? ",
+            "text": "<p>Les délais de livraison dépendent de l'option de livraison que vous choisissez.  Les délais de livraison sont indiqués pour chaque transporteur (Chronopost, Colissimo, Delivengo et Mondial Relay) avant le processus d'achat.<\/p>"
+          }
+        },
+        "f925b800-034f-4969-943c-6149229b2fb8": {
+          "type": "question",
+          "settings": {
+            "title": "Comment suivre ma commande ? Je n'arrive pas à suivre mon colis. ",
+            "text": "<p>Votre lien de suivi vous a été adressé par email. Vous pouvez également suivre vos colis en cliquant sur le détail de votre commande, accessible depuis votre compte client G-Heat ou encore saisir le n° de de suivi de votre colis depuis la page <a href=\"https:\/\/www.g-heat.com\/pages\/suivi-commande\" title=\"Suivi de commande\">Suivi de commande<\/a>.<\/p>"
+          }
+        },
+        "2494b70a-2db4-4bff-b105-344d6d425990": {
+          "type": "question",
+          "settings": {
+            "title": "Quels sont les articles échangeables ou remboursables ? ",
+            "text": "<p>Tous les articles sont échangeables ou remboursables dans les 14 jours suivant la date de réception. <\/p>"
+          }
+        },
+        "337b502e-5226-45a0-bbca-6fb58162be04": {
+          "type": "question",
+          "settings": {
+            "title": "Que se passe-t-il si je ne suis pas satisfait de mon produit ? ",
+            "text": "<p>Nous pratiquons le « Satisfait ou Remboursé ». Si votre produit ne correspond pas à vos attentes, nous vous invitons à consulter notre <a href=\"http:\/\/change.g-heat.com\/\" title=\"Centre de retours\">page dédiée au retours produits<\/a>. <\/p>"
+          }
+        },
+        "06bdaf82-a2df-4cd0-915a-ae713a700960": {
+          "type": "question",
+          "settings": {
+            "title": "Quels sont les articles échangeables ou remboursables ? ",
+            "text": "<p>Tous les articles sont échangeables ou remboursables dans les 14 jours suivant la date de réception. <\/p>"
+          }
+        },
+        "ead91ce4-9252-4ac3-ac52-3c459f709df9": {
+          "type": "question",
+          "settings": {
+            "title": "Comment puis-je retourner un produit ? ",
+            "text": "<p>Pour retourner un produit, merci de nous faire votre demande via la <a href=\"http:\/\/change.g-heat.com\/\" title=\"Centre de retours\">page dédiée au retours produits<\/a>. Aucun retour ne sera accepté si la demande préalable n’a pas été faite via le centre de retours et validée par nos équipes. <\/p>"
+          }
+        },
+        "3305bf44-85e1-467c-9100-6d500ef412d7": {
+          "type": "question",
+          "settings": {
+            "title": "Dans quel état doivent être renvoyés les articles ? ",
+            "text": "<p>Un produit retourné pour quelque raison que ce soit (remboursement, échange, problème de fonctionnement…) doit être renvoyé dans sa boîte d’origine, qui ne doit pas être utilisée comme emballage d’envoi et doit être mise dans un emballage de protection adapté, avec la totalité des accessoires et emballages. Ceci conformément à la <a href=\"https:\/\/www.g-heat.com\/pages\/politique-de-retour\" title=\"politique de retours\">politique de retour<\/a> du site.<\/p>"
+          }
+        },
+        "89757f8f-8daa-4855-8cab-569bc24c47d1": {
+          "type": "question",
+          "settings": {
+            "title": "Quelles sont les modalités de remboursement ? ",
+            "text": "<p>Les remboursements se font selon le mode de paiement d’origine. Il est également possible d’obtenir un bon d’achat sur notre site, valable 1 an. Les frais d’envoi ne sont pas remboursables sauf en cas de défaut avéré sur un produit et si le client souhaite se faire rembourser sa commande. Ils seront alors remboursés dans leur totalité.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e473aca3-a8bb-4e58-a3c4-5723ee9ab9b5",
+        "f925b800-034f-4969-943c-6149229b2fb8",
+        "2494b70a-2db4-4bff-b105-344d6d425990",
+        "337b502e-5226-45a0-bbca-6fb58162be04",
+        "06bdaf82-a2df-4cd0-915a-ae713a700960",
+        "ead91ce4-9252-4ac3-ac52-3c459f709df9",
+        "3305bf44-85e1-467c-9100-6d500ef412d7",
+        "89757f8f-8daa-4855-8cab-569bc24c47d1"
+      ],
+      "settings": {
+        "page_title_enable": false,
+        "page_content_enable": false
+      }
+    }
+  },
+  "order": [
+    "1628864617ae2025d7",
+    "main"
+  ]
+}

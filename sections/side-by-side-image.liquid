@@ -1,0 +1,34 @@
+{% if product.metafields.custom.pro-img-2 != blank or product.metafields.custom.pro-img-1 != blank %}
+<div class="SBS-image">
+  <div class="SBS-flex">
+    {% if product.metafields.custom.pro-img-1  != blank %}
+    <div class="SBS-item small--hide">
+      <img src="{{ product.metafields.custom.pro-img-1 | img_url : "master" }}" width="800" height="533">
+    </div>
+      {% endif %}
+       {% if product.metafields.custom.pro-img-2  != blank %}
+    <div class="SBS-item small--hide">
+      <img src="{{ product.metafields.custom.pro-img-2 | img_url : "master" }}" width="800" height="533">
+    </div>
+      {% endif %}
+  {% if product.metafields.custom.pro-img-3  != blank %}
+    <div class="SBS-item medium-up--hide">
+      <img src="{{ product.metafields.custom.pro-img-3 | img_url : "master" }}" width="800" height="533">
+    </div>
+      {% endif %}
+  </div>
+</div>
+  {% endif %}
+ {% schema %}
+    {
+    "name": "Side by Side Image",
+    "settings": [
+    ],
+    "presets": [
+    {
+    "name": "Side by Side Image"
+    }
+    ]
+    }
+    {% endschema %}
+

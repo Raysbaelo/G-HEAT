@@ -1,0 +1,120 @@
+      {% assign total_cart_amount = cart.total_price | divided_by: 100.0  %}
+    {% assign var1 = section.settings.unlock_gift_amount | plus: 0 %}
+    {% assign var2 = var1 | times: 1 %}
+    {% assign unlock_gift_amount = var2  %}
+    <div class="sidecart-header">
+      <span class="sidecart-count cart-link__bubble cart-link__bubble--visible">
+        <span class="cart-link__bubble-num"></span>
+      </span>
+      <span class="sidecart-title">Votre panier</span>
+      <div class="site-nav__close-cart">
+        <button type="button" class="site-nav__link site-nav__link--icon js-close-header-cart">
+          <!--       <span>{{ 'general.accessibility.close' | t }}</span> -->
+          {%- render 'icon-close'-%}
+        </button>
+      </div>
+    </div>
+    <form action="{{ routes.cart_url }}" method="post" novalidate data-location="header" class="cart__drawer-form">
+    <div class="site-header__cart-empty">{{ 'cart.general.empty' | t }}</div>
+    <div class="cart__scrollable {% if total_cart_amount >= unlock_gift_amount %} product-offered {% endif %}">
+                  <div class="cart-message {% if cart.item_count == 0 %} hide{% endif %}">
+                <div class="cart-slider-wrapper">
+                    <div class="cart-slider owl-carousel owl-theme">
+                        {% for block in section.blocks %}
+                          {% if block.settings.slider_logo != blank or block.settings.slider_heading != blank or block.settings.slider_content != blank %}
+                            <div class="cart-slider-item">
+                                {% if block.settings.slider_logo != blank  %}
+                                    <img src="{{ block.settings.slider_logo | img_url :"master" }}">
+                                {% endif %}
+                                <div class="cart-slider-content">
+                                    <h4>{{ block.settings.slider_heading }}</h4>
+                                    <span> {{ block.settings.slider_content }}</span>
+                                </div>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+              {%- if settings.display_cart-bar -%}
+                <div class="cart-message-content {% if cart.item_count == 0 or total_cart_amount >= unlock_gift_amount %} hide{% endif %}">
+                  <div class="cart-comment">  Dépensez encore <span class="cart-unlock-gift-amount">{{ unlock_gift_amount | minus: total_cart_amount }}€</span> et nous vous offrons une batterie </div>
+                  <div class="cart-success-comment">{{ settings.success-comment }}</div>
+                  <div class="progress-bar">
+
+                      {% assign progressBarWidth = total_cart_amount | times: 100.0 %}
+                      {% assign progressBarWidth = progressBarWidth | divided_by: unlock_gift_amount %}
+                      <div class="progress-bar-wh" style="width: {{ progressBarWidth }}%"></div>
+                    </div>
+                </div>
+              {%- endif -%}
+            </div>
+      <div data-products></div>
+      {%- render 'cart-recommendations', location: 'drawer' -%}
+
+      {% if settings.cart_notes_enable %}
+        <div class="cart__item-row">
+          <label for="CartHeaderNote" class="add-note">
+            {{ 'cart.general.note' | t }}
+            <span class="note-icon note-icon--open" aria-hidden="true">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-pencil" viewBox="0 0 64 64"><defs><style>.cls-1,.cls-2{fill:none;stroke:#000;stroke-width:2px}.cls-1{stroke-miterlimit:10}</style></defs><path class="cls-1" d="M52 33.96V58H8V14h23.7"/><path class="cls-1" d="M18 47l13-5 24-24-8-8-24 24-5 13zM23 34l8 8"/><path id="svg_2" data-name="svg 2" class="cls-2" d="M47 10l1-1a5.44 5.44 0 0 1 7.82.18A5.52 5.52 0 0 1 56 17l-1 1"/></svg>
+            </span>
+            <span class="note-icon note-icon--close">
+              <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/></svg>
+              <span class="icon__fallback-text">{{ 'general.accessibility.close' | t }}</span>
+            </span>
+          </label>
+          <textarea name="note" class="input-full cart__note hide" id="CartHeaderNote">{{ cart.note }}</textarea>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="cart__footer">
+      <div class="shipping-fee-comment shipping-black">
+         <p>Frais de livraison estimés</p>
+      <div class="shipping-fee-content {% if total_cart_amount >= unlock_gift_amount %} offer-red {% else %} shipping-black {% endif %}">
+        <p>
+          {% if total_cart_amount >= unlock_gift_amount %}
+         OFFERTS
+          {% else %}
+              Calculés à l’étape de paiement
+          {% endif %}
+        </p>
+      </div>
+      </div>
+      {% if settings.cart_terms_conditions_enable %}
+        <div class="cart__item-row cart__terms">
+          <input type="checkbox" id="CartTermsHeader" class="cart__terms-checkbox">
+          <label for="CartTermsHeader" class="text-label">
+            <small>
+              {% if settings.cart_terms_conditions_link != blank %}
+                {{ 'cart.general.terms_html' | t: url: settings.cart_terms_conditions_link }}
+              {% else %}
+                {{ 'cart.general.terms' | t }}
+              {% endif %}
+            </small>
+          </label>
+        </div>
+      {% endif %}
+
+
+      <div data-discounts></div>
+      <div class="cart__item-row cart__checkout-wrapper payment-buttons">
+        <button type="submit" name="checkout" data-terms-required="{{ settings.cart_terms_conditions_enable }}" class="btn cart__checkout">
+          <b>Finaliser ma commande</b>
+          <div class="product-count"> (<span class="cart-link__bubble-num">{{ cart.item_count }}</span> articles)</div>
+           <div class="cart__item-sub cart__item-subTotal  cart__item-row cart__item--subtotal">
+<!--         <div>{{ 'cart.general.subtotal' | t }}</div> -->
+        <i>| </i><div data-subtotal>{{ cart.total_price | money }}</div>
+      </div>
+        </button>
+
+        {% if additional_checkout_buttons and settings.cart_additional_buttons %}
+          <div class="additional-checkout-buttons">{{ content_for_additional_checkout_buttons }}</div>
+        {% endif %}
+      </div>
+
+      <div class="cart__item-row--footer text-center">
+        <small>{{ 'cart.general.shipping_at_checkout' | t }}</small>
+      </div>
+    </div>
+    </form>

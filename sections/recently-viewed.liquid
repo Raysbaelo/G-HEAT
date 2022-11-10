@@ -1,0 +1,43 @@
+{%- if section.settings.show_section -%}
+  <div
+    data-subsection
+    data-section-id="{{ section.id }}"
+    data-section-type="recently-viewed"
+    data-product-id="{{ product.id }}">
+    <div class="index-section index-section--sub-product recently-viewed">
+      <div class="page-width">
+        <header class="section-header">
+          <div class="h3 section-header__title"> {{ section.settings.product_recommendations_heading }}</div>
+        </header>
+      </div>
+
+      <div class="page-width page-width--flush-small">
+        <div id="RecentlyViewed-{{ section.id }}"></div>
+      </div>
+    </div>
+  </div>
+{%- endif -%}
+
+<script>
+  theme.settings.recentlyViewedEnabled = {{ section.settings.show_section | default: 'false' }};
+</script>
+
+{% schema %}
+  {
+    "name": "Recently viewed products",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_section",
+        "label": "Show recently viewed products",
+        "default": true
+      },
+ {
+        "type": "text",
+        "id": "product_recommendations_heading",
+        "label": "Heading",
+        "default": "You may also like"
+      }
+    ]
+  }
+{% endschema %}

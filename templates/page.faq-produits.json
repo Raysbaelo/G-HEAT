@@ -1,0 +1,172 @@
+{
+  "sections": {
+    "1628864617ae2025d7": {
+      "type": "advanced-content",
+      "blocks": {
+        "1628864617ae2025d7-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><span style=\"color: #cb132d;\"><u>Produit et technologie<\/u><\/span><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        },
+        "4597aa99-3806-47e6-adde-bfeb6fab2e78": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><a href=\"https:\/\/www.g-heat.com\/pages\/faq-sav\" title=\"FAQ SAV Gheat\">Expédition et garantie<\/a><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        },
+        "6317f8db-455b-4be3-8e92-e3082eb1c793": {
+          "type": "html",
+          "settings": {
+            "code": "<h3><center><a href=\"https:\/\/www.g-heat.com\/pages\/faq-compte\" title=\"FAQ Gheat produits\"><u>Mon compte<\/u><\/a><\/center><\/h3>",
+            "width": "33%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "1628864617ae2025d7-1",
+        "4597aa99-3806-47e6-adde-bfeb6fab2e78",
+        "6317f8db-455b-4be3-8e92-e3082eb1c793"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "main": {
+      "type": "page-faq-template",
+      "blocks": {
+        "e473aca3-a8bb-4e58-a3c4-5723ee9ab9b5": {
+          "type": "question",
+          "settings": {
+            "title": "Je n’arrive pas à faire fonctionner mon produit. Je cherche le manuel d’utilisation de mon produit.",
+            "text": "<p> Vous pouvez retrouver toutes les notices d’utilisation sur la page <a href=\"https:\/\/www.g-heat.com\/pages\/notices\" target=\"_blank\">notice<\/a><\/p>"
+          }
+        },
+        "f925b800-034f-4969-943c-6149229b2fb8": {
+          "type": "question",
+          "settings": {
+            "title": "Comment fonctionnent les vêtements chauffants G-Heat ? Faut-il une batterie ?",
+            "text": "<p>Les produits chauffants G-Heat fonctionnent avec des batteries au Lihtium. Vous pouvez choisir le nombre de batteries au moment de la commande sur la page produit.<\/p>"
+          }
+        },
+        "2494b70a-2db4-4bff-b105-344d6d425990": {
+          "type": "question",
+          "settings": {
+            "title": "Je suis atteint par la maladie de Raynaud ou je suis particulièrement sensible au froid. Est-ce que vos produits sont adaptés à mes besoins ? ",
+            "text": "<p>Oui les vêtements chauffants ont été conçus pour les personnes particulièrement sensibles au froid ou atteintes par des pathologies telles que la maladie de Raynaud. Vous trouverez plus d’infos dans cet <a href=\"https:\/\/www.g-heat.com\/blogs\/le-blog-de-g-heat\/pourquoi-choisir-des-vetements-chauffants\" target=\"_blank\">article<\/a>. Vous pouvez également retrouver comment lutter contre la maladie de Raynaud dans cet <a href=\"https:\/\/www.g-heat.com\/blogs\/le-blog-de-g-heat\/lutter-contre-la-maladie-de-raynaud-1\" target=\"_blank\">article<\/a>.<\/p>"
+          }
+        },
+        "337b502e-5226-45a0-bbca-6fb58162be04": {
+          "type": "question",
+          "settings": {
+            "title": "Est-ce que vos produits permettent de travailler et\/ou d’évoluer dans le froid pendant longtemps ? ",
+            "text": "<p>Oui, les vêtements chauffants permettent d’évoluer dans le froid pendant plusieurs heures avec un confort inégalé. Nos batteries sont conçues pour faire face à des températures allant jusqu’à moins 20 degrés.<\/p>"
+          }
+        },
+        "06bdaf82-a2df-4cd0-915a-ae713a700960": {
+          "type": "question",
+          "settings": {
+            "title": "Quelle est l’autonomie des batteries ? Leur durée de vie ? ",
+            "text": "<p>L’autonomie de chaque vêtement chauffant est indiquée dans la fiche technique de chaque article. Les batteries peuvent être chargées et déchargées environ 500 cycles.<\/p>"
+          }
+        },
+        "ead91ce4-9252-4ac3-ac52-3c459f709df9": {
+          "type": "question",
+          "settings": {
+            "title": "Quel produit pour quel usage ? ",
+            "text": "<p>Vous pouvez consulter le <a href=\"https:\/\/www.g-heat.com\/blogs\/le-blog-de-g-heat\/comparatif-comment-choisir-entre-semelles-chauffantes-et-chaussettes-chauffantes\">comparatif entre semelles et chaussettes chauffantes<\/a> sur l'article dédié.<\/p>"
+          }
+        },
+        "3305bf44-85e1-467c-9100-6d500ef412d7": {
+          "type": "question",
+          "settings": {
+            "title": "Puis-je utiliser une batterie avec un autre de mes produits ?",
+            "text": "<p>Les batteries ne sont compatibles qu’avec les vêtements dédiés. Il vous faut donc acheter la batterie spécifique à chaque produit.<\/p>"
+          }
+        },
+        "89757f8f-8daa-4855-8cab-569bc24c47d1": {
+          "type": "question",
+          "settings": {
+            "title": "Comment recharger mes batteries ? ",
+            "text": "<p>Vous pouvez recharger vos batteries avec les Chargeurs USB fournis. Ces chargeurs USB sont adaptables avec tous les blocs de charge 220V UE. Attention n’utilisez que des blocs 220 V en 5W\/2A comme indiqué dans la notice de votre produit.<\/p>"
+          }
+        },
+        "8f701137-e7f4-439e-988e-fad390965973": {
+          "type": "question",
+          "settings": {
+            "title": "Je n’arrive pas à choisir la taille ou j’hésite quant à la taille à choisir du produit recherché. ",
+            "text": "<p>Vous pouvez vous référer au guide des tailles et aux explications accompagnant le tableau vous permettant d’orienter votre choix. Celui-ci varie en fonction des mesures morphologiques de chacun mais aussi en fonction des utilisations voulues.<\/p>"
+          }
+        },
+        "d3536ce5-4495-4f33-b132-fcb4f83633f9": {
+          "type": "question",
+          "settings": {
+            "title": "Quelles sont les zones de chauffe pour chaque produit ? ",
+            "text": "<p>Les zones de chauffe sont indiquées dans les fiches techniques et sur les photos de chaque page produit.<\/p>"
+          }
+        },
+        "bc938681-9045-4d43-869d-888c247c5e96": {
+          "type": "question",
+          "settings": {
+            "title": "Puis-je utiliser vos produits en combinaison avec d’autres vêtements (sous-couches ou chaussures) ?",
+            "text": "<p>Oui nous indiquons l’épaisseur pour les chaussettes et les semelles qui vont dans des chaussures mais aussi celles pour les vestes et les sous-gants chauffants.<\/p>"
+          }
+        },
+        "ea96da8b-0c21-452c-90d2-ecc330fd9bcb": {
+          "type": "question",
+          "settings": {
+            "title": "Quelles sont les contre-indications ? Les précautions d’usage ?",
+            "text": "<p> Les vêtements chauffants ne sont pas compatibles avec le port de pacemaker et nous déconseillons les personnes cardiaques d’en porter. Veuillez consulter votre médecin en cas de doute.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "e473aca3-a8bb-4e58-a3c4-5723ee9ab9b5",
+        "f925b800-034f-4969-943c-6149229b2fb8",
+        "2494b70a-2db4-4bff-b105-344d6d425990",
+        "337b502e-5226-45a0-bbca-6fb58162be04",
+        "06bdaf82-a2df-4cd0-915a-ae713a700960",
+        "ead91ce4-9252-4ac3-ac52-3c459f709df9",
+        "3305bf44-85e1-467c-9100-6d500ef412d7",
+        "89757f8f-8daa-4855-8cab-569bc24c47d1",
+        "8f701137-e7f4-439e-988e-fad390965973",
+        "d3536ce5-4495-4f33-b132-fcb4f83633f9",
+        "bc938681-9045-4d43-869d-888c247c5e96",
+        "ea96da8b-0c21-452c-90d2-ecc330fd9bcb"
+      ],
+      "settings": {
+        "page_title_enable": false,
+        "page_content_enable": false
+      }
+    },
+    "162886601804e7ef53": {
+      "type": "faq",
+      "blocks": {
+        "162886601804e7ef53-0": {
+          "type": "question",
+          "settings": {
+            "title": "Ou puis-je acheter des produits G-heat ? Avez-vous une boutique ? ",
+            "text": "<p>Nous vendons principalement sur internet et sommes en train de constituer un réseau de magasins revendeurs.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "162886601804e7ef53-0"
+      ],
+      "settings": {
+        "title": ""
+      }
+    }
+  },
+  "order": [
+    "1628864617ae2025d7",
+    "main",
+    "162886601804e7ef53"
+  ]
+}

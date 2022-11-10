@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main": {
+      "type": "article-template-v2",
+      "blocks": {
+        "9a2cffc0-2b2c-4d03-a986-792d4631651c": {
+          "type": "article",
+          "settings": {
+            "article": ""
+          }
+        }
+      },
+      "block_order": [
+        "9a2cffc0-2b2c-4d03-a986-792d4631651c"
+      ],
+      "settings": {
+        "blog_capitalize_first": true,
+        "blog_show_tags_main": true,
+        "blog_show_date_main": true,
+        "blog_show_comments_main": true,
+        "blog_show_author_main": false,
+        "featured_product": "",
+        "blog_show_tags": true,
+        "blog_show_date": true,
+        "blog_show_comments": true,
+        "blog_show_author": false,
+        "social_sharing_blog": true,
+        "blog_image_size": "wide"
+      }
+    },
+    "1630661599aada71ac": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Découvrez nos produits",
+        "home_featured_products": "tous-nos-produits",
+        "count": 4,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "view-all-text": "Voir tout",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1630661599aada71ac"
+  ]
+}

@@ -1,0 +1,903 @@
+{%- comment -%}
+This file has been modified by the Yoast SEO for Shopify app.
+You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+{%- endcomment -%}
+{%- liquid
+	assign disabled_by_yoast_seo = true
+	if content_for_header contains 'yoast-active-script'
+		assign disabled_by_yoast_seo = false
+	endif
+-%}
+<div id="CollectionAjaxResult" class="collection-content">
+  <div id="CollectionAjaxContent">
+    <div class="page-width">
+         {%- if section.settings.description_position == 'top' -%}
+                {%- if collection.description != blank -%}
+                  <div class="rte rte--collection-desc">
+                    <div class="enlarge-text colection_desc_1 small--hide">
+                      {% if collection.description contains '&lt;!-- split --&gt;'  %}
+                      	{% assign desc_arr = collection.description | split: '&lt;!-- split --&gt;' %}
+                      	{{ desc_arr[0] }}
+                      {%else%}
+                      	{{ collection.description }}
+                      {%endif%}
+                    </div>
+                    <div class="enlarge-text colection_desc_1 medium-up--hide">
+                      {% if collection.description contains '&lt;!-- split --&gt;'  %}
+                      	{% assign desc_arr = collection.description | split: '&lt;!-- split --&gt;' %}
+                      	{{ desc_arr[0] | truncate: 150, "" }}
+                      {%else%}
+                      	{{ collection.description | truncate: 150, "" }}
+                      {%endif%}
+                    </div>
+                    <div class="collection-filter__item collection-filter__item--count small--hide">
+                    {{ 'collections.general.items_with_count' | t: count: collection.products_count }}
+                  </div>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+
+
+      <div class="grid">
+        <div class="grid__item medium-up--one-fifth grid__item--sidebar">
+          {%comment%} Collection Sidebar start{%endcomment%}
+          {%- liquid
+            assign show_sidebar = true
+            assign total_tags = 0
+
+            if section.settings.enable_sidebar == false or section.blocks.size == 0
+              assign show_sidebar = false
+            endif
+          -%}
+
+          {%- if section.settings.enable_sidebar or section.settings.enable_sort -%}
+            {%- assign location = 'CollectionSidebar' -%}
+            <div
+              id="CollectionSidebar"
+              data-section-id="{{ section.id }}"
+              data-section-type="collection-sidebar"
+              data-combine-tags="{{ section.settings.tags_combine }}">
+
+              <div class="collection-sidebar small--hide" id="CollectionSidebarFilterWrap">
+                <div class="filter-wrapper">
+                    <div class="filter-h1">Filtrer</div>
+                  <ul class="no-bullets tag-list tag-list--active-tags">
+                    {%- if current_tags -%}
+                      {%- for tag in current_tags -%}
+                        {%- liquid
+                          assign tag_text = tag
+                          assign tag_name = tag | strip
+                          if tag_name contains '_'
+                            assign cat = tag | split: '_' | first
+                            assign tag_text = tag | remove_first: cat | remove_first: '_'
+                          endif
+                        -%}
+
+                        <li class="tag tag--remove">
+                          {{ tag_text | link_to_remove_tag: tag_name | replace: 'title=', 'class="btn btn--small" title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                          <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-close" viewBox="0 0 64 64"><defs><style>.cls-1{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:2px}</style></defs><path class="cls-1" d="M19 17.61l27.12 27.13m0-27.13L19 44.74"/></svg>
+                        </li>
+                      {%- endfor -%}
+                    {%- endif -%}
+                  </ul>
+
+                  {%- liquid
+                    assign sort_title = 'collections.sorting.title' | t
+                    assign sort_by = collection.sort_by | default: collection.default_sort_by
+                    assign sort_id = 'CollectionSidebarSort'
+                  -%}
+                  <div class="collection-sidebar__group collection-sidebar__group--sort medium-up--hide">
+                    {%- render 'collection-sidebar-filter-trigger', location: location, title: sort_title, index: sort_id, collapsed_state: true -%}
+
+                    <div
+                      data-id="{{ location }}-{{ sort_id }}"
+                      class="collapsible-content collapsible-content--all">
+                      <div class="collapsible-content__inner">
+                        <ul class="no-bullets tag-list">
+                          {%- for option in collection.sort_options -%}
+                            <li class="tag{% if option.value == sort_by %} tag--active{% endif %}">
+                              <button type="button" data-value="{{ option.value }}" class="filter-sort">{{ option.name }}</button>
+                            </li>
+                          {%- endfor -%}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  {%- if section.settings.enable_sidebar -%}
+                    {%- for block in section.blocks -%}
+                      {%- assign block_index = forloop.index -%}
+                      {%- assign collapsed_state = block.settings.collapsed -%}
+                      <div class="collection-sidebar__filters collection-sidebar__group--{{ block.id }}" {{ block.shopify_attributes }}>
+                        {%- if block.type == 'tags_group' or 'tags_all' -%}
+                          {%- liquid
+                            assign tags_to_display = false
+                            case block.type
+                              when 'tags_group'
+                                assign split_tag_list = block.settings.tag_list | newline_to_br | split:'<br />'
+                                assign tags_to_display = split_tag_list
+                              when 'tags_all'
+                                assign tags_to_display = collection.all_tags
+                            endcase
+                          -%}
+
+                          {%- assign underscore_groups = false -%}
+                          {%- if block.type == 'tags_all' -%}
+                            {%- assign categories = '' -%}
+                            {%- for tag in tags_to_display -%}
+                              {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                              {%- if tag contains '_' -%}
+                                {%- assign underscore_groups = true -%}
+                                {%- capture categories -%}{%- unless categories == blank -%}{{ categories }}|{%- endunless -%}{{ tag | split: '_' | first }}{%- endcapture -%}
+                              {%- endif -%}
+                            {%- endfor -%}
+                            {%- assign cat_array = categories | split: '|' | uniq -%}
+                          {%- endif -%}
+
+                          {% comment %}
+                            Output groups of collapsible tag groups
+                          {% endcomment %}
+                          {%- if underscore_groups -%}
+                            {%- for cat_item in cat_array -%}
+                              {%- assign cat_handle = cat_item | handleize -%}
+                              {%- assign group_index = block_index | append: '-' | append: forloop.index -%}
+                              <div class="collection-sidebar__group collection-sidebar__group--{{ cat_handle }}">
+                                {%- render 'collection-sidebar-filter-trigger', location: location, title: cat_item, index: group_index, collapsed_state: collapsed_state -%}
+                                {%- if cat_item != blank -%}
+                                <div
+                                  data-id="{{ location }}-{{ group_index }}"
+                                  class="collapsible-content collapsible-content--all{% unless collapsed_state %} is-open{% endunless %}"
+                                  {% unless collapsed_state %}style="height: auto;"{% endunless %}>
+                                  <div class="collapsible-content__inner">
+                                    {% comment %}
+                                      Tag and checkbox markup
+                                    {% endcomment %}
+                                    {%- assign tag_count = 0 -%}
+                                    <ul class="no-bullets tag-list{% if section.settings.tags_combine %} tag-list--checkboxes{% endif %}">
+                                      {%- for tag in tags_to_display -%}
+                                        {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                                        {%- assign cat = tag | split: '_' | first -%}
+                                        {%- if cat != tag and cat_item == cat -%}
+                                          {% comment %}
+                                            Strip out tag category prefix
+                                          {% endcomment %}
+                                          {%- liquid
+                                            assign tag_name = tag | strip
+                                            assign tag_text = tag_name | remove_first: cat_item | remove_first: '_'
+                                            assign tag_count = tag_count | plus: 1
+                                          -%}
+
+                                          {%- if section.settings.tags_combine -%}
+                                            {%- if current_tags contains tag_name -%}
+                                              <li class="tag tag--active">
+                                                {{ tag_text | link_to_remove_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                              </li>
+                                            {%- else -%}
+                                              <li class="tag">
+                                                {{ tag_text | link_to_add_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                              </li>
+                                            {%- endif -%}
+                                          {%- else -%}
+                                            <li class="tag{% if current_tags contains tag_name %} tag--active{% endif %}">
+                                              {{ tag_text | link_to_tag: tag | replace: 'title=', ' title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                            </li>
+                                          {%- endif -%}
+                                        {%- endif -%}
+                                      {%- endfor -%}
+                                    </ul>
+
+                                    {%- assign total_tags = total_tags | plus: tag_count -%}
+
+                                    {%- if tag_count == 0 -%}
+                                      {%- style -%}
+                                        .collection-sidebar__group--{{ cat_handle }} { display: none; }
+                                      {%- endstyle -%}
+                                    {%- endif -%}
+                                  </div>
+                                </div>
+                              </div>
+                                  {%- endif -%}
+                            {%- endfor -%}
+                          {%- else -%}
+                            {% comment %}
+                              Output a list of all
+                            {% endcomment %}
+                            {%- if tags_to_display -%}
+                              <div class="collection-sidebar__group">
+                                {%- render 'collection-sidebar-filter-trigger', location: location, title: block.settings.title, index: block_index, collapsed_state: collapsed_state -%}
+                                <div
+                                  data-id="{{ location }}-{{ block_index }}"
+                                  class="collapsible-content collapsible-content--all{% unless collapsed_state %} is-open{% endunless %}"
+                                  {% unless collapsed_state %}style="height: auto;"{% endunless %}>
+                                  <div class="collapsible-content__inner">
+                                    {% comment %}
+                                      Tag and checkbox markup
+                                    {% endcomment %}
+                                    <ul class="no-bullets tag-list{% if section.settings.tags_combine %} tag-list--checkboxes{% endif %}">
+                                      {%- liquid
+                                        assign tag_count = 0
+                                        assign tags_to_loop = collection.tags
+                                        if collection.handle == 'all' and current_tags == blank
+                                          assign tags_to_loop = collection.all_tags
+                                        endif
+                                      -%}
+
+                                      {%- for tag in tags_to_display -%}
+                                        {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+
+                                        {%- liquid
+                                          assign tag_name = tag | strip
+                                          assign tag_text = tag_name
+                                          assign show_tag = false
+
+                                          if section.settings.tags_combine == true and tags_to_loop contains tag_name
+                                            assign show_tag = true
+                                          elsif section.settings.tags_combine == false and collection.all_tags contains tag_name
+                                            assign show_tag = true
+                                          endif
+                                        -%}
+
+                                        {%- if show_tag -%}
+                                          {%- assign tag_count = tag_count | plus: 1 -%}
+
+                                          {%- if current_tags contains tag_name -%}
+                                            <li class="tag tag--active">
+                                              {{ tag_text | link_to_remove_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                            </li>
+                                          {%- else -%}
+                                            {%- if section.settings.tags_combine -%}
+                                              <li class="tag">
+                                                {{ tag_text | link_to_add_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                              </li>
+                                            {%- else -%}
+                                              <li class="tag">
+                                                {{ tag_text | link_to_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                              </li>
+                                            {%- endif -%}
+                                          {%- endif -%}
+                                        {%- endif -%}
+                                      {%- endfor -%}
+                                    </ul>
+
+                                    {%- assign total_tags = total_tags | plus: tag_count -%}
+
+                                    {%- if tag_count == 0 -%}
+                                      {%- style -%}
+                                        .collection-sidebar__group--{{ block.id }} { display: none; }
+                                      {%- endstyle -%}
+                                    {%- endif -%}
+                                  </div>
+                                </div>
+                              </div>
+                            {%- endif -%}
+                          {%- endif -%}
+                        {%- endif -%}
+
+                        {%- if block.type == 'color_group' -%}
+                          {%- liquid
+                            assign swatch_file_extension = 'png'
+                            assign split_tag_list = block.settings.tag_list | newline_to_br | split:'<br />'
+                            assign tags_to_display = split_tag_list
+                          -%}
+
+                          {% comment %}
+                            Output a list of all color tags
+                          {% endcomment %}
+                          {%- if tags_to_display -%}
+                            <div class="collection-sidebar__group">
+                              {%- render 'collection-sidebar-filter-trigger', location: location, title: block.settings.title, index: block_index, collapsed_state: collapsed_state -%}
+                              <div
+                                data-id="{{ location }}-{{ block_index }}"
+                                class="collapsible-content collapsible-content--all{% unless collapsed_state %} is-open{% endunless %}"
+                                {% unless collapsed_state %}style="height: auto;"{% endunless %}>
+                                <div class="collapsible-content__inner">
+                                  {% comment %}
+                                    Tag and checkbox markup
+                                  {% endcomment %}
+                                  {%- assign tag_count = 0 -%}
+                                  <ul class="no-bullets tag-list{% if settings.product_color_swatches %} tag-list--swatches{% endif %}">
+                                    {%- liquid
+                                      assign tags_to_loop = collection.tags
+                                      if collection.handle == 'all' and current_tags == blank
+                                        assign tags_to_loop = collection.all_tags
+                                      endif
+                                    -%}
+
+                                    {%- for tag in tags_to_display -%}
+                                      {% if tag contains "_" %}{%- assign tag_starts_with = tag | slice: 0 -%}{% if tag_starts_with == "_" %}{% if tag_count %}{%- assign tag_count = tag_count | minus: 1 | at_least: 0 -%}{% endif %}{% continue %}{% endif %}{% endif %}
+                                      {%- liquid
+                                        assign tag_name = tag | strip
+                                        assign tag_text = tag_name
+                                        assign show_tag = false
+
+                                        if section.settings.tags_combine == true and tags_to_loop contains tag_name
+                                          assign show_tag = true
+                                        elsif section.settings.tags_combine == false and collection.all_tags contains tag_name
+                                          assign show_tag = true
+                                        endif
+                                      -%}
+
+                                      {%- if show_tag -%}
+                                        {%- liquid
+                                          assign tag_count = tag_count | plus: 1
+                                          assign color_file_name = tag_name | handle | append: '.' | append: swatch_file_extension
+                                          assign color_image = color_file_name | file_img_url: '50x50' | prepend: 'https:' | split: '?' | first
+                                          assign color_swatch_fallback = tag_name | split: ' ' | last | handle
+                                        -%}
+
+                                        {%- if settings.product_color_swatches -%}
+                                          {%- capture swatch -%}
+                                            <span
+                                              class="color-swatch color-swatch--filter color-swatch--{{ tag_name | handle }}"
+                                              style="background-color: {{ color_swatch_fallback }};{% if images[color_file_name] != blank %}  background-image: url({{ color_image }});{% endif %}"
+                                            >
+                                              {{ tag_text }}
+                                            </span>
+                                          {%- endcapture -%}
+                                        {%- else -%}
+                                          {%- assign swatch = tag_text -%}
+                                        {%- endif -%}
+
+                                        {%- if current_tags contains tag_name -%}
+                                          <li class="tag tag--active">
+                                            {{ swatch | link_to_remove_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                          </li>
+                                        {%- else -%}
+                                          {%- if section.settings.tags_combine -%}
+                                            <li class="tag">
+                                              {{ swatch | link_to_add_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                            </li>
+                                          {%- else -%}
+                                            <li class="tag">
+                                              {{ swatch | link_to_tag: tag_name | replace: 'title=', 'title=' | replace: '?view=ajax', '' | replace: 'view=ajax', '' }}
+                                            </li>
+                                          {%- endif -%}
+                                        {%- endif -%}
+
+                                      {%- endif -%}
+                                    {%- endfor -%}
+                                  </ul>
+
+                                  {%- assign total_tags = total_tags | plus: tag_count -%}
+
+                                  {%- if tag_count == 0 -%}
+                                    {%- style -%}
+                                      .collection-sidebar__group--{{ block.id }} { display: none; }
+                                    {%- endstyle -%}
+                                  {%- endif -%}
+                                </div>
+                              </div>
+                            </div>
+                          {%- endif -%}
+                        {%- endif -%}
+
+                        {%- if block.type == 'menu' -%}
+                          {%- assign total_tags = total_tags | plus: 1 -%}
+                          <div class="collection-sidebar__group">
+                            {%- liquid
+                              assign block_title = block.settings.title
+                              if block_title == blank
+                                assign block_title = linklists[block.settings.menu].title
+                              endif
+
+                              render 'collection-sidebar-filter-trigger', location: location, title: block_title, index: block_index, collapsed_state: collapsed_state
+                            -%}
+                            <div
+                              data-id="{{ location }}-{{ block_index }}"
+                              class="collapsible-content collapsible-content--all{% unless collapsed_state %} is-open{% endunless %}"
+                              {% unless collapsed_state %}style="height: auto;"{% endunless %}>
+                              <div class="collapsible-content__inner">
+                                <ul class="no-bullets tag-list">
+                                  {%- for link in linklists[block.settings.menu].links -%}
+                                    <li {% if link.current %}class="tag--active"{% endif %}>
+                                      <a href="{{ link.url }}" class="no-ajax">
+                                        {{ link.title }}
+                                      </a>
+                                      {%- if link.links -%}
+                                        <ul class="no-bullets tag-list">
+                                          {%- for childlink in link.links -%}
+                                            <li{% if childlink.current %} class="tag--active"{% endif %}>
+                                              <a href="{{ childlink.url }}" class="no-ajax">
+                                                {{ childlink.title }}
+                                              </a>
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      {%- endif -%}
+                                    </li>
+                                  {%- endfor -%}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        {%- endif -%}
+
+                        {%- if block.type == 'subcollections' -%}
+                          <div class="collection-sidebar__group">
+                            {%- liquid
+                              assign block_title = 'collections.filters.categories_title' | t
+                              render 'collection-sidebar-filter-trigger', location: location, title: block_title, index: block_index, collapsed_state: collapsed_state
+                            -%}
+                            <div
+                              data-id="{{ location }}-{{ block_index }}"
+                              class="collapsible-content collapsible-content--all{% unless collapsed_state %} is-open{% endunless %}"
+                              {% unless collapsed_state %}style="height: auto;"{% endunless %}>
+                              <div class="collapsible-content__inner">
+                                <ul class="no-bullets tag-list">
+                                  {%- liquid
+                                    assign list_printed = false
+                                    for link in linklists.main-menu.links
+                                      if link.active and link.levels > 0 and link.child_active == false
+                                        render 'subcollection-list', block: block, link: link
+                                        assign list_printed = true
+                                      endif
+
+                                      for sub_link in link.links
+                                        for sub_sub_link in sub_link.links
+                                          if sub_sub_link.active and sub_sub_link.url == sub_link.url
+                                            render 'subcollection-list', block: block, link: sub_link
+                                            assign list_printed = true
+                                          endif
+                                        endfor
+                                      endfor
+                                    endfor
+                                  -%}
+
+                                  {%- if list_printed -%}
+                                    {%- assign total_tags = total_tags | plus: 1 -%}
+                                  {%- else -%}
+                                    {%- style -%}
+                                      .collection-sidebar__group--{{ block.id }} { display: none; }
+                                    {%- endstyle -%}
+                                  {%- endif -%}
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        {%- endif -%}
+                      </div>
+                    {%- endfor -%}
+                  {%- endif -%}
+
+                </div>
+              </div>
+
+              <div class="CollectionFilter-Btn">
+              Supprimer les sélections ()
+              </div>
+          </div>
+
+            {%- style -%}
+              @media screen and (min-width: 769px) {
+                .collection-filter__item--drawer {
+                  display: none;
+                }
+                .collection-filter__item--count {
+                  text-align: left;
+                }
+                html[dir="rtl"] .collection-filter__item--count {
+                  text-align: right;
+                }
+              }
+            {%- endstyle -%}
+          {%- endif -%}
+
+          {%- liquid
+            if total_tags == 0
+              assign show_sidebar = false
+            endif
+          -%}
+
+          {%- if show_sidebar == false -%}
+            {% comment %}
+              Disable sidebar & filter features
+            {% endcomment %}
+            {%- style -%}
+<!--               .collection-content .grid__item--sidebar {
+                display: none;
+              } -->
+              .collection-content .grid__item--content {
+                width: 100% !important;
+              }
+              {%- if section.settings.enable_sort == false -%}
+                .collection-filter__item--drawer {
+                  display: none;
+                }
+              {%- endif -%}
+              .collection-filter__item--count {
+                text-align: left;
+              }
+              html[dir="rtl"] .collection-filter__item--count {
+                text-align: right;
+              }
+            {%- endstyle -%}
+          {%- endif -%}
+
+          {%- unless section.settings.enable_sort -%}
+            {%- style -%}
+              .collection-filter__sort,
+              .collection-sidebar__group--sort {
+                display: none;
+              }
+            {%- endstyle -%}
+          {%- endunless -%}
+          {%comment%} Collection Sidebar end{%endcomment%}
+        </div>
+        <div class="grid__item medium-up--four-fifths grid__item--content">
+          <div class="collection-grid__wrapper">
+            {%comment%} Collection Template start{%endcomment%}
+            {%- liquid
+              assign paginate_by = 40
+            -%}
+
+            {%- paginate collection.products by paginate_by -%}
+
+            <div
+              id="CollectionSection"
+              data-section-id="{{ section.id }}"
+              data-section-type="collection-template"
+              data-collection-template="true">
+                        {%- if paginate.current_page == 1 and section.settings.subcollection_style == 'above' -%}
+                {%- render 'subcollections' -%}
+              {%- endif -%}
+
+              <div class="collection-filter">
+                <div class="collection-filter__inner">
+                  {%- assign current_filter_size = current_tags | size -%}
+                  <div class="collection-filter__item collection-filter__item--drawer">
+                    <button
+                      type="button"
+                      class="collection-filter__btn text-link">
+                      <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-filter" viewBox="0 0 64 64"><path d="M48 42h10">.</path><path d="M48 42a5 5 0 1 1-5-5 5 5 0 0 1 5 5z"/><path d="M7 42h31">.</path><path d="M16 22H6">.</path><path d="M16 22a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"/><path d="M57 22H26">.</path></svg>
+                      {{ 'collections.filters.title_tags' | t }}
+                      {%- if current_filter_size > 0 -%}
+                        ({{ current_filter_size }})
+                      {%- endif -%}
+                    </button>
+                  </div>
+                  <div class="collection-filter__item collection-filter__item--right">
+                    <div class="collection-compare hide">COMPARER</div>
+                    {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+                    <div class="collection-filter__sort">
+                      <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.08252 10.625L4.63933 15M4.63933 15L4.63933 1M4.63933 15L1.19615 10.625" stroke="#101010" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.91797 5.375L13.3612 1M13.3612 1L13.3612 15M13.3612 1L16.8043 5.375" stroke="#101010" stroke-width="0.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      <label for="SortBy" class="hidden-label">Trier  sssss</label>
+                      <select name="SortBy" id="SortBy" data-default-sortby="{{ collection.default_sort_by }}">
+                        <option value="title-ascending"{% if sort_by == collection.default_sort_by %} selected="selected"{% endif %}>Trier</option>
+                        {%- for option in collection.sort_options -%}
+                          <option value="{{ option.value }}">{{ option.name }}</option>
+                        {%- endfor -%}
+                      </select>
+                    </div>
+
+                    {%- liquid
+                      assign productGridView = section.settings.grid_style
+                      if cart.attributes.product_view != blank
+                        assign productGridView = cart.attributes.product_view
+                      endif
+                    -%}
+
+                    <ul class="no-bullets inline-list text-right">
+                      <li><button type="button" class="grid-view-btn{% if productGridView == 'large' %} is-active{% endif %}" data-view="large" title="{{ 'collections.general.large' | t }}">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-large" viewBox="0 0 35 35"><path d="M0 0h35v35H0z"/></svg>
+                        <span class="icon__fallback-text">{{ 'collections.general.large' | t }}</span>
+                      </button></li>
+                      <li><button type="button" class="grid-view-btn{% if productGridView == 'small' %} is-active{% endif %}" data-view="small" title="{{ 'collections.general.small' | t }}">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-small" viewBox="0 0 35 35"><path d="M0 0h15v15H0zM20 0h15v15H20zM0 20h15v15H0zM20 20h15v15H20z"/></svg>
+                        <span class="icon__fallback-text">{{ 'collections.general.small' | t }}</span>
+                      </button></li>
+                      <li><button type="button" class="grid-view-btn{% if productGridView == 'list' %} is-active{% endif %}" data-view="list" title="{{ 'collections.general.list' | t }}">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-view-list" viewBox="0 0 35 35"><g id="Layer_2" data-name="Layer 2"><path d="M0 0h35v8H0zM0 13h35v8H0zM0 27h35v8H0z"/></g></svg>
+                        <span class="icon__fallback-text">{{ 'collections.general.list' | t }}</span>
+                      </button></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="collection-mobile-filters medium-up--hide">
+                  <div class="collection-mobile-filters__holder" id="CollectionInlineFilterWrap"></div>
+                </div>
+              </div>
+
+              {%- if collection.products == blank -%}
+                <p>{{ 'collections.general.no_matches' | t }}</p>
+              {%- endif -%}
+
+              <div
+                class="new-grid product-grid collection-grid"
+                data-view="{{ productGridView }}"
+                data-scroll-to>
+
+                {%- liquid
+                  for product in collection.products
+                    render 'product-grid-item', product: product
+
+                    if settings.quick_shop_enable
+                      render 'quick-shop-modal', product: product
+                      render 'size-chart', product: product
+                    endif
+                  endfor
+                -%}
+              </div>
+              {% comment %}
+             <div class="rte rte--collection-desc">
+               <div class="enlarge-text">
+                 {% if collection.description contains '&lt;!-- split --&gt;'  %}
+                 {% assign desc_arr = collection.description | split: '&lt;!-- split --&gt;' %}
+                 {{ desc_arr[1] }}
+                 {%endif%}
+               </div>
+              </div>
+              {% endcomment %}
+              {%- liquid
+                if paginate.current_page == 1 and section.settings.subcollection_style == 'below'
+                  render 'subcollections'
+                endif
+                if paginate.pages > 1
+                  render 'pagination', paginate: paginate
+                endif
+              -%}
+
+              {%- if section.settings.description_position == 'bottom' -%}
+                {%- if collection.description != blank -%}
+                  <hr class="hr--clear hr--small">
+                  <div class="rte">
+                    <div class="enlarge-text">
+                      {{ collection.description }}
+                    </div>
+                  </div>
+                  <hr class="hr--clear hr--small">
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+
+            {%- endpaginate -%}
+            {%comment%} Collection Template end{%endcomment%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{%- comment -%}Yoast SEO schema control block: start.{%- endcomment -%}
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+{%- if disabled_by_yoast_seo or yoast_seo_settings.schema.useTheme.schema or yoast_seo_settings.schema.useTheme.webpage -%}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "CollectionPage",
+  {% if collection.description != blank %}
+    "description": {{ collection.description | strip_html | json }},
+  {% endif %}
+  {% if page_image %}
+    {% assign image_size = page_image.width | append: 'x' %}
+    "image": {
+      "@type": "ImageObject",
+      "height": {{ page_image.height | json }},
+      "url": {{ page_image | img_url: image_size | prepend: "https:" | json }},
+      "width": {{ page_image.width | json }}
+    },
+  {% endif %}
+  "name": {{ collection.title | json }}
+}
+{%- comment -%}Yoast SEO schema control block: end.{%- endcomment -%}
+</script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Collection Page",
+    "max_blocks": 15,
+    "settings": [
+	  {
+      	"type": "header",
+      	"content": "Collection filter"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sidebar",
+        "label": "Enable filter",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "tags_combine",
+        "label": "Enable tag combinations"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_sort",
+        "label": "Show sort options",
+        "default": true
+      },
+	  {
+      	"type": "header",
+      	"content": "Collection page"
+      },
+	  {
+        "type": "select",
+        "id": "description_position",
+        "label": "Collection description position",
+        "default": "top",
+        "options": [
+          {
+            "value": "top",
+            "label": "Top"
+          },
+          {
+            "value": "bottom",
+            "label": "Bottom"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Subcollections"
+      },
+      {
+        "type": "paragraph",
+        "content": "Links to collections from your menu will appear here. [Learn more](https://archetypethemes.co/blogs/expanse/how-do-i-create-subcollections)"
+      },
+      {
+        "type": "select",
+        "id": "subcollection_style",
+        "label": "Subcollection style",
+        "default": "above",
+        "options": [
+          {
+            "value": "above",
+            "label": "Above products"
+          },
+          {
+            "value": "below",
+            "label": "Below products"
+          },
+          {
+            "value": "none",
+            "label": "None"
+          }
+        ]
+      },
+      {
+        "type": "header",
+        "content": "Products"
+      },
+      {
+        "type": "select",
+        "id": "grid_style",
+        "label": "Default product layout",
+        "default": "small",
+        "options": [
+          {
+            "value": "large",
+            "label": "Large grid"
+          },
+          {
+            "value": "small",
+            "label": "Small grid"
+          },
+          {
+            "value": "list",
+            "label": "List"
+          }
+        ]
+      }
+    ],
+    "blocks": [
+      {
+        "type": "tags_group",
+        "name": "Tag group",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Tag Group"
+          },
+          {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Tag list (one per line)",
+            "default": "First tag \nSecond tag \nThird tag",
+            "info": "Your tag group will only be shown if the current collection contains one of the listed tags. Tags are case sensitive and must match your product tag exactly. [Learn more](https://archetypethemes.co/blogs/expanse/how-should-i-organize-my-products-and-filters)."
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsed",
+            "label": "Collapsed",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "color_group",
+        "name": "Color swatches",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Color"
+          },
+          {
+            "type": "textarea",
+            "id": "tag_list",
+            "label": "Swatch list (one per line)",
+            "default": "Burgundy \nHeather grey \nGreen",
+            "info": "Products must be tagged with their color in order to appear here. Tags are case sensitive and must match your product tag exactly. Ex: 'Heather grey'. [Learn how to set up swatches](https://archetypethemes.co/blogs/expanse/how-do-i-set-up-color-swatches)."
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsed",
+            "label": "Collapsed",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "tags_all",
+        "name": "All tags",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Tags"
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsed",
+            "label": "Collapsed",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "menu",
+        "name": "Menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Choose a menu",
+            "default": "main-menu"
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsed",
+            "label": "Collapsed",
+            "default": false
+          }
+        ]
+      },
+      {
+        "type": "subcollections",
+        "name": "Subcollections",
+        "settings": [
+          {
+            "type": "paragraph",
+            "content": "Links to collections from your menu will appear here. [Learn more](https://archetypethemes.co/blogs/expanse/how-do-i-create-subcollections)"
+          },
+          {
+            "type": "checkbox",
+            "id": "enable_count",
+            "label": "Enable count"
+          },
+          {
+            "type": "checkbox",
+            "id": "collapsed",
+            "label": "Collapsed",
+            "default": false
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+

@@ -1,0 +1,41 @@
+{% schema %}
+  {
+    "name": "Cart Settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "unlock_gift_amount",
+        "label": "Enter amount to unlock Gift in (€)",
+        "default": "150"
+      },
+      {
+        "type": "richtext",
+        "id": "unlock_gift_messgae",
+        "label": "Enter messgae related to unlock Gift"
+      }   
+    ],
+    "blocks": [
+      {
+        "type": "cart",
+        "name": "Cart Slider",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "slider_logo",
+            "label": "Slider Logo"
+          },
+          {
+            "type": "text",
+            "id": "slider_heading",
+            "label": "Slider Heading"
+          },
+          {
+            "type": "richtext",
+            "id": "slider_content",
+            "label": "Slider Content"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,23 @@
+<div class="header-mobile-banner">
+  <img
+    class="image-fit lazyloaded header-mobile-banner__img"
+    width="{{ section.settings.mobile-nav-image.width }}"
+    height="{{ section.settings.mobile-nav-image.height }}"
+    loading="lazy"
+    src="{{ section.settings.mobile-nav-image | img_url: '1800x' }}"
+    alt="{{ section.settings.mobile-nav-image.alt }}">
+
+  <div class="header-mobile-banner__content">
+    <img
+      style="height:26px"
+      width="{{ section.settings.mobile-nav-tag.width }}"
+      height="{{ section.settings.mobile-nav-tag.height }}"
+      loading="lazy"
+      src="{{ section.settings.mobile-nav-tag | img_url: '300x' }}"
+      alt="{{ section.settings.mobile-nav-tag.alt }}">
+    <a href="{{section.settings.mobile-nav-text }}">
+      <p class="header-mobile-banner__text">{{ section.settings.mobile-nav-text }}</p>
+      {%- render 'icon-arrow' -%}
+    </a>
+  </div>
+</div>

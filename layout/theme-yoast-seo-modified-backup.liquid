@@ -1,0 +1,322 @@
+{%- comment -%}
+This file has been modified by the Yoast SEO for Shopify app.
+You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+{%- endcomment -%}
+{%- liquid
+	assign disabled_by_yoast_seo = true
+	if content_for_header contains 'yoast-active-script'
+		assign disabled_by_yoast_seo = false
+	endif
+-%}
+{% capture content %}
+  <!DOCTYPE html>
+  <html class="no-js" lang="{{ request.locale.iso_code }}" dir="{{ settings.text_direction }}">
+  <head>{% render 'yoast-seo' %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="{{ settings.color_button }}">
+    {% comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- assign yoast_seo_settings = shop.metafields.yoast_seo.settings.value | default: shop.metafields.yoast_seo.settings -%}
+{%- if disabled_by_yoast_seo or yoast_seo_settings.integrations.webmasterVerification.google == blank or yoast_seo_settings.integrations.webmasterVerification.google == null -%}
+<meta name="google-site-verification" content="8aBEKOLgfEIMIvbG8UnkJR-kEn9W2Ii74qiG2DojSXg" />
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+
+
+    {%comment%}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    {%endcomment%}
+    {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<link rel="canonical" href="{{ canonical_url }}">
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
+    <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="preload" as="style" href="{{ 'custom.css' | asset_url }}">
+    <link rel="preload" as="script" href="{{ 'theme.min.js' | asset_url }}">
+    <link rel="preload" as="font" href="https://cdn.shopify.com/s/files/1/2545/2656/files/CircularStd-Medium.woff?v=1662296711" type="font/woff2" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com">
+    <link rel="preconnect" href="https://fonts.shopifycdn.com">
+    <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
+    <link rel="dns-prefetch" href="https://ajax.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.googleapis.com">
+    <link rel="dns-prefetch" href="https://maps.gstatic.com">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png" />
+    {%- endif -%}
+
+    {%- render 'seo-title' -%}
+
+    {%- if page_description -%}
+      {%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta name="description" content="{{ page_description | escape }}">
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+    {%- endif -%}
+
+    {%- render 'social-meta-tags' -%}
+
+
+    {%- render 'css-variables' -%}
+    {{ 'theme.min.css' | asset_url | stylesheet_tag }}
+    {{ 'custom.min.css' | asset_url | stylesheet_tag }}
+
+    {%- liquid
+      assign enableSuperScript = false
+      unless shop.money_format contains 'money' or shop.money_format contains '.'
+        if settings.superscript_decimals
+          if shop.money_format contains '{{amount}}' or shop.money_format contains '{{ amount }}'
+            assign enableSuperScript = true
+          elsif shop.money_format contains '{{amount_with_comma_separator}}' or shop.money_format contains '{{ amount_with_comma_separator }}'
+            assign enableSuperScript = true
+          endif
+        endif
+      endunless
+    -%}
+
+    <script>
+      document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+      window.theme = window.theme || {};
+      theme.routes = {
+        home: "{{ routes.root_url }}",
+        collections: "{{ routes.collections_url }}",
+        cart: "{{ routes.cart_url | append: '.js' }}",
+        cartPage: "{{ routes.cart_url }}",
+        cartAdd: "{{ routes.cart_add_url | append: '.js' }}",
+        cartChange: "{{ routes.cart_change_url | append: '.js' }}",
+        search: "{{ routes.search_url }}"
+      };
+      theme.strings = {
+        soldOut: {{ 'products.product.sold_out' | t | json }},
+        unavailable: {{ 'products.product.unavailable' | t | json }},
+        inStockLabel: {{ 'products.product.in_stock_label' | t | json }},
+        stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
+        willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
+        willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
+        waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
+        savePrice: {{ 'products.general.save_html' | t: saved_amount: '[saved_amount]' | json }},
+        cartEmpty: {{ 'cart.general.empty' | t | json }},
+        cartTermsConfirmation: {{ 'cart.general.terms_confirm' | t | json }},
+        searchCollections: {{ 'general.search.collections' | t | json }},
+        searchPages: {{ 'general.search.pages' | t | json }},
+        searchArticles: {{ 'general.search.articles' | t | json }}
+      };
+      theme.settings = {
+        dynamicVariantsEnable: true,
+        dynamicVariantType: {{ settings.variant_type | json }},
+        cartType: {{ settings.cart_type | json }},
+        isCustomerTemplate: {% if request.page_type contains 'customers/' %}true{% else %}false{% endif %},
+        moneyFormat: {{ shop.money_format | json }},
+        saveType: {{ settings.product_save_type | json }},
+        recentlyViewedEnabled: false,
+        productImageSize: {{ settings.product_grid_image_size | json }},
+        productImageCover: {{ settings.product_grid_image_fill }},
+        predictiveSearch: {{ settings.predictive_search_enabled }},
+        predictiveSearchType: {{ settings.search_type | json }},
+        inventoryThreshold: {{ settings.inventory_threshold }},
+        superScriptSetting: {{ settings.superscript_decimals }},
+        superScriptPrice: {{ enableSuperScript }},
+        quickView: {{ settings.quick_shop_enable }},
+        quickAdd: {{ settings.quick_add_enable }},
+        themeName: 'Expanse',
+        themeVersion: "1.0.5"
+      };
+      
+      window.getScript = function(src, id) {
+        return new Promise(function(resolve, reject) {
+          const s = document.createElement('script');
+          let r = false;
+          s.type = 'text/javascript';
+          s.src = src;
+          if(id) s.id = id;
+          s.onerror = function(err) {
+            reject(err, s);
+          };
+          s.onload = s.onreadystatechange = function() {
+            if (!r && (!this.readyState || this.readyState == 'complete')) {
+              r = true;
+              resolve();
+            }
+          };
+          const t = document.getElementsByTagName('script')[0];
+          t.parentElement.insertBefore(s, t);
+        });
+      }
+    </script>
+
+    <script src="{{ 'jquery.min.js' | asset_url }}"></script>
+    <script src="{{ 'vendor-scripts-v0.min.js' | asset_url | split: '?' | first }}" defer="defer"></script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer="defer"></script>
+
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- liquid
+      assign domcontentloadeda = "document.addEventListener('DOMContentLoaded'"
+      assign startasyncLoadinga= "document.addEventListener('StartAsyncLoading'"
+      assign domcontentloaded  = 'e.addEventListener("DOMContentLoaded"'
+      assign startasyncLoading = "e.addEventListener('StartAsyncLoading'"
+      assign rapp = ", asyncLoad"
+      assign napp = ", function(){}"
+      assign rappload = "if(window.attachEvent)"
+      assign nappload = "document.addEventListener('StartAsyncLoading',function(event){asyncLoad();});if(window.attachEvent)"
+      assign rstorefrontload = "var customDocumentWrite = function(content)"
+      assign nstorefrontload = "document.addEventListener('StartKernelLoading', function() { document.dispatchEvent(new CustomEvent('StartShopifyLoading')); var customDocumentWrite = function(content)"
+      assign rstorefront = "document.getElementsByTagName('head')[0].appendChild(eventsListenerScript)"
+      assign nstorefront = "document.getElementsByTagName('head')[0].appendChild(eventsListenerScript);})"
+      if template == 'cart'
+        echo content_for_header | replace: 'href=', 'data-href-content=' | replace: 'src=', 'data-src-content=' | replace: domcontentloadeda, startasyncLoadinga | replace: domcontentloaded, startasyncLoading | replace: rapp, napp | replace: rappload, nappload
+      else
+        echo content_for_header | replace: 'href=', 'data-href-content=' | replace: 'src=', 'data-src-content=' | replace: domcontentloadeda, startasyncLoadinga | replace: domcontentloaded, startasyncLoading | replace: rapp, napp | replace: rappload, nappload | replace: rstorefrontload, nstorefrontload | replace: rstorefront, nstorefront
+      endif
+    -%}
+    <script src="{{ 'optimizer.min.js' | asset_url }}" defer="defer"></script>
+    {% render 'weglot_hreftags' %}
+    {% render 'gsf-conversion-pixels' %}
+    <script type="text/javascript" src="https://cache.consentframework.com/js/pa/32251/c/LEsRf/stub" referrerpolicy="origin" charset="utf-8"></script>
+    <script type="text/javascript" src="https://choices.consentframework.com/js/pa/32251/c/LEsRf/cmp" referrerpolicy="origin" charset="utf-8" async="async"></script>
+    <!-- Google Tag Manager -->
+    <script type="text/lazyload">
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+        new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+        "https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,"script","dataLayer","GTM-NTKT76K");
+    </script>
+    <!-- End Google Tag Manager -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+    <script type="text/javascript"
+    src="https://azi.g-heat.com/js/na/na/u/dede65d745.js"></script>
+    <script type="text/javascript">
+      KWKUniJS.ptag({
+        {% if template contains 'index' %}
+          'zone' : 'homepage'
+        {% elsif template contains 'product' %}
+          'zone' : 'product',
+          'productId' : '{{ product.id }}',
+          'categoryId' : '{{ product.type }}'
+        {% elsif template contains 'collection' %}
+          'zone' : 'listing',
+          'categoryId' : '{{ collection.id }}',
+          'products' : [
+            {% for product in collection.products %}
+              "{{ product.id }}"{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ]
+        {% elsif template contains 'cart' %}
+          'zone' : 'basket',
+          'products' : [
+            {% for item in cart.line_items %}
+              {
+                id: "{{ item.id }}",
+                price: {{ item.final_price }},
+                quantity: {{ item.quantity }}
+              }{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          ],
+          'currency' : 'EUR'
+        {% endif %}
+      });
+    </script>
+  </head>
+
+  <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
+
+    <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+
+    <div id="PageContainer" class="page-container">
+      {%- section 'toolbar' -%}
+      {%- section 'header' -%}
+
+      <main class="main-content" id="MainContent">
+        {{ content_for_layout }}
+      </main>
+      {% section 'trust-badges' %}
+      {%- section 'footer-promotions' -%}
+      {% section 'newsletter'%}
+      {%- section 'footer' -%}
+    </div>
+
+    {%- section 'newsletter-popup' -%}
+    {%- liquid
+      render 'video-modal'
+      render 'photoswipe-template'
+      if settings.quick_add_enable
+        render 'quick-add-modal'
+      endif
+    -%}
+    <div id="ProductModals"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" defer></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" defer></script>
+
+    {% render 'elevar-body-end' %}
+    <script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+    <script type="application/javascript" async data-src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=XtZgeX"></script>
+    <script>
+        var klaviyo = klaviyo || [];
+        klaviyo.init({
+          account: "XtZgeX",
+          platform: "shopify"
+        });
+        klaviyo.enable("backinstock",{
+        trigger: {
+          product_page_text: "Me prévenir quand c'est disponible",
+          product_page_class: "btn",
+          product_page_text_align: "center",
+          product_page_margin: "0px 0px 0px 0px",
+          product_page_width: "100%",
+          alternate_anchor: "add-to-cart",
+          replace_anchor: true
+        },
+        modal: {
+        headline: "{product_name}",
+        body_content: "Renseignez votre e-mail pour être notifié du retour en stock de ce produit.",
+        email_field_label: "Email",
+        button_label: "Me prévenir quand c'est disponible",
+        subscription_success_label: "Vous y êtes! Nous vous ferons savoir quand il sera de retour.",
+        footer_content: '',
+        additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
+        drop_background_color: "#000",
+        background_color: "#fff",
+        text_color: "#222",
+        button_text_color: "#fff",
+        button_background_color: "#cb132d",
+        close_button_color: "#ccc",
+        error_background_color: "#fcd6d7",
+        error_text_color: "#C72E2F",
+        success_background_color: "#d3efcd",
+        success_text_color: "#1B9500"
+        }
+      });
+    </script>
+    {% render 'weglot_switcher' %}
+    <script id="gorgias-chat-shopify-install" defer>
+      window.getScript("https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=9040", "gorgias-chat-widget-install-v2").then(function(){
+        !function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{ shop.permanent_domain }}",_.SHOPIFY_CUSTOMER_ID="{{ customer.id }}",_.SHOPIFY_CUSTOMER_EMAIL="{{ customer.email }}"}(window||{});
+        var gorgiasChatInterval = window.setInterval(function() {
+          if (window.GorgiasChat && GorgiasChat.hasOwnProperty("on")) {
+            GorgiasChat.setShopifyContext('your-store.myshopify.com');
+            window.clearInterval(gorgiasChatInterval); // do not delete this line
+          }
+        }, 50);
+      })
+    </script>
+  </body>
+  </html>
+{% endcapture %}
+{% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: ' <' %}
+{% for html in content -%}
+  {%- assign htmlblock = html | strip | prepend: ' <' -%}
+  {{- htmlblock | replace: ' </', ' </' -}}
+{%- endfor %}

@@ -1,0 +1,279 @@
+{
+  "sections": {
+    "1630661343f80d3404": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "1630661343a7ebcf98-0": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "1630661343a7ebcf98-1": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1630661343a7ebcf98-0",
+        "1630661343a7ebcf98-1"
+      ],
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "5095ac71-5a7c-4bb3-b6a0-2c38d107b3c2": {
+      "type": "featured-video",
+      "settings": {
+        "title": "",
+        "video_url": "https:\/\/www.youtube.com\/watch?v=WTu3HS5y3M8",
+        "divider": false
+      }
+    },
+    "8398a5fb-61e2-4746-b1f5-be9f7c6d2c82": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/qui-sommes-nous-header-2.jpg",
+        "image_width": 500,
+        "subtitle": "Notre mission",
+        "title": "Des vêtements utiles, pour tous",
+        "text": "<p>G-Heat, c’est une marque française qui depuis 2017 se donne pour mission de développer des vêtements technologiques, chauffants et rafraîchissants qui procurent d’incroyables sensations de bien-être ! Aujourd'hui leader dans notre segment, nous sommes déterminés à concevoir des “super vêtements”, des pièces utiles, pour que chacun, au travail, à la maison, dehors, puisse se sentir bien mieux et prendre le temps de faire ce qui lui plaît, en toutes circonstances, en toute liberté. Des vêtements que l’on fait bien et qui font du bien. <\/p>",
+        "button_label": "",
+        "button_link": "",
+        "layout": "left",
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "main": {
+      "type": "page-template-v2",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16305740648aa18832": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "16305740648aa18832-1": {
+          "type": "html",
+          "settings": {
+            "code": "<br><h2><center>ILS NOUS FONT CONFIANCE<\/center><\/h2>",
+            "width": "100%",
+            "alignment": "bottom-middle"
+          }
+        }
+      },
+      "block_order": [
+        "16305740648aa18832-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "1630578855f29964c4": {
+      "type": "testimonials",
+      "disabled": true,
+      "blocks": {
+        "1630578855f29964c4-0": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "image": "shopify:\/\/shop_images\/logo-noel-frenchtech-mini.png",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "1630578855f29964c4-1": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "image": "shopify:\/\/shop_images\/logo-noel-frenchtech-mini.png",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "3f3b9fa9-ba9d-43a4-9805-5eda01c9b35a": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "image": "shopify:\/\/shop_images\/logo-noel-frenchtech-mini.png",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        }
+      },
+      "block_order": [
+        "1630578855f29964c4-0",
+        "1630578855f29964c4-1",
+        "3f3b9fa9-ba9d-43a4-9805-5eda01c9b35a"
+      ],
+      "settings": {
+        "title": "TÉMOIGNAGES CLIENTS",
+        "align_text": "center",
+        "round_images": false,
+        "color_scheme": "none"
+      }
+    },
+    "1630573562d86e770e": {
+      "type": "logo-list",
+      "disabled": true,
+      "blocks": {
+        "1630573562d86e770e-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Sncf.jpg",
+            "link": "https:\/\/www.sncf-reseau.com\/fr"
+          }
+        },
+        "1630573562d86e770e-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Logo_enedis_header.jpg",
+            "link": "https:\/\/www.enedis.fr\/"
+          }
+        },
+        "1630573562d86e770e-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Logo_STEF.jpg",
+            "link": "https:\/\/www.stef.com\/"
+          }
+        },
+        "1630573562d86e770e-3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Vinci-Cegelec.jpg",
+            "link": "https:\/\/www.vinci-energies.com\/"
+          }
+        },
+        "1630573562d86e770e-4": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6-2zb-c89a969cab-ca9-min.jpg",
+            "link": "https:\/\/www.defense.gouv.fr\/gendarmerie\/metiers\/specialites\/les-unites-specialisees-montagne"
+          }
+        },
+        "a054df68-3d0d-4df6-8543-831a79798583": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sep-min.jpg",
+            "link": "http:\/\/www.sep.justice.gouv.fr\/"
+          }
+        }
+      },
+      "block_order": [
+        "1630573562d86e770e-0",
+        "1630573562d86e770e-1",
+        "1630573562d86e770e-2",
+        "1630573562d86e770e-3",
+        "1630573562d86e770e-4",
+        "a054df68-3d0d-4df6-8543-831a79798583"
+      ],
+      "settings": {
+        "title": "ILS NOUS FONT CONFIANCE",
+        "divider": false
+      }
+    },
+    "3e8f2d80-9549-4de6-ac09-5066991fc9ae": {
+      "type": "video-4-logos",
+      "disabled": true,
+      "settings": {
+        "title": "ILS PARLENT DE NOUS",
+        "description": "G-Heat propose une large gamme de vêtements et s'adresse aux particuliers comme aux professionnels",
+        "video_url": "https:\/\/youtu.be\/GKMZ_yp-vQM",
+        "title-2": "",
+        "logo-text-1": "<p>“ Super gants qui nous permettent de travailler dans des conditions très froides tout en étant confortables ”<\/p>",
+        "logo-text-2": "<p>“ Les semelles sont un plus incontestable en hiver, surtout pour les travaux en hauteur ”<\/p>",
+        "logo-text-3": "<p>“ Les vestes et les gants sont d'un grand confort pour nos salariés sur les grands chantiers d'extérieur ”<\/p>",
+        "logo-text-4": "<p>“ Nos équipes d'intervention ne souffrent plus du froid grace à vos gilets et vos gants ”<\/p>",
+        "img-1": "shopify:\/\/shop_images\/image_17.png",
+        "img-2": "shopify:\/\/shop_images\/image_16.png",
+        "img-3": "shopify:\/\/shop_images\/image_18.png",
+        "img-4": "shopify:\/\/shop_images\/image_15.png",
+        "bg-color": "#1b2024",
+        "text-color": "#ffffff",
+        "divider": false
+      }
+    },
+    "594ccc63-ee69-4281-9ed8-7942dee2dc50": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/prendre-son-temps-intro.jpg",
+        "image_width": 500,
+        "subtitle": "Vous être utiles",
+        "title": "Prendre son temps, repousser ses limites",
+        "text": "<p>Sport, travail, activités de loisirs... il arrive très fréquemment, dans des contextes très différents, que les vêtements techniques traditionnels atteignent leurs limites et ne soient plus efficaces. <\/p><p>La conséquence ? La capacité du corps à se maintenir au chaud, appelée thermogenèse, ne fonctionne plus.<\/p><p>Le même phénomène se produit lorsque les températures sont trop élevées.<\/p><p>Notre but est de proposer des vêtements technologiques qui évitent justement que votre corps ne montre des signes de faiblesse (frissons, transpiration…) et vous maintiennent dans de bonnes conditions physiques quelle que soit l’activité en cours.<\/p><p>Nos vêtements combinent les superpouvoirs des éléments naturels, comme le chaud et le froid, à des matières premières de haute qualité et des finitions techniques, résistantes, respirantes, imperméables, extensibles…<\/p><p>Vous allez apprécier faire ce que vous aimez, en toute liberté.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "layout": "right",
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "33e0d6e2-eae0-4c0b-9941-c870345126a7": {
+      "type": "text-and-image",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/RD-qui-sommes-nous.jpg",
+        "image_width": 500,
+        "subtitle": "R&D",
+        "title": "Une technologie au service de la performance et du bien-être",
+        "text": "<p>Nous avons à cœur de façonner des produits technologiques qui conviennent à chaque instant, de la sortie en conditions extrêmes, au moment de détente à la maison en passant par l’exécution de travaux manuels… <\/p><p>Nous nous démarquons par notre politique d’innovation en termes d’ergonomie, de confort et d’optimisation de la conservation de la chaleur ou de la fraîcheur pour nos différentes gammes de produits.<\/p><p>Fidèles à ce positionnement, nous proposons continuellement de nouveaux produits conçus spécifiquement pour de nouveaux marchés et sommes aujourd’hui en mesure d’adresser un large panel de besoins, allant de vêtements adaptés aux loisirs extérieurs, en passant par ceux appropriés aux professionnels évoluant en milieu froid ou chaud,  ou tout simplement ceux pour soulager les maux causés par le froid…<\/p><p>Au cœur de notre processus, nous écoutons vos remarques, nous recherchons les meilleurs tissus, les meilleures technologies, les meilleurs fournisseurs, les meilleurs composants et imaginons les meilleures coupes… Nous testons et (re)testons nos prototypes pour vous fournir le meilleur produit à un prix juste. Tous nos produits sont testés par nos équipes et par des équipes externes afin de nous assurer qu’ils répondent aux normes de qualité. Nos gammes ont été validées sur le terrain par des <a href=\"https:\/\/www.g-heat.com\/blogs\/le-blog-de-g-heat\/test-des-chaussettes-chauffantes-par-cyril-blanchard\">sportifs passionnés<\/a> qui accompagnent l'équipe de G-Heat au quotidien.<\/p>",
+        "button_label": "",
+        "button_link": "",
+        "layout": "left",
+        "color_scheme": "none",
+        "divider": false
+      }
+    },
+    "5b09e78e-0609-47b6-9afd-e9f0f092604e": {
+      "type": "featured-content",
+      "settings": {
+        "title": "Une équipe passionnée et proche de ses clients !",
+        "text": "<p>Derrière des prouesses technologiques, il y a de super artisans animés au quotidien par la volonté de fournir la meilleure pièce à un prix juste, mais surtout de vous rendre le meilleur service que l’on puisse vous offrir : être utiles !<\/p><p>Nous pensons qu’un vêtement peut rendre les petits moments du quotidien, les grandes aventures ou les instants exceptionnels plus faciles, plus surmontables et nous œuvrons pour vous permettre de vous sentir bien, de vous dépasser, de donner le meilleur de vous-même.<\/p><p>Nous cultivons la qualité des produits jusqu’à la maîtrise de la logistique, et nos équipes s’engagent à tout mettre en œuvre pour offrir un maximum de satisfaction à ses clients. Cette proximité offre de multiples avantages :<\/p><p>- un SAV performant avec des équipes à l’écoute et très réactives ;<\/p><p>- la garantie « satisfait ou remboursé » ;<\/p><p>- la possibilité de personnaliser les produits pour les entreprises (ajout du logo...) ;<\/p><p>- la sécurité à tous les niveaux : produits aux normes françaises, sécurité des transactions…<\/p>",
+        "link": "",
+        "link_text": "",
+        "align_text": "center",
+        "narrow_column": true,
+        "enlarge_text": true,
+        "color_scheme": "1",
+        "divider": false
+      }
+    },
+    "7cf22ef8-1c2c-446b-89c4-c3d8d3cda6cd": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Découvrez vos articles préférés",
+        "home_featured_products": "best-sellers",
+        "count": 4,
+        "mobile_scrollable": true,
+        "view_all": true,
+        "view-all-text": "Voir tout",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "1630661343f80d3404",
+    "5095ac71-5a7c-4bb3-b6a0-2c38d107b3c2",
+    "8398a5fb-61e2-4746-b1f5-be9f7c6d2c82",
+    "main",
+    "16305740648aa18832",
+    "1630578855f29964c4",
+    "1630573562d86e770e",
+    "3e8f2d80-9549-4de6-ac09-5066991fc9ae",
+    "594ccc63-ee69-4281-9ed8-7942dee2dc50",
+    "33e0d6e2-eae0-4c0b-9941-c870345126a7",
+    "5b09e78e-0609-47b6-9afd-e9f0f092604e",
+    "7cf22ef8-1c2c-446b-89c4-c3d8d3cda6cd"
+  ]
+}

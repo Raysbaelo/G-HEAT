@@ -1,0 +1,49 @@
+{%- liquid
+  assign cart_collection = collections[settings.cart_collection]
+  assign mobileScrollOnly = true
+  if location == 'drawer'
+    assign mobileScrollOnly = false
+  endif
+-%}
+
+{%- if cart_collection != blank -%}
+  <div class="cart__item-row cart-recommendations" data-location="{{ location }}">
+    <div class="h3 h3--mobile cart__recommended-title">Nos recommandations</div>
+    <div class="cart-recommended-products new-grid product-grid owl-carousel owl-theme data-view="small">
+      {%- liquid
+        for product in cart_collection.products limit: 8
+          render 'product-grid-item', product: product
+
+          if settings.quick_shop_enable
+            render 'quick-shop-modal', product: product
+            render 'size-chart', product: product
+          endif
+        endfor
+      -%}
+    </div>
+  </div>
+{%- endif -%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+   <script>
+  $(".cart-recommended-products").owlCarousel({
+    slideSpeed: 300,
+    paginationSpeed: 400,
+    nav: false,
+    dots: true,
+    loop:true,
+    navRewind: false,
+    autoplay: false,
+    autoplayTimeout: 5000,
+    responsive: {
+      0: {
+        items: 1,
+         stagePadding: 40,
+      },
+      589: {
+        items: 2,
+      },
+    },
+  });
+</script>

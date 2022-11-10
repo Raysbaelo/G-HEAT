@@ -1,0 +1,152 @@
+{
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {
+        "enable": true,
+        "collection_image_enable": true,
+        "parallax": false
+      }
+    },
+    "main": {
+      "type": "collection-template-v2",
+      "blocks": {
+        "068c4fb0-907f-4045-9238-1eb28dcbd087": {
+          "type": "tags_group",
+          "settings": {
+            "title": "",
+            "tag_list": "meilleures ventes",
+            "collapsed": false
+          }
+        },
+        "7557c7f8-5b2d-4b3d-ab8d-88f3b756c2a0": {
+          "type": "productType",
+          "disabled": true,
+          "settings": {
+            "title": "TYPE DE PRODUIT",
+            "collapsed": false
+          }
+        },
+        "c94386d5-0974-4060-a684-2a98f3238b73": {
+          "type": "tags_group",
+          "settings": {
+            "title": "CATÉGORIES",
+            "tag_list": "Gants de moto\nGants d'équitation\nGants de vélo\ngants de ski\nGants de chasse\nGants de travail\nSous gants\nmoufles\nManchons\nDoudoune sans manches\nVeste à capuche",
+            "collapsed": false
+          }
+        },
+        "1c8d4480-609a-4d77-9cf3-40a6f885b718": {
+          "type": "menu",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "menu": "main-menu",
+            "collapsed": true
+          }
+        },
+        "0f8eec2e-f902-40a1-a9fd-6a6dbdf395be": {
+          "type": "tags_group",
+          "settings": {
+            "title": "TAILLES",
+            "tag_list": "XS\nS\nM\nL\nXL\nXXL\nXXXL",
+            "collapsed": true
+          }
+        },
+        "404cc5a2-857e-4890-a655-251d927a288b": {
+          "type": "tags_group",
+          "settings": {
+            "title": "BESOINS",
+            "tag_list": "Maladie de Raynaud\nThermothérapie",
+            "collapsed": true
+          }
+        },
+        "87da7540-0c17-4ff6-ad4f-fc85d872e08a": {
+          "type": "color_group",
+          "settings": {
+            "title": "Color",
+            "tag_list": "Burgundy \nHeather grey \nGreen",
+            "collapsed": false
+          }
+        },
+        "4f63309f-32f2-44eb-b5b3-df08a6089a50": {
+          "type": "tags_group",
+          "settings": {
+            "title": "Tag Group",
+            "tag_list": "First tag \nSecond tag \nThird tag",
+            "collapsed": false
+          }
+        },
+        "ca848119-af7a-4e66-9a56-23857319e46e": {
+          "type": "color_group",
+          "settings": {
+            "title": "Couleur",
+            "tag_list": "Burgundy \nHeather grey \nGreen",
+            "collapsed": true
+          }
+        },
+        "950be700-8121-4647-b154-599c4e2d52cf": {
+          "type": "tags_group",
+          "settings": {
+            "title": "Matière",
+            "tag_list": "Cuir\nTissu",
+            "collapsed": true
+          }
+        }
+      },
+      "block_order": [
+        "068c4fb0-907f-4045-9238-1eb28dcbd087",
+        "7557c7f8-5b2d-4b3d-ab8d-88f3b756c2a0",
+        "c94386d5-0974-4060-a684-2a98f3238b73",
+        "1c8d4480-609a-4d77-9cf3-40a6f885b718",
+        "0f8eec2e-f902-40a1-a9fd-6a6dbdf395be",
+        "404cc5a2-857e-4890-a655-251d927a288b",
+        "87da7540-0c17-4ff6-ad4f-fc85d872e08a",
+        "4f63309f-32f2-44eb-b5b3-df08a6089a50",
+        "ca848119-af7a-4e66-9a56-23857319e46e",
+        "950be700-8121-4647-b154-599c4e2d52cf"
+      ],
+      "settings": {
+        "enable_sidebar": true,
+        "tags_combine": true,
+        "enable_sort": true,
+        "description_position": "top",
+        "subcollection_style": "below",
+        "grid_style": "small"
+      }
+    },
+    "1663670697a636704c": {
+      "type": "collection-tabbed-description",
+      "settings": {
+        "bg-color": "#1b2024",
+        "font-color": "#ffffff"
+      }
+    },
+    "recommendation": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "product_recommendations_heading": "VOUS AIMEREZ AUSSI"
+      }
+    },
+    "165821484973025ec2": {
+      "type": "collection-feature-product",
+      "settings": {
+        "title": "Vous aimerez aussi",
+        "home_featured_products": "gants-chauffants",
+        "count": 10,
+        "mobile_scrollable": true,
+        "view_all": false,
+        "view-all-text": "",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "header",
+    "main",
+    "1663670697a636704c",
+    "recommendation",
+    "165821484973025ec2"
+  ]
+}

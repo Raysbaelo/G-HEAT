@@ -1,0 +1,99 @@
+<div class="index-section newsletter-{{ section.id }}" style="background-color:{{ section.settings.bg-color }};">
+  {%- if section.settings.color_scheme != 'none' -%}
+    {%- render 'color-scheme-texture', color_scheme: section.settings.color_scheme -%}
+  {%- endif -%}
+  <div class="page-width">
+  <div class="newletter-flex">
+  <div class="newsletter-item">
+    {%- if section.settings.title != blank -%}
+      <p class="h2">{{ section.settings.title | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="rte rte--large {% if section.settings.mobile-title != blank %} small--hide {% endif %}">
+        <div class="enlarge-text">
+          {{ section.settings.text }}
+        </div>
+      </div>
+    {%- endif -%}
+      {%- if section.settings.mobile-title != blank -%}
+      <div class="rte rte--large medium-up--hide">
+        <div class="enlarge-text">
+          {{ section.settings.mobile-title }}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- render 'newsletter-form', section_id: section.id, snippet_context: 'section' -%}
+  </div>
+    {% comment%}
+    <div class="image-item">
+    {% for block in section.blocks %}
+      {% if block.settings.image-id %}
+      <a href="{{ block.settings.image-url }}" class="newsletter-img">
+      <img src="{{ block.settings.image-id | img_url:"master" }}">
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+    {% endcomment %}
+  </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Customers who subscribe will have their email address added to the 'accepts marketing' [customer list](/admin/customers?query=&accepts_marketing=1)."
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Heading",
+        "default": "Sign up and save"
+      },
+      {
+        "type": "richtext",
+        "id": "text",
+        "label": "Text",
+        "default": "<p>Subscribe to get special offers, free giveaways, and once-in-a-lifetime deals.</p>"
+      },
+{
+        "type": "richtext",
+        "id": "mobile-title",
+        "label": "Mobile Text"
+      },
+      {
+        "type": "color",
+        "id": "bg-color",
+        "label": "background Color"
+      }
+    ],
+"blocks": [
+    {
+      "type": "select",
+      "name": "image",
+      "settings": [
+        {
+          "id": "image-id",
+          "type": "image_picker",
+          "label": "image"
+        },
+{
+          "id": "image-url",
+          "type": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ],
+    "presets": [
+      {
+        "name": "Newsletter",
+        "category": "Promotional"
+      }
+    ]
+  }
+{% endschema %}

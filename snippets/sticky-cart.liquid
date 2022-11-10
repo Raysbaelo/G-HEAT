@@ -1,0 +1,76 @@
+<div class="sticky-cart animate__animated animate__slideInUp">
+  <div class="sticky-child sticky-cart-content">
+    <div class="sticky-pro-img">
+     <img src="{{ product.featured_image | img_url :"master" }} " loading="lazy" width="65" height="65">
+    </div>
+    <div class="stick-pro-title">
+      {{ product.title }}
+
+      {% comment %}
+      <div class="sticky-pro-price price-in-atc">
+          {{ current_variant.price | money_with_currency }}
+      </div>
+     {% endcomment %}
+     {% assign lowest_price = product.first_available_variant.price %}
+
+     {% for variant in product.variants %}
+       {% if variant.available %}
+         {% if variant.price < lowest_price %}
+           {% assign lowest_price = variant.price %}
+         {% endif %}
+       {% endif %}
+     {% endfor %}
+
+     <div class="lowest__price">dès<span>{{ lowest_price | money }}</span> </div>
+
+    </div>
+  </div>
+  <div class="sticky-child">
+    {%- unless template.suffix == "simple-product" -%}
+      {% if IsSize == true %} 
+        <div class="choose-option scroll-up-btn">Sélectionnez une taille</div>
+      {% endif %}
+      <button class="stick-atc-btn {% if IsSize == true %} hide {% endif %}" onclick="addFunction()"></button>
+    {% else %} 
+       <button class="stick-atc-btn " onclick="addFunction()">
+        <div class="btn btn--full add-to-cart ">Aujouter au panier</div>
+       </button>
+    {%- endunless -%}
+  </div>
+
+  <div class="cart-payment-icon">
+    <img src="{{ 'payment-svg.svg' | asset_url }}" loading="lazy" width="100%">
+  </div>
+</div>
+
+<script defer>
+   $(window).scroll(function(){
+    var sticky = $('.sticky-cart'),
+        scroll = $(window).scrollTop();
+    if ($(window).innerWidth() <= 480 && scroll > 1000) {
+      sticky.addClass('sticky-fix-cart');
+    }
+      else if($(window).innerWidth() > 480 && scroll > 750){
+       sticky.addClass('sticky-fix-cart');
+      }
+    else sticky.removeClass('sticky-fix-cart');
+  });
+
+  function addFunction() {
+    $(".product-single__meta .add-to-cart").click();
+    return false;
+  }
+
+  $(".scroll-up-btn").click(function() {
+    $('html, body').animate({
+      scrollTop: $(".product-single__title").offset().top
+    }, 1000);
+    return false;
+  });
+  $(".choose-option").click(function() {
+    $('html, body').animate({
+      scrollTop: $(".product-single__title").offset().top
+    }, 1000);
+    return false;
+  });
+</script>

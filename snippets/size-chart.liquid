@@ -1,0 +1,72 @@
+<div class="modal fade halo_modal-custom" data-product-id="{{ product.id }}" id="size_chart-{{ product.id }}" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          Guide des tailles 
+        </h5>
+
+        <a data-dismiss="modal" class="close close-modal" title="{{ 'cart.ajax_cart.close' | t }}" href="javascript:void(0)">
+          {% render 'icon-close' %}
+        </a>
+      </div>
+      <div class="modal-body">
+        {% if product.tags contains 'size-jacket1' %}
+        {% render 'size-guide-jacket1' %}
+        {% endif %}
+        {% if product.tags contains 'size-jacket2' %}
+        {% render 'size-guide-jacket2' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-gloves1' %}
+        {% render 'size-guide-gloves1' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-gloves2' %}
+        {% render 'size-guide-gloves1' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-gloves-wp' %}
+        {% render 'size-guide-gloves1' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-gloves-moto' %}
+        {% render 'size-guide-gloves-moto' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-sole2' %}
+        {% render 'size-guide-sole2' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-sock' %}
+        {% render 'size-guide-sock' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-jacket3' %}
+        {% render 'size-guide-jacket3' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-jacket4' %}
+        {% render 'size-guide-jacket4' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-jacket5' %}
+        {% render 'size-guide-jacket5' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-jacket6' %}
+        {% render 'size-guide-jacket6' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-jacket7' %}
+        {% render 'size-guide-jacket7' %}
+        {% endif %}
+
+        {% if product.tags contains 'size-jacket8' %}
+        {% render 'size-guide-jacket8' %}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
