@@ -152,7 +152,7 @@
 
           <div class="site-header__drawer site-header__cart" id="HeaderCart">
             <div class="site-header__drawer-animate">
-              {%- render 'header-cart-drawer' -%}
+              {%- render 'header-cart-drawer' -%}    
             </div>
           </div>
 
@@ -222,19 +222,6 @@
         "default": "main-menu"
       },
       {
-        "type": "text",
-        "id": "discount_text",
-        "label": "Discount text",
-        "default": "PROMOTIONS"
-      },
-      {
-      "type": "text",
-      "id": "logo_svg",
-      "label": "Discount Logo SVG",
-      "default": "https://cdn.shopify.com/s/files/1/2545/2656/files/svgviewer-output.svg?v=1667826607",
-      "info": "Paste the url from files"
-      },
-      {
         "type": "select",
         "id": "main_menu_alignment",
         "label": "Layout",
@@ -256,7 +243,7 @@
             "value": "center",
             "label": "Logo center, menu below"
           }
-
+                 
         ]
       },
       {
@@ -336,13 +323,7 @@
         "type": "url",
         "id": "promotions_url",
         "label": "Promotions menu link"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_discount",
-        "label": "Show discount",
-        "default": true
-      }
+      }           
     ],
     "blocks": [
       {
@@ -400,7 +381,7 @@
             "type": "richtext",
             "id": "slider_content",
             "label": "Slider Content"
-          }
+          }      
         ]
       }
     ],
