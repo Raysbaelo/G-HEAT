@@ -78,8 +78,8 @@
     "sales_point_4": "",
     "product_color_swatches": true,
     "collection_color_swatches": true,
-    "product_content_1": "a-propos-de-la-livraison",
-    "product_content_2": "echange-et-retour",
+    "product_content_1": "",
+    "product_content_2": "",
     "product_contact": false,
     "enable_product_reviews": true,
     "cart_type": "dropdown",
@@ -780,7 +780,7 @@
             "settings": {
               "top_subheading": "LE PLAISIR INÉPUISABLE DE LA ROUTE",
               "title": "<p>Nos gants moto chauffants sont conçus pour les motards en soif de sensations. Confortables, protecteurs, ils fournissent de grandes capacités d'autonomie pour faire durer le plaisir inépuisable des sorties moto.<\/p>",
-              "title_size": 40,
+              "title_size": 28,
               "subheading": "",
               "link": "shopify:\/\/collections\/gants-moto-chauffants",
               "link_text": "Je prépare ma prochaine sortie",
@@ -806,7 +806,7 @@
               "link_2": "",
               "link_text_2": "",
               "color_accent": "#a92927",
-              "text_align": "vertical-bottom horizontal-left",
+              "text_align": "vertical-center horizontal-left",
               "image": "shopify:\/\/shop_images\/Home_mission_0922.jpg",
               "image_mobile": "shopify:\/\/shop_images\/Home_mission_mobile_0922.jpg",
               "overlay_opacity": 0,
@@ -1178,7 +1178,15 @@
       "16571767567f4837f7",
       "1657212527d94cde14",
       "16572753745b3969f9"
-    ]
+    ],
+    "blocks": {
+      "42207636d368df40d0": {
+        "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.embed.socialshopwave-helper\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+        "disabled": true,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Classic": {
