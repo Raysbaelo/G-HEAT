@@ -81,7 +81,7 @@
     "product_content_1": "",
     "product_content_2": "",
     "product_contact": false,
-    "enable_product_reviews": true,
+    "enable_product_reviews": false,
     "cart_type": "dropdown",
     "cart_additional_buttons": false,
     "cart_collection": "gants-chauffants",
@@ -509,7 +509,6 @@
         "blocks": {
           "da6de054-39e7-4cd9-948b-bef94f30ddaa": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
               "richtext": "<p>Livraison OFFERTE dès 150 euros d'achat<\/p>",
               "richtext_mobile": "<p>Livraison OFFERTE dès 150 euros d'achat<\/p>"
@@ -517,10 +516,9 @@
           },
           "ecc5eecd-ea43-4be9-a2ea-3509dbfecdc0": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "richtext": "<p><a href=\"https:\/\/www.g-heat.com\/collections\/vetements-rafraichissants\/products\/serviette-rafraichissante-g-heat\" title=\"https:\/\/www.g-heat.com\/collections\/vetements-rafraichissants\/products\/serviette-rafraichissante-g-heat\">Aujourd'hui : une serviette rafraîchissante orange offerte dès 150 euros d'achat. Ajoutez-la à votre panier<\/a><\/p>",
-              "richtext_mobile": "<p><a href=\"https:\/\/www.g-heat.com\/collections\/vetements-rafraichissants\/products\/serviette-rafraichissante-g-heat\" title=\"https:\/\/www.g-heat.com\/collections\/vetements-rafraichissants\/products\/serviette-rafraichissante-g-heat\">Aujourd'hui : une serviette rafraîchissante orange offerte dès 150 euros d'achat. Ajoutez-la à votre panier<\/a><\/p>"
+              "richtext": "<p>Commandez maintenant, échangez jusqu’au 5 janvier 2023. <\/p>",
+              "richtext_mobile": "<p>Commandez maintenant, échangez jusqu’au 5 janvier 2023. <\/p>"
             }
           },
           "a9051bc2-0258-4382-bf23-18dc91a3c652": {
@@ -736,41 +734,21 @@
       "163895832837b619d2": {
         "type": "slideshow",
         "blocks": {
-          "0d50a9c9-d4f4-4454-959e-7313b85e5267": {
-            "type": "hero",
-            "disabled": true,
-            "settings": {
-              "top_subheading": "OUTDOORWEEK 2022",
-              "title": "<p>-15% sur une sélection de 15 produits avec le code : <strong>OUTDOORWEEK<\/strong><\/p>",
-              "title_size": 40,
-              "subheading": "",
-              "link": "shopify:\/\/collections\/outdoorweek-2022",
-              "link_text": "J'en profite",
-              "link_2": "",
-              "link_text_2": "",
-              "color_accent": "#a92927",
-              "text_align": "vertical-center horizontal-left",
-              "image": "shopify:\/\/shop_images\/home_outdoorweek__22.webp",
-              "image_mobile": "shopify:\/\/shop_images\/collection-outdoorweek2022-mobile.webp",
-              "overlay_opacity": 0,
-              "focal_point": "center center"
-            }
-          },
           "ea68fec3-ff80-4364-913f-bee9e6ed73e4": {
             "type": "hero",
             "settings": {
-              "top_subheading": "UNE ESCAPADE À VÉLO ?",
-              "title": "<p>Rendez-la encore plus agréable, encore plus confortable avec notre sélection de gants, doudounes, chaussettes, spécialement conçue pour vos sorties à deux roues. <\/p>",
+              "top_subheading": "BIENTÔT LES SPORTS D'HIVER",
+              "title": "<p>Préparez-vous à profiter au maximum de la poudreuse avec nos produits chauffants.<\/p>",
               "title_size": 40,
               "subheading": "",
-              "link": "shopify:\/\/collections\/velo",
-              "link_text": "Emmenez-moi au bout de la terre (ou de ma rue)",
+              "link": "shopify:\/\/collections\/ski",
+              "link_text": "Je m'équipe",
               "link_2": "",
               "link_text_2": "",
               "color_accent": "#a92927",
               "text_align": "vertical-center horizontal-left",
-              "image": "shopify:\/\/shop_images\/Home_cycling_V2_0922.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/Home_cycling_mobile_0922.jpg",
+              "image": "shopify:\/\/shop_images\/G-Heat-Ski_-banner-ski.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/G-Heat-Ski_-banner-ski-mobile.jpg",
               "overlay_opacity": 0,
               "focal_point": "center center"
             }
@@ -778,19 +756,19 @@
           "163895832837b619d2-0": {
             "type": "hero",
             "settings": {
-              "top_subheading": "LE PLAISIR INÉPUISABLE DE LA ROUTE",
-              "title": "<p>Nos gants moto chauffants sont conçus pour les motards en soif de sensations. Confortables, protecteurs, ils fournissent de grandes capacités d'autonomie pour faire durer le plaisir inépuisable des sorties moto.<\/p>",
-              "title_size": 28,
+              "top_subheading": "BIEN CHEZ SOI",
+              "title": "<p>Cet hiver, ne surchauffez pas les intérieurs mais réchauffez-vous le corps avec une bonne tisane et nos vêtements chauffants. <\/p>",
+              "title_size": 40,
               "subheading": "",
-              "link": "shopify:\/\/collections\/gants-moto-chauffants",
-              "link_text": "Je prépare ma prochaine sortie",
+              "link": "shopify:\/\/collections\/cocooning",
+              "link_text": "Je réduis ma facture énergétique",
               "link_2": "",
               "link_text_2": "",
               "color_accent": "#a92927",
               "text_align": "vertical-center horizontal-left",
-              "image": "shopify:\/\/shop_images\/Home_moto_0922_8101c824-9ec4-4798-a83c-1f2dba55e231.jpg",
-              "image_mobile": "shopify:\/\/shop_images\/Home_moto_mobile_0922.jpg",
-              "overlay_opacity": 6,
+              "image": "shopify:\/\/shop_images\/G-Heat-facture-energetique.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/G-Heat-facture-energetique.jpg",
+              "overlay_opacity": 0,
               "focal_point": "center center"
             }
           },
@@ -807,18 +785,57 @@
               "link_text_2": "",
               "color_accent": "#a92927",
               "text_align": "vertical-center horizontal-left",
-              "image": "shopify:\/\/shop_images\/Home_mission_0922.jpg",
+              "image": "shopify:\/\/shop_images\/G-Heat-vetements-chauffants.jpg",
               "image_mobile": "shopify:\/\/shop_images\/Home_mission_mobile_0922.jpg",
+              "overlay_opacity": 0,
+              "focal_point": "center center"
+            }
+          },
+          "0d50a9c9-d4f4-4454-959e-7313b85e5267": {
+            "type": "hero",
+            "disabled": true,
+            "settings": {
+              "top_subheading": "",
+              "title": "",
+              "title_size": 40,
+              "subheading": "",
+              "link": "shopify:\/\/collections\/black-friday-2022",
+              "link_text": "",
+              "link_2": "",
+              "link_text_2": "",
+              "color_accent": "#a92927",
+              "text_align": "vertical-center horizontal-left",
+              "image": "shopify:\/\/shop_images\/BF_desktop_V2-G-Heat.jpg",
+              "image_mobile": "shopify:\/\/shop_images\/Collection-Black-Friday-G-Heat-2022-mobile.jpg",
+              "overlay_opacity": 0,
+              "focal_point": "center center"
+            }
+          },
+          "a1cc34f8-ab44-4c22-a8f0-af2ee506d583": {
+            "type": "hero",
+            "disabled": true,
+            "settings": {
+              "top_subheading": "",
+              "title": "<p>Overlaid Hero Slide<\/p>",
+              "title_size": 70,
+              "subheading": "And optional subtext",
+              "link": "",
+              "link_text": "Optional button",
+              "link_2": "",
+              "link_text_2": "",
+              "color_accent": "#ffffff",
+              "text_align": "vertical-bottom horizontal-left",
               "overlay_opacity": 0,
               "focal_point": "center center"
             }
           }
         },
         "block_order": [
-          "0d50a9c9-d4f4-4454-959e-7313b85e5267",
           "ea68fec3-ff80-4364-913f-bee9e6ed73e4",
           "163895832837b619d2-0",
-          "e4657894-32fb-4079-8c75-3b27055c9732"
+          "e4657894-32fb-4079-8c75-3b27055c9732",
+          "0d50a9c9-d4f4-4454-959e-7313b85e5267",
+          "a1cc34f8-ab44-4c22-a8f0-af2ee506d583"
         ],
         "settings": {
           "full_width": true,
@@ -1182,7 +1199,7 @@
     "blocks": {
       "42207636d368df40d0": {
         "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.embed.socialshopwave-helper\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
-        "disabled": true,
+        "disabled": false,
         "settings": {
         }
       }

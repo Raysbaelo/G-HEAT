@@ -1,0 +1,124 @@
+{
+  "sections": {
+    "header": {
+      "type": "collection-header",
+      "settings": {
+        "enable": true,
+        "collection_image_enable": true,
+        "parallax": false
+      }
+    },
+    "main": {
+      "type": "collection-template-v2",
+      "blocks": {
+        "068c4fb0-907f-4045-9238-1eb28dcbd087": {
+          "type": "tags_group",
+          "settings": {
+            "title": "",
+            "tag_list": "meilleures ventes",
+            "collapsed": false
+          }
+        },
+        "98f3e8ee-cd61-4313-93ba-022d2425570a": {
+          "type": "tags_group",
+          "settings": {
+            "title": "CARACTÉRISTIQUES",
+            "tag_list": "tactiles\nantidérapants\ndoigtier amovible\nrenfort paume\ncoupe-vent\nétanches\ndéperlants\ndoublure renforcée\ngrip paume\nlégers\nbandes réfléchissantes\nimperméables\nrespirants \nraclette essuie-glace\nnorme CE \ncertification 1KP\nprotection carbone\nleash amovibles\najustables",
+            "collapsed": true
+          }
+        },
+        "30d34c07-8199-47b6-9f46-cf7a409f86bb": {
+          "type": "tags_group",
+          "settings": {
+            "title": "GENRE",
+            "tag_list": "Femme\nHomme\nMixte",
+            "collapsed": true
+          }
+        },
+        "0f8eec2e-f902-40a1-a9fd-6a6dbdf395be": {
+          "type": "tags_group",
+          "settings": {
+            "title": "TAILLES",
+            "tag_list": "XS\nS\nM\nL\nXL\nXXL\nXXXL",
+            "collapsed": true
+          }
+        },
+        "404cc5a2-857e-4890-a655-251d927a288b": {
+          "type": "tags_group",
+          "settings": {
+            "title": "USAGES",
+            "tag_list": "Maladie de Raynaud\nThermothérapie\nSports & loisirs\nTravail",
+            "collapsed": true
+          }
+        },
+        "8f29f86c-3447-447b-a7f5-d621efb4db68": {
+          "type": "subcollections",
+          "disabled": true,
+          "settings": {
+            "enable_count": true,
+            "collapsed": false
+          }
+        },
+        "bee7ef52-9a15-48d7-b6d2-4a20bd426590": {
+          "type": "productType",
+          "disabled": true,
+          "settings": {
+            "title": "Type de produits",
+            "collapsed": false
+          }
+        }
+      },
+      "block_order": [
+        "068c4fb0-907f-4045-9238-1eb28dcbd087",
+        "98f3e8ee-cd61-4313-93ba-022d2425570a",
+        "30d34c07-8199-47b6-9f46-cf7a409f86bb",
+        "0f8eec2e-f902-40a1-a9fd-6a6dbdf395be",
+        "404cc5a2-857e-4890-a655-251d927a288b",
+        "8f29f86c-3447-447b-a7f5-d621efb4db68",
+        "bee7ef52-9a15-48d7-b6d2-4a20bd426590"
+      ],
+      "settings": {
+        "enable_sidebar": true,
+        "tags_combine": true,
+        "enable_sort": true,
+        "description_position": "top",
+        "subcollection_style": "below",
+        "grid_style": "small"
+      }
+    },
+    "1663670697a636704c": {
+      "type": "collection-tabbed-description",
+      "settings": {
+        "bg-color": "#1b2024",
+        "font-color": "#ffffff"
+      }
+    },
+    "recommendation": {
+      "type": "recently-viewed",
+      "disabled": true,
+      "settings": {
+        "show_section": true,
+        "product_recommendations_heading": "VOUS AIMEREZ AUSSI"
+      }
+    },
+    "165821484973025ec2": {
+      "type": "collection-feature-product",
+      "settings": {
+        "title": "Vous aimerez aussi",
+        "home_featured_products": "gants-chauffants",
+        "count": 10,
+        "mobile_scrollable": true,
+        "view_all": false,
+        "view-all-text": "",
+        "divider": false
+      }
+    }
+  },
+  "order": [
+    "header",
+    "main",
+    "1663670697a636704c",
+    "recommendation",
+    "165821484973025ec2"
+  ]
+}

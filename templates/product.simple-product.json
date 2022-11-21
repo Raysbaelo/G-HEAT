@@ -16,6 +16,53 @@
         "product_video_style": "muted"
       }
     },
+    "1668649874e4ed091d": {
+      "type": "apps",
+      "blocks": {
+        "113f9b14-100c-46a9-bf3b-dd31d6eb0130": {
+          "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.product.reviewWidget\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "containerMaxWidth": "",
+            "containerMarginTop": "",
+            "containerMarginBottom": "",
+            "containerSidePadding": "",
+            "containerLineHeight": "",
+            "containerFontFamily": "",
+            "containerLetterSpacing": "",
+            "buttonsColor": "",
+            "buttonsColorOnHover": "",
+            "buttonsBackgroundColor": "",
+            "buttonsBackgroundColorOnHover": "",
+            "buttonsBorder": "",
+            "buttonsBorderColorOnHover": "",
+            "buttonsBoxShadow": "",
+            "buttonsBoxShadowOnHover": "",
+            "buttonsPaddings": "",
+            "buttonsTextTransform": "",
+            "tabTriggerSelector": "",
+            "tabContentSelector": ""
+          }
+        },
+        "a005efce-1468-48e5-86fa-e3dbbc8519f8": {
+          "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.product.reviewAvgProfile\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+            "margin": "",
+            "textColor": "",
+            "fontSize": "",
+            "ratingIconColor": "",
+            "ratingIconSize": "",
+            "questionsIconColor": "",
+            "questionsIconSize": ""
+          }
+        }
+      },
+      "block_order": [
+        "113f9b14-100c-46a9-bf3b-dd31d6eb0130",
+        "a005efce-1468-48e5-86fa-e3dbbc8519f8"
+      ],
+      "settings": {
+      }
+    },
     "166335593466e00865": {
       "type": "section-custom-liquid",
       "settings": {
@@ -141,6 +188,7 @@
   },
   "order": [
     "main",
+    "1668649874e4ed091d",
     "166335593466e00865",
     "1628062389b4167fe9",
     "1663176976105237af",
