@@ -67,15 +67,12 @@
 
     {% if FEATURES != blank %}
     <div class="tab-content tab-content-2 {% unless section.settings.show_description %} tab-active {% endunless %}">
-      {{ FEATURES | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' }}
+      {{ FEATURES }}
     </div>
     {% endif %}
     {% if section.settings.show_guide_tailles != blank %}
     <div class="tab-content tab-content-3">
-      {%  capture SIZE_CHART %}
-        {% render 'product-size-chart' %}
-      {%  endcapture  %}
-      {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
+      {% render 'product-size-chart' %}
     </div>
     {% endif %}
 
@@ -87,7 +84,7 @@
 
     {% if LIVRAISON != blank %}
       <div class="tab-content tab-content-5 {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
-        {{ LIVRAISON | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
+        {{ LIVRAISON }}
       </div>
     {% endif %}
 
@@ -166,10 +163,7 @@
             </span>
           </div>
           <div class="m-tab-content {% unless section.settings.show_description  %} tab-active {% endunless %}">
-            {%  capture SIZE_CHART %}
-              {% render 'product-size-chart' %}
-            {%  endcapture  %}
-            {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
+            {% render 'product-size-chart'%}
             </div>
         </div>
       {% endif %}

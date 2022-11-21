@@ -133,7 +133,7 @@
          {%- if settings.show_breadcrumbs and isModal != true -%}
         {%- render 'breadcrumbs' -%}
         {%- endif -%}
-        {{ product_header | replace: 'h1', 'p' }}
+        {{ product_header }}
 <div class="mobile-header-price">dès <span class="price-in-atc"><span>{{ current_variant.price | money_with_currency }}</span></span> </div>
       </div>
 

@@ -294,6 +294,11 @@
           {%- endif -%}
 
           <div class="grid-product__title">{{ product.title }}</div>
+        
+        {% capture the_snippet_review_avg %}{% render 'ssw-widget-avg-rate-listing', product: product %}{% endcapture %}
+        {% unless the_snippet_review_avg contains 'Liquid error' %}
+        {{ the_snippet_review_avg }}
+        {% endunless %}    
           {%- if settings.vendor_enable -%}
           <div class="grid-product__vendor">{{ product.vendor }}</div>
           {%- endif -%}
