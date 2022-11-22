@@ -10,465 +10,486 @@
 {% assign point-4 = product.metafields.custom.d-point-4 %}
 
 {% if DESCRIPTION != blank or FEATURES != blank  or FONCTIONNEMENT != blank  or LIVRAISON != blank  or EXCHANGES-RETURNS != blank  or image != blank %}
-<div class="tab-div" style="background-color: {{ section.settings.bg-color }}; color: {{ section.settings.font-color }}">
-<div class="page-width small--hide">
-  <div class="tab-wrapper">
-  <div class="tab-toggles">
-    {% if DESCRIPTION != blank and section.settings.show_description %}
-    <div class="tab-item tab-item-1 tab-active"  data-tab-index="1"> 
-      <div class="tab-heading">DESCRIPTION</div>
-    </div>
-    {% endif %}
-    {% if FEATURES != blank %}
-    <div class="tab-item tab-item-2"  data-tab-index="2">
-      <div class="tab-heading">CARACTÉRISTIQUES</div>
-    </div>
-    {% endif %}
-    {% if section.settings.show_guide_tailles != blank %}
-      <div class="tab-item tab-item-3"  data-tab-index="3">
-        <div class="tab-heading">GUIDE DES TAILLES</div>
-      </div>
-    {% endif %}
-    {% if FONCTIONNEMENT != blank %}
-    <div class="tab-item tab-item-4"  data-tab-index="4">
-      <div class="tab-heading">FONCTIONNEMENT</div>
-    </div>
-    {% endif %}
-    {% if LIVRAISON != blank %}
-    <div class="tab-item tab-item-5 {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}"  data-tab-index="5">
-      <div class="tab-heading">LIVRAISON</div>
-    </div>
-    {% endif %}
-    {% if EXCHANGES-RETURNS != blank %}
-      <div class="tab-item tab-item-6"  data-tab-index="6">
-        <div class="tab-heading">ÉCHANGES ET RETOURS</div>
-      </div>
-    {% endif %}
+  <div id="Anchor" class="tab-div" style="background-color: {{ section.settings.bg-color }}; color: {{ section.settings.font-color }}">
+    <div class="page-width small--hide">
+      <div class="tab-wrapper">
+        <div class="tab-toggles">
+          {% if DESCRIPTION != blank and section.settings.show_description %}
+            <div class="tab-item tab-item-1 tab-active" data-tab-index="1">
+              <div class="tab-heading">DESCRIPTION</div>
+            </div>
+          {% endif %}
+          {% if FEATURES != blank %}
+            <div class="tab-item tab-item-2" data-tab-index="2">
+              <div class="tab-heading">CARACTÉRISTIQUES</div>
+            </div>
+          {% endif %}
+          {% if section.settings.show_guide_tailles != blank %}
+            <div class="tab-item tab-item-3" data-tab-index="3">
+              <div class="tab-heading">GUIDE DES TAILLES</div>
+            </div>
+          {% endif %}
+          {% if FONCTIONNEMENT != blank %}
+            <div class="tab-item tab-item-4" data-tab-index="4">
+              <div class="tab-heading">FONCTIONNEMENT</div>
+            </div>
+          {% endif %}
+          {% if LIVRAISON != blank %}
+            <div class="tab-item tab-item-5 {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}" data-tab-index="5">
+              <div class="tab-heading">LIVRAISON</div>
+            </div>
+          {% endif %}
+          {% if EXCHANGES-RETURNS != blank %}
+            <div class="tab-item tab-item-6" data-tab-index="6">
+              <div class="tab-heading">ÉCHANGES ET RETOURS</div>
+            </div>
+          {% endif %}
 
-    {% if PDF != blank %}
-      <div class="tab-item tab-item-7"  data-tab-index="7">
-        <div class="tab-heading">NOTICE</div>
-      </div>
-    {% endif %}
-  </div>
-  </div>
-  <div class="tab-content-wrapper">
-    {% if DESCRIPTION != blank  and section.settings.show_description %}
-      <div class="tab-content tab-content-1 tab-active">
-        <div class="description-points">
-      {% if point-1 != blank %} <div class="description-item">{{ point-1 }}</div>{% endif %}
-        {% if point-2 != blank %} <div class="description-item">{{ point-2 }}</div>{% endif %}
-        {% if point-3 != blank %} <div class="description-item">{{ point-3 }}</div>{% endif %}
-        {% if point-4 != blank %} <div class="description-item">{{ point-4 }}</div>{% endif %}
-        </div>
-        <div class="tab-description">{{ DESCRIPTION }}</div>
-      </div>
-    {% endif %}
-
-    {% if FEATURES != blank %}
-    <div class="tab-content tab-content-2 {% unless section.settings.show_description %} tab-active {% endunless %}">
-      {{ FEATURES | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' }}
-    </div>
-    {% endif %}
-    {% if section.settings.show_guide_tailles != blank %}
-    <div class="tab-content tab-content-3">
-      {%  capture SIZE_CHART %}
-        {% render 'product-size-chart' %}
-      {%  endcapture  %}
-      {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
-    </div>
-    {% endif %}
-
-    {% if FONCTIONNEMENT != blank %}
-      <div class="tab-content tab-content-4">
-        {{ FONCTIONNEMENT }}
-      </div>
-    {% endif %}
-
-    {% if LIVRAISON != blank %}
-      <div class="tab-content tab-content-5 {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
-        {{ LIVRAISON | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
-      </div>
-    {% endif %}
-
-    {% if EXCHANGES-RETURNS != blank %}
-      <div class="tab-content tab-content-6">
-        {{ EXCHANGES-RETURNS }}
-      </div>
-    {% endif %}
-
-  
-    {% if PDF != blank %}
-      <div class="tab-content tab-content-7">
-        <a class="btn pdf-btn" href="{{ PDF.value.url  }}" target="_blank">TELECHARGER LA NOTICE</a>
-      </div>
-    {% endif %}
-  </div>
-</div>
-<div class="page-width medium-up--hide">
-  <div class="m-tab-wrapper">
-    <div class="m-tab-ul">
-
-      {% if DESCRIPTION != blank and section.settings.show_description %}
-      <div class="m-tab-li">
-        <div class="m-tab-toggle tab-active">
-          <span class="m-tab-title">DESCRIPTION</span>
-          <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-            <rect y="212.5" width="455" height="30"/>
-
-            </svg>
-          </span>
-          <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-          </span>
-        </div>
-        <div class="m-tab-content tab-active">
-
-       <div class="tab-description">   {{ DESCRIPTION }}</div>
-         <div class="description-points">
-          {% if point-1 != blank %} <div class="description-item">{{ point-1 }}</div>{% endif %}
-            {% if point-2 != blank %} <div class="description-item">{{ point-2 }}</div>{% endif %}
-            {% if point-3 != blank %} <div class="description-item">{{ point-3 }}</div>{% endif %}
-            {% if point-4 != blank %} <div class="description-item">{{ point-4 }}</div>{% endif %}
-        </div>
+          {% if PDF != blank %}
+            <div class="tab-item tab-item-7" data-tab-index="7">
+              <div class="tab-heading">NOTICE</div>
+            </div>
+          {% endif %}
         </div>
       </div>
-      {% endif %}
-       {% if FEATURES != blank %}
-      <div class="m-tab-li">
-        <div class="m-tab-toggle">
-          <span class="m-tab-title">CARACTÉRISTIQUES</span>
-          <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-            <rect y="212.5" width="455" height="30"/>
-
-            </svg>
-          </span>
-          <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-          </span>
-        </div>
-        <div class="m-tab-content">
-          {{ FEATURES }}
-                    </div>
-      </div>
-      {% endif %}
-     {% if section.settings.show_guide_tailles %}
-        <div class="m-tab-li">
-          <div class="m-tab-toggle {% unless section.settings.show_description  %} tab-active {% endunless %}">
-            <span class="m-tab-title">GUIDE DES TAILLES</span>
-            <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                              viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-              <rect y="212.5" width="455" height="30"/>
-
-              </svg>
-            </span>
-            <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-            </span>
+      <div class="tab-content-wrapper">
+        {% if DESCRIPTION != blank  and section.settings.show_description %}
+          <div class="tab-content tab-content-1 tab-active">
+            <div class="description-points">
+              {% if point-1 != blank %}
+                <div class="description-item">{{ point-1 }}</div>
+              {% endif %}
+              {% if point-2 != blank %}
+                <div class="description-item">{{ point-2 }}</div>
+              {% endif %}
+              {% if point-3 != blank %}
+                <div class="description-item">{{ point-3 }}</div>
+              {% endif %}
+              {% if point-4 != blank %}
+                <div class="description-item">{{ point-4 }}</div>
+              {% endif %}
+            </div>
+            <div class="tab-description">{{ DESCRIPTION }}</div>
           </div>
-          <div class="m-tab-content {% unless section.settings.show_description  %} tab-active {% endunless %}">
+        {% endif %}
+
+        {% if FEATURES != blank %}
+          <div class="tab-content tab-content-2 {% unless section.settings.show_description %} tab-active {% endunless %}">
+            {{ FEATURES | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' }}
+          </div>
+        {% endif %}
+        {% if section.settings.show_guide_tailles != blank %}
+          <div class="tab-content tab-content-3">
             {%  capture SIZE_CHART %}
               {% render 'product-size-chart' %}
             {%  endcapture  %}
             {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
-            </div>
-        </div>
-      {% endif %}
+          </div>
+        {% endif %}
 
         {% if FONCTIONNEMENT != blank %}
-      <div class="m-tab-li">
-        <div class="m-tab-toggle">
-          <span class="m-tab-title">FONCTIONNEMENT</span>
-          <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-            <rect y="212.5" width="455" height="30"/>
+          <div class="tab-content tab-content-4">
+            {{ FONCTIONNEMENT }}
+          </div>
+        {% endif %}
 
-            </svg>
-          </span>
-          <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-          </span>
-        </div>
-        <div class="m-tab-content">
-          {{ FONCTIONNEMENT }}
-                    </div>
-      </div>
-      {% endif %}
         {% if LIVRAISON != blank %}
-      <div class="m-tab-li">
-        <div class="m-tab-toggle {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
-          <span class="m-tab-title">LIVRAISON</span>
-          <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                             viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-            <rect y="212.5" width="455" height="30"/>
+          <div class="tab-content tab-content-5 {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
+            {{ LIVRAISON | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
+          </div>
+        {% endif %}
 
-            </svg>
-          </span>
-          <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-          </span>
-        </div>
-        <div class="m-tab-content {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
-          {{ LIVRAISON }}
-                    </div>
+        {% if EXCHANGES-RETURNS != blank %}
+          <div class="tab-content tab-content-6">
+            {{ EXCHANGES-RETURNS }}
+          </div>
+        {% endif %}
+
+
+        {% if PDF != blank %}
+          <div class="tab-content tab-content-7">
+            <a class="btn pdf-btn" href="{{ PDF.value.url  }}" target="_blank">TELECHARGER LA NOTICE</a>
+          </div>
+        {% endif %}
       </div>
-      {% endif %}
-      {% if EXCHANGES-RETURNS != blank %}
-          <div class="m-tab-li">
-            <div class="m-tab-toggle">
-              <span class="m-tab-title">ÉCHANGES ET RETOURS</span>
-              <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-                <rect y="212.5" width="455" height="30"/>
+    </div>
+    <div class="page-width medium-up--hide">
+      <div class="m-tab-wrapper">
+        <div class="m-tab-ul">
 
-                </svg>
-              </span>
-              <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-              </span>
-            </div>
-            <div class="m-tab-content">
-              {{ EXCHANGES-RETURNS }}
+          {% if DESCRIPTION != blank and section.settings.show_description %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle tab-active">
+                <span class="m-tab-title">DESCRIPTION</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
+
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content tab-active">
+
+                <div class="tab-description">
+                  {{ DESCRIPTION }}</div>
+                <div class="description-points">
+                  {% if point-1 != blank %}
+                    <div class="description-item">{{ point-1 }}</div>
+                  {% endif %}
+                  {% if point-2 != blank %}
+                    <div class="description-item">{{ point-2 }}</div>
+                  {% endif %}
+                  {% if point-3 != blank %}
+                    <div class="description-item">{{ point-3 }}</div>
+                  {% endif %}
+                  {% if point-4 != blank %}
+                    <div class="description-item">{{ point-4 }}</div>
+                  {% endif %}
                 </div>
-          </div>
-      {% endif %}
-    
-      {% if PDF != blank %}
-          <div class="m-tab-li">
-            <div class="m-tab-toggle">
-              <span class="m-tab-title">NOTICE</span>
-              <span class="icon icon-minus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                                                viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
-                <rect y="212.5" width="455" height="30"/>
+              </div>
+            </div>
+          {% endif %}
+          {% if FEATURES != blank %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle">
+                <span class="m-tab-title">CARACTÉRISTIQUES</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
 
-                </svg>
-              </span>
-              <span class="icon icon-plus"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
-              </span>
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content">
+                {{ FEATURES }}
+              </div>
             </div>
-            <div class="m-tab-content">   
+          {% endif %}
+          {% if section.settings.show_guide_tailles %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle {% unless section.settings.show_description  %} tab-active {% endunless %}">
+                <span class="m-tab-title">GUIDE DES TAILLES</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
+
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content {% unless section.settings.show_description  %} tab-active {% endunless %}">
+                {%  capture SIZE_CHART %}
+                  {% render 'product-size-chart' %}
+                {%  endcapture  %}
+                {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if FONCTIONNEMENT != blank %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle">
+                <span class="m-tab-title">FONCTIONNEMENT</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
+
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content">
+                {{ FONCTIONNEMENT }}
+              </div>
+            </div>
+          {% endif %}
+          {% if LIVRAISON != blank %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
+                <span class="m-tab-title">LIVRAISON</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
+
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
+                {{ LIVRAISON }}
+              </div>
+            </div>
+          {% endif %}
+          {% if EXCHANGES-RETURNS != blank %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle">
+                <span class="m-tab-title">ÉCHANGES ET RETOURS</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
+
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content">
+                {{ EXCHANGES-RETURNS }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if PDF != blank %}
+            <div class="m-tab-li">
+              <div class="m-tab-toggle">
+                <span class="m-tab-title">NOTICE</span>
+                <span class="icon icon-minus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve">
+                    <rect y="212.5" width="455" height="30"/>
+
+                  </svg>
+                </span>
+                <span class="icon icon-plus">
+                  <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 455 455" style="enable-background:new 0 0 455 455;" xml:space="preserve"><polygon points="455,212.5 242.5,212.5 242.5,0 212.5,0 212.5,212.5 0,212.5 0,242.5 212.5,242.5 212.5,455 242.5,455 242.5,242.5 	455,242.5 "/></svg>
+                </span>
+              </div>
+              <div class="m-tab-content">
                 <a class="btn pdf-btn" href="{{ PDF.value.url  }}" target="_blank">TELECHARGER LA NOTICE</a>
+              </div>
             </div>
-          </div>
-      {% endif %}
+          {% endif %}
+        </div>
+      </div>
     </div>
   </div>
-</div>
-</div>
 {% endif %}
 <style>
   .tab-content a,
-  .tab-description a{
+  .tab-description a {
     text-decoration: underline;
-    color:{{ section.settings.font-color }};
+    color: {{ section.settings.font-color }};
   }
-  .tab-content{
-  display:none;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0;
-}
+  .tab-content {
+    display: none;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0;
+  }
 
-.tab-div{
-  background: {{ section.settings.bg-color }};
-  padding: 50px 0;
-  color: {{ section.settings.font-color }};
+  .tab-div {
+    background: {{ section.settings.bg-color }};
+    padding: 50px 0;
+    color: {{ section.settings.font-color }};
 
-}
+  }
   .tab-heading {
- margi-right:5px;
+    margi-right: 5px;
     font-size: 16px;
-}
-  .tab-content-1.tab-content.tab-active{
-        display: flex;
+  }
+  .tab-content-1.tab-content.tab-active {
+    display: flex;
     align-items: flex-start;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
   }
-  .description-points{
-        width: 30%;
+  .description-points {
+    width: 30%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
   }
 
-  .tab-description a{
+  .tab-description a {
     color: #fff;
     text-decoration: underline;
   }
-  
-  .tab-description span{
-     color: #fff;
+
+  .tab-description span {
+    color: #fff;
   }
 
-.description-item{
-      width: 50%;
-  font-weight: 700;
+  .description-item {
+    width: 50%;
+    font-weight: 700;
     text-align: center;
-  font-size:16px;
-  line-height:20px;
-  margin-bottom: 30px;
-      padding: 0 12px;
-}
- .description-item b {
-        display: block;
+    font-size: 16px;
+    line-height: 20px;
+    margin-bottom: 30px;
+    padding: 0 12px;
+  }
+  .description-item b {
+    display: block;
     font-size: 20px;
     line-height: 25px;
     text-align: center;
     color: #A92927;
     margin-bottom: 10px;
   }
-  .tab-content.tab-active{
-  display:block;
-}
-.tab-description{
-  width:70%;
-      padding-left: 40px;
-}
-.tab-item{
-  font-size: 18px;
-  line-height: 23px;
-  cursor:pointer;
-}
-.tab-item.tab-active{
-  border-bottom: 4px solid #A92927;
-  padding-bottom: 10px;
-  width: fit-content;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 25px;
-}
-.tab-image{
-  margin-top: 25px;
-  width: 100%;
-  display: inline-block;
-}
-.tab-content-wrapper{}
-.tab-wrapper{
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
-  margin-bottom: 35px;
-  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-}
-@media (max-width: 767px){
-  .m-tab-content{
-    display:none;
-    margin-bottom:20px;
+  .tab-content.tab-active {
+    display: block;
   }
   .tab-description {
-    width: 100%;
-    padding-left: 0;
-    margin-bottom:40px;
-}
-  .description-points {
-    width: 100%;
-        border: 1px solid white;
-    padding: 20px 12px;
-    border-radius: 5px;
-    background: #181B1E;
+    width: 70%;
+    padding-left: 40px;
   }
-  .m-tab-content.tab-active{
-    display:block;
-    margin: 20px 0;
-  }
-  .m-tab-toggle .icon-minus{
-    display:none;
-  }
-  .m-tab-toggle.tab-active .icon-plus{
-    display:none;
-  }
-  .m-tab-toggle.tab-active .icon-minus{
-    display:block
-  }
-  .m-tab-ul{
-    margin:0;
-    text-decoration: unset;
-    list-style: unset;
-    list-style-type: unset;
-  }
-  .m-tab-toggle{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+  .tab-item {
     font-size: 18px;
     line-height: 23px;
-    padding: 15px 0;
+    cursor: pointer;
   }
-  /*     .m-tab-li::marker{
+  .tab-item.tab-active {
+    border-bottom: 4px solid #A92927;
+    padding-bottom: 10px;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+  }
+  .tab-image {
+    margin-top: 25px;
+    width: 100%;
+    display: inline-block;
+  }
+  .tab-content-wrapper {}
+  .tab-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 35px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  }
+  @media(max-width: 767px) {
+    .m-tab-content {
+      display: none;
+      margin-bottom: 20px;
+    }
+    .tab-description {
+      width: 100%;
+      padding-left: 0;
+      margin-bottom: 40px;
+    }
+    .description-points {
+      width: 100%;
+      border: 1px solid white;
+      padding: 20px 12px;
+      border-radius: 5px;
+      background: #181B1E;
+    }
+    .m-tab-content.tab-active {
+      display: block;
+      margin: 20px 0;
+    }
+    .m-tab-toggle .icon-minus {
+      display: none;
+    }
+    .m-tab-toggle.tab-active .icon-plus {
+      display: none;
+    }
+    .m-tab-toggle.tab-active .icon-minus {
+      display: block
+    }
+    .m-tab-ul {
+      margin: 0;
+      text-decoration: unset;
+      list-style: unset;
+      list-style-type: unset;
+    }
+    .m-tab-toggle {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-size: 18px;
+      line-height: 23px;
+      padding: 15px 0;
+    }
+    /*     .m-tab-li::marker{
   content: "";
   display: none;
   list-style: unset;
   margin: 0;
   visibility: hidden;
 } */
-  .m-tab-li{
-    border-bottom: 1px solid #FCFFFF;
+    .m-tab-li {
+      border-bottom: 1px solid #FCFFFF;
 
+    }
+    .m-tab-li:last-of-type {
+      border: unset;
+    }
+    .m-tab-li .icon polygon,
+    .m-tab-li .icon rect {
+      color: white;
+      fill: white !important;
+    }
+    .m-tab-li .icon svg {
+      height: 17px;
+      width: 17px;
+    }
   }
-  .m-tab-li:last-of-type{
-    border:unset;
-  }
-  .m-tab-li .icon polygon,
-  .m-tab-li .icon rect{
-    color:white;
-    fill:white !important;
-  }
-  .m-tab-li .icon svg{
-    height: 17px;
-    width: 17px;
-  }
-}
 </style>
 
 {% javascript %}
   function openTab(e) {
     $(".tab-item").removeClass('tab-active');
-    $(".tab-item-"+e).addClass('tab-active');
+    $(".tab-item-" + e).addClass('tab-active');
     $(".tab-content").removeClass('tab-active');
-    $(".tab-content-"+e).addClass('tab-active');
+    $(".tab-content-" + e).addClass('tab-active');
   }
   $(document).ready(function($) {
-    $(".m-tab-toggle").click(function(){
+    $(".m-tab-toggle").click(function() {
       $(this).toggleClass("tab-active");
       $(this).siblings(".m-tab-content").slideToggle();
     });
-    $("[data-tab-index]").click(function(){
+    $("[data-tab-index]").click(function() {
       openTab($(this).attr('data-tab-index'));
     });
   });
 {% endjavascript %}
 
 {% schema %}
-{
-"name": "Tabbed Text Product",
-"settings": [
-    {
-    "type": "color",
-    "id": "bg-color",
-    "label": "Background Color",
-    "default":"#1B2024"
-    },
-    {
-    "type": "color",
-    "id": "font-color",
-    "label": "Font Color",
-    "default":"#fff"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_description",
-      "label": "Show description tab ?",
-      "default": true
-    },
-    {
-      "type": "checkbox",
-      "id": "show_guide_tailles",
-      "label": "Show Size chart ?",
-      "default": true
-    }
-],
-"presets": [
-{
-"name": "Tabbed Text Product"
-}
-]
-}
+  {
+    "name": "Tabbed Text Product",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg-color",
+        "label": "Background Color",
+        "default": "#1B2024"
+      }, {
+        "type": "color",
+        "id": "font-color",
+        "label": "Font Color",
+        "default": "#fff"
+      }, {
+        "type": "checkbox",
+        "id": "show_description",
+        "label": "Show description tab ?",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_guide_tailles",
+        "label": "Show Size chart ?",
+        "default": true
+      }
+    ],
+    "presets": [
+      {
+        "name": "Tabbed Text Product"
+      }
+    ]
+  }
 {% endschema %}
