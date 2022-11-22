@@ -10,7 +10,7 @@
 {% assign point-4 = product.metafields.custom.d-point-4 %}
 
 {% if DESCRIPTION != blank or FEATURES != blank  or FONCTIONNEMENT != blank  or LIVRAISON != blank  or EXCHANGES-RETURNS != blank  or image != blank %}
-<div id="Anchor" class="tab-div" style="background-color: {{ section.settings.bg-color }}; color: {{ section.settings.font-color }}">
+<div class="tab-div" style="background-color: {{ section.settings.bg-color }}; color: {{ section.settings.font-color }}">
 <div class="page-width small--hide">
   <div class="tab-wrapper">
   <div class="tab-toggles">
@@ -67,12 +67,15 @@
 
     {% if FEATURES != blank %}
     <div class="tab-content tab-content-2 {% unless section.settings.show_description %} tab-active {% endunless %}">
-      {{ FEATURES }}
+      {{ FEATURES | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' }}
     </div>
     {% endif %}
     {% if section.settings.show_guide_tailles != blank %}
     <div class="tab-content tab-content-3">
-      {% render 'product-size-chart' %}
+      {%  capture SIZE_CHART %}
+        {% render 'product-size-chart' %}
+      {%  endcapture  %}
+      {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
     </div>
     {% endif %}
 
@@ -84,7 +87,7 @@
 
     {% if LIVRAISON != blank %}
       <div class="tab-content tab-content-5 {% unless section.settings.show_description or section.settings.show_guide_tailles %} tab-active {% endunless %}">
-        {{ LIVRAISON }}
+        {{ LIVRAISON | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
       </div>
     {% endif %}
 
@@ -163,7 +166,10 @@
             </span>
           </div>
           <div class="m-tab-content {% unless section.settings.show_description  %} tab-active {% endunless %}">
-            {% render 'product-size-chart'%}
+            {%  capture SIZE_CHART %}
+              {% render 'product-size-chart' %}
+            {%  endcapture  %}
+            {{ SIZE_CHART | replace: 'h2 class="', 'p class="h2 ' | replace: '/h2', '/p' | replace: 'h3 class="', 'p class="h3 ' | replace: '/h3', '/p' }}
             </div>
         </div>
       {% endif %}
