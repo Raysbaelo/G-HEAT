@@ -178,7 +178,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
       endif
     -%}
     <script src="{{ 'optimizer.min.js' | asset_url }}" defer="defer"></script>
-    {% render 'weglot_hreftags' %}
+    
     {% render 'gsf-conversion-pixels' %}
     <script type="text/javascript" src="https://cache.consentframework.com/js/pa/32251/c/LEsRf/stub" referrerpolicy="origin" charset="utf-8"></script>
     <script type="text/javascript" src="https://choices.consentframework.com/js/pa/32251/c/LEsRf/cmp" referrerpolicy="origin" charset="utf-8" async="async"></script>
@@ -229,6 +229,8 @@ You can learn more about this (and learn how to cleanly revert these changes) at
         {% endif %}
       });
     </script>
+  {% render 'weglot_hreftags' %}
+  {% render 'weglot_switcher' %}
   </head>
 
   <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
@@ -301,7 +303,7 @@ You can learn more about this (and learn how to cleanly revert these changes) at
         }
       });
     </script>
-    {% render 'weglot_switcher' %}
+    
     <script id="gorgias-chat-shopify-install" defer>
       window.getScript("https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=9040", "gorgias-chat-widget-install-v2").then(function(){
         !function(_){_.SHOPIFY_PERMANENT_DOMAIN="{{ shop.permanent_domain }}",_.SHOPIFY_CUSTOMER_ID="{{ customer.id }}",_.SHOPIFY_CUSTOMER_EMAIL="{{ customer.email }}"}(window||{});

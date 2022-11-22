@@ -8,7 +8,7 @@
 <div class="tab-div">
   <div class="page-width small--hide">
     <div class="tab-wrapper">
-      {% if THERMOREGULATION != blank  or  image != blank %}
+      {% if THERMOREGULATION != blank or image != blank %}
       <div class="tab-item tab-item-1 tab-active" data-tab-index="1">
         <div class="tab-heading">THERMORÉGULATION</div>
       </div>
@@ -35,12 +35,14 @@
       {% endif %}
     </div>
     <div class="tab-content-wrapper">
-      {% if THERMOREGULATION != blank  or  image != blank %}
+      {% if THERMOREGULATION != blank or image != blank %}
       <div class="tab-content tab-content-1 tab-active">
         {{ THERMOREGULATION }}
-        <div class="tab-image">
-          <img src="{{ image | img_url:"master" }}">
-        </div>
+        {% if image != blank %}
+          <div class="tab-image">
+            <img src="{{ image | img_url:"master" }}">
+          </div>
+        {% endif %}
       </div>
 
       {% endif %}
