@@ -38,8 +38,8 @@
         {%- endcomment -%}
       {%- endif -%}
       <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
-      <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
       <link rel="preload" as="style" href="{{ 'custom.css' | asset_url }}">
+      <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
       <link rel="preload" as="script" href="{{ 'theme.min.js' | asset_url }}">
       <link rel="preload" as="font" href="https://cdn.shopify.com/s/files/1/2545/2656/files/CircularStd-Medium.woff?v=1662296711" type="font/woff2" crossorigin>
       <link rel="preconnect" href="https://cdn.shopify.com">
@@ -69,11 +69,10 @@
 
 
       {%- render 'css-variables' -%}
-      {{ 'theme.css' | asset_url | stylesheet_tag }}
-      {{ 'custom.css' | asset_url | stylesheet_tag }}
-      {{ 'custom.min.css' | asset_url | stylesheet_tag }}
       {{ 'theme.min.css' | asset_url | stylesheet_tag }}
-
+      {{ 'custom.min.css' | asset_url | stylesheet_tag }}
+      {{ 'custom.css' | asset_url | stylesheet_tag }}
+      {{ 'theme.css' | asset_url | stylesheet_tag }}
 
       {%- liquid
       assign enableSuperScript = false
@@ -89,7 +88,9 @@
     -%}
 
       <script>
-        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');{% if template contains 'cart' %}window.location.href = '/';{% endif %}window.theme = window.theme || {};
+        document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
+        window.theme = window.theme || {};
         theme.routes = {
           home: "{{ routes.root_url }}",
           collections: "{{ routes.collections_url }}",
@@ -103,8 +104,7 @@
           soldOut: {{ 'products.product.sold_out' | t | json }},
           unavailable: {{ 'products.product.unavailable' | t | json }},
           inStockLabel: {{ 'products.product.in_stock_label' | t | json }},
-          stockLabelOne: {{ 'products.product.stock_label.one' | t | json }},
-          stockLabelOther: {{ 'products.product.stock_label.other' | t | json }},
+          stockLabel: {{ 'products.product.stock_label' | t: count: '[count]' | json }},
           willNotShipUntil: {{ 'products.product.will_not_ship_until' | t: date: '[date]' | json }},
           willBeInStockAfter: {{ 'products.product.will_be_in_stock_after' | t: date: '[date]' | json }},
           waitingForStock: {{ 'products.product.waiting_for_stock' | t | json }},
@@ -145,10 +145,8 @@
             let r = false;
             s.type = 'text/javascript';
             s.src = src;
-            if (id) 
+            if (id)
               s.id = id;
-            
-
 
 
             s.onerror = function(err) {
@@ -194,7 +192,7 @@
       endif
     -%}
       <script src="{{ 'optimizer.min.js' | asset_url }}" defer="defer"></script>
-      {% render 'weglot_hreftags' %}
+
       {% render 'gsf-conversion-pixels' %}
       <script type="text/javascript" src="https://cache.consentframework.com/js/pa/32251/c/LEsRf/stub" referrerpolicy="origin" charset="utf-8"></script>
       <script type="text/javascript" src="https://choices.consentframework.com/js/pa/32251/c/LEsRf/cmp" referrerpolicy="origin" charset="utf-8" async="async"></script>
@@ -221,47 +219,23 @@
 
       <script type="text/javascript" src="https://azi.g-heat.com/js/na/na/u/dede65d745.js"></script>
       <script type="text/javascript">
-        KWKUniJS.ptag({{% if template contains 'index' %}
+        KWKUniJS.ptag({ {% if template contains 'index' %}
             'zone' : 'homepage'
-
-
-
-      
-      {% elsif template contains 'product' %}
-        
-
-
-
+          {% elsif template contains 'product' %}
             'zone' : 'product', 'productId' : '{{ product.id }}', 'categoryId' : '{{ product.type }}'
-
-
-
-      
-      {% elsif template contains 'collection' %}
-        
-
-
-
-            'zone' : 'listing', 'categoryId' : '{{ collection.id }}', 'products' : [{% for product in collection.products %}
-                "{{ product.id }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
-
-
-
-      
-      {% elsif template contains 'cart' %}
-        
-
-
-
-            'zone' : 'basket', 'products' : [{% for item in cart.line_items %}
-                {
+          {% elsif template contains 'collection' %}
+            'zone' : 'listing', 'categoryId' : '{{ collection.id }}', 'products' : [{% for product in collection.products %}"{{ product.id }}"{% unless forloop.last %},{% endunless %}{% endfor %}]
+          {% elsif template contains 'cart' %}
+            'zone' : 'basket', 'products' : [{% for item in cart.line_items %}{
                   id: "{{ item.id }}",
                   price: {{ item.final_price }},
                   quantity: {{ item.quantity }}
                 }
                 {% unless forloop.last %},{% endunless %}{% endfor %}], 'currency' : 'EUR'
-          {% endif %}});
+          {% endif %} });
       </script>
+      {% render 'weglot_hreftags' %}
+      {% render 'weglot_switcher' %}
     </head>
 
     <body class="template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}{% if request.path == '/challenge' %} template-challange{% endif %}" data-button_style="{{ settings.button_style }}" data-edges="{{ settings.roundness }}" data-type_header_capitalize="{{ settings.type_header_capitalize }}" data-swatch_style="{{ settings.swatch_style }}" data-grid-style="{{ settings.product_grid_style }}">
@@ -331,7 +305,7 @@
           }
         });
       </script>
-      {% render 'weglot_switcher' %}
+
       <script id="gorgias-chat-shopify-install" defer>
         window.getScript("https://config.gorgias.chat/gorgias-chat-bundle-loader.js?applicationId=9040", "gorgias-chat-widget-install-v2").then(function() {
           !function(_) {
@@ -347,6 +321,7 @@
           }, 50);
         })
       </script>
+      {% render 'gw-custom-scripts' %}
     </body>
   </html>
 {% endcapture %}
