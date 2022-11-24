@@ -31,7 +31,7 @@
 		{{- title | strip_html -}}
 		{%- unless title contains shop.name %} {{ sep }} {{ shop.name }}{% endunless -%}
 	</title>
-	<meta name="robots" content="noindex, nofollow"/>
+	<meta name="robots" content="noindex, follow"/>
 
 	{% render "yoast-seo-open-graph", yoast_seo_output_type: "basic" -%}
 	{%- render "yoast-seo-schema", yoast_seo_output_type: "basic" -%}
@@ -42,7 +42,7 @@
 	<title>{{- title | strip_html -}}</title>
 	{%- capture description -%}{%- render "yoast-seo-variable", variable: "description" -%}{%- endcapture -%}
 	{%- if description != "" %}
-     <meta name="description" content="{{- description | replace: '"', '&#34;' -}}" />
+<meta name="description" content="{{- description | replace: '"', '&#34;' -}}" />
 	{%- endif -%}
 
 	{%- render 'yoast-seo-canonical' -%}

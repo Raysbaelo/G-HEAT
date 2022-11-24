@@ -1,0 +1,225 @@
+{
+  "sections": {
+    "1630661343f80d3404": {
+      "type": "faq",
+      "disabled": true,
+      "blocks": {
+        "1630661343a7ebcf98-0": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        },
+        "1630661343a7ebcf98-1": {
+          "type": "question",
+          "settings": {
+            "title": "Frequently asked question",
+            "text": "<p>Use this text to answer questions in as much detail as possible for your customers.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "1630661343a7ebcf98-0",
+        "1630661343a7ebcf98-1"
+      ],
+      "settings": {
+        "title": "FAQs"
+      }
+    },
+    "main": {
+      "type": "page-template-v2",
+      "disabled": true,
+      "settings": {
+      }
+    },
+    "16305740648aa18832": {
+      "type": "advanced-content",
+      "disabled": true,
+      "blocks": {
+        "16305740648aa18832-1": {
+          "type": "html",
+          "settings": {
+            "code": "<br><h2><center>ILS NOUS FONT CONFIANCE<\/center><\/h2>",
+            "width": "100%",
+            "alignment": "bottom-middle"
+          }
+        }
+      },
+      "block_order": [
+        "16305740648aa18832-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    },
+    "1630578855f29964c4": {
+      "type": "testimonials",
+      "disabled": true,
+      "blocks": {
+        "1630578855f29964c4-0": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "image": "shopify:\/\/shop_images\/logo-noel-frenchtech-mini.png",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "1630578855f29964c4-1": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "image": "shopify:\/\/shop_images\/logo-noel-frenchtech-mini.png",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        },
+        "3f3b9fa9-ba9d-43a4-9805-5eda01c9b35a": {
+          "type": "testimonial",
+          "settings": {
+            "icon": "none",
+            "testimonial": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+            "image": "shopify:\/\/shop_images\/logo-noel-frenchtech-mini.png",
+            "author": "Author's name",
+            "author_info": "Los Angeles, CA"
+          }
+        }
+      },
+      "block_order": [
+        "1630578855f29964c4-0",
+        "1630578855f29964c4-1",
+        "3f3b9fa9-ba9d-43a4-9805-5eda01c9b35a"
+      ],
+      "settings": {
+        "title": "TÉMOIGNAGES CLIENTS",
+        "align_text": "center",
+        "round_images": false,
+        "color_scheme": "none"
+      }
+    },
+    "1630573562d86e770e": {
+      "type": "logo-list",
+      "disabled": true,
+      "blocks": {
+        "1630573562d86e770e-0": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Sncf.jpg",
+            "link": "https:\/\/www.sncf-reseau.com\/fr"
+          }
+        },
+        "1630573562d86e770e-1": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Logo_enedis_header.jpg",
+            "link": "https:\/\/www.enedis.fr\/"
+          }
+        },
+        "1630573562d86e770e-2": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Logo_STEF.jpg",
+            "link": "https:\/\/www.stef.com\/"
+          }
+        },
+        "1630573562d86e770e-3": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Vinci-Cegelec.jpg",
+            "link": "https:\/\/www.vinci-energies.com\/"
+          }
+        },
+        "1630573562d86e770e-4": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/6-2zb-c89a969cab-ca9-min.jpg",
+            "link": "https:\/\/www.defense.gouv.fr\/gendarmerie\/metiers\/specialites\/les-unites-specialisees-montagne"
+          }
+        },
+        "a054df68-3d0d-4df6-8543-831a79798583": {
+          "type": "logo_image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sep-min.jpg",
+            "link": "http:\/\/www.sep.justice.gouv.fr\/"
+          }
+        }
+      },
+      "block_order": [
+        "1630573562d86e770e-0",
+        "1630573562d86e770e-1",
+        "1630573562d86e770e-2",
+        "1630573562d86e770e-3",
+        "1630573562d86e770e-4",
+        "a054df68-3d0d-4df6-8543-831a79798583"
+      ],
+      "settings": {
+        "title": "ILS NOUS FONT CONFIANCE",
+        "divider": false
+      }
+    },
+    "3e8f2d80-9549-4de6-ac09-5066991fc9ae": {
+      "type": "video-4-logos",
+      "disabled": true,
+      "settings": {
+        "title": "ILS PARLENT DE NOUS",
+        "description": "G-Heat propose une large gamme de vêtements et s'adresse aux particuliers comme aux professionnels",
+        "video_url": "https:\/\/youtu.be\/GKMZ_yp-vQM",
+        "title-2": "",
+        "logo-text-1": "<p>“ Super gants qui nous permettent de travailler dans des conditions très froides tout en étant confortables ”<\/p>",
+        "logo-text-2": "<p>“ Les semelles sont un plus incontestable en hiver, surtout pour les travaux en hauteur ”<\/p>",
+        "logo-text-3": "<p>“ Les vestes et les gants sont d'un grand confort pour nos salariés sur les grands chantiers d'extérieur ”<\/p>",
+        "logo-text-4": "<p>“ Nos équipes d'intervention ne souffrent plus du froid grace à vos gilets et vos gants ”<\/p>",
+        "img-1": "shopify:\/\/shop_images\/image_17.png",
+        "img-2": "shopify:\/\/shop_images\/image_16.png",
+        "img-3": "shopify:\/\/shop_images\/image_18.png",
+        "img-4": "shopify:\/\/shop_images\/image_15.png",
+        "bg-color": "#1b2024",
+        "text-color": "#ffffff",
+        "divider": false
+      }
+    },
+    "3ce77be3-bae1-449b-8ace-562021cd860f": {
+      "type": "advanced-content",
+      "blocks": {
+        "template--14513723015231__3ce77be3-bae1-449b-8ace-562021cd860f-16685120424ab41796-0": {
+          "type": "image",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/qui-sommes-nous-header-2.jpg",
+            "link": "",
+            "width": "25%",
+            "alignment": "top-middle"
+          }
+        },
+        "template--14513723015231__3ce77be3-bae1-449b-8ace-562021cd860f-16685120424ab41796-1": {
+          "type": "html",
+          "settings": {
+            "code": "<h2>Rejoignez le club G-Heat<\/h2><p>Vous êtes convaincus par les bénéfices de nos produits ?\n\nVous avez un proche qui souffre du froid ? Qui pratique son sport favori par tous temps ? Un travailleur exposé au chaud ou au froid ?\n\nParlez de G-Heat autour de vous et bénéficiez de cadeaux et remises ...  \n\nOn vous explique tout ici.<\/p>",
+            "width": "75%",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "template--14513723015231__3ce77be3-bae1-449b-8ace-562021cd860f-16685120424ab41796-0",
+        "template--14513723015231__3ce77be3-bae1-449b-8ace-562021cd860f-16685120424ab41796-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "space_around": true
+      }
+    }
+  },
+  "order": [
+    "1630661343f80d3404",
+    "main",
+    "16305740648aa18832",
+    "1630578855f29964c4",
+    "1630573562d86e770e",
+    "3e8f2d80-9549-4de6-ac09-5066991fc9ae",
+    "3ce77be3-bae1-449b-8ace-562021cd860f"
+  ]
+}
