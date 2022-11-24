@@ -6,7 +6,12 @@
 {%- if yoast_seo_page_type == null -%}
 	{%- capture yoast_seo_page_type -%}{%- render 'yoast-seo-page-type' -%}{%- endcapture -%}
 {%- endif -%}
-{%- if yoast_seo_page_type != "404" and yoast_seo_page_type != "search" -%}
+
+{%- if yoast_seo_page_type == "collection" and collection.current_vendor or collection.current_type -%}
+	{%- assign follow = "nofollow" -%}
+{%- elsif yoast_seo_page_type == "product_tags" -%}
+	{%- assign follow = "nofollow" -%}
+{%- elsif yoast_seo_page_type != "404" and yoast_seo_page_type != "search" -%}
 	{%- capture no_follow -%}{%- render 'yoast-seo-variable-from-optimize-module', variable: "is_robots_nofollow" -%}{%- endcapture -%}
 	{%- if no_follow == "true" -%}
 		{%- assign follow = "nofollow" -%}
