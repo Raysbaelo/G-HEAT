@@ -16,53 +16,6 @@
         "product_video_style": "muted"
       }
     },
-    "166865004130d34aa7": {
-      "type": "apps",
-      "blocks": {
-        "4ca3babc-c678-453b-9fba-e431ff045c4f": {
-          "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.product.reviewWidget\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
-          "settings": {
-            "containerMaxWidth": "",
-            "containerMarginTop": "",
-            "containerMarginBottom": "",
-            "containerSidePadding": "",
-            "containerLineHeight": "",
-            "containerFontFamily": "",
-            "containerLetterSpacing": "",
-            "buttonsColor": "",
-            "buttonsColorOnHover": "",
-            "buttonsBackgroundColor": "",
-            "buttonsBackgroundColorOnHover": "",
-            "buttonsBorder": "",
-            "buttonsBorderColorOnHover": "",
-            "buttonsBoxShadow": "",
-            "buttonsBoxShadowOnHover": "",
-            "buttonsPaddings": "",
-            "buttonsTextTransform": "",
-            "tabTriggerSelector": "",
-            "tabContentSelector": ""
-          }
-        },
-        "ce0b9bee-d753-4906-b689-1cc43a239be0": {
-          "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.product.reviewAvgProfile\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
-          "settings": {
-            "margin": "",
-            "textColor": "",
-            "fontSize": "",
-            "ratingIconColor": "",
-            "ratingIconSize": "",
-            "questionsIconColor": "",
-            "questionsIconSize": ""
-          }
-        }
-      },
-      "block_order": [
-        "4ca3babc-c678-453b-9fba-e431ff045c4f",
-        "ce0b9bee-d753-4906-b689-1cc43a239be0"
-      ],
-      "settings": {
-      }
-    },
     "1628062389b4167fe9": {
       "type": "advanced-content",
       "disabled": true,
@@ -116,7 +69,6 @@
   },
   "order": [
     "main",
-    "166865004130d34aa7",
     "1628062389b4167fe9",
     "1663177041e1f8ef1b",
     "165848533212a4ef47",
