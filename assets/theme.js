@@ -263,39 +263,39 @@
         ).observe(e.element);
       }),
       (theme.LibraryLoader =
+        ((n = "requested"),
+        (o = "loaded"),
+        (a = {
+          youtubeSdk: {
+            tagId: "youtube-sdk",
+            src: "https://www.youtube.com/iframe_api",
+            type: (i = "script")
+          },
+          vimeo: {
+            tagId: "vimeo-api",
+            src: "https://player.vimeo.com/api/player.js",
+            type: i
+          },
+          shopifyXr: {
+            tagId: "shopify-model-viewer-xr",
+            src: (s = "https://cdn.shopify.com/shopifycloud/") + "shopify-xr-js/assets/v1.0/shopify-xr.en.js",
+            type: i
+          },
+          modelViewerUi: {
+            tagId: "shopify-model-viewer-ui",
+            src: s + "model-viewer-ui/assets/v1.0/model-viewer-ui.en.js",
+            type: i
+          },
+          modelViewerUiStyles: {
+            tagId: "shopify-model-viewer-ui-styles",
+            src: s + "model-viewer-ui/assets/v1.0/model-viewer-ui.css",
+            type: (t = "link")
+          }
+        }),
         {
           load: function (e, s) {
-            const n = "requested",
-            o = "loaded",
-            libs = {
-              youtubeSdk: {
-                tagId: "youtube-sdk",
-                src: "https://www.youtube.com/iframe_api",
-                type: (i = "script")
-              },
-              vimeo: {
-                tagId: "vimeo-api",
-                src: "https://player.vimeo.com/api/player.js",
-                type: i
-              },
-              shopifyXr: {
-                tagId: "shopify-model-viewer-xr",
-                src: (s = "https://cdn.shopify.com/shopifycloud/") + "shopify-xr-js/assets/v1.0/shopify-xr.en.js",
-                type: i
-              },
-              modelViewerUi: {
-                tagId: "shopify-model-viewer-ui",
-                src: s + "model-viewer-ui/assets/v1.0/model-viewer-ui.en.js",
-                type: i
-              },
-              modelViewerUiStyles: {
-                tagId: "shopify-model-viewer-ui-styles",
-                src: s + "model-viewer-ui/assets/v1.0/model-viewer-ui.css",
-                type: (t = "link")
-              }
-            };
-            var r = libs[e];
-            if (r && r.status !== n){
+            var r = a[e];
+            if (r && r.status !== n)
               if (((s = s || function () {}), r.status !== o)) {
                 var c;
                 switch (((r.status = n), r.type)) {
@@ -329,9 +329,8 @@
                 var d = document.getElementsByTagName(r.type)[0];
                 d.parentNode.insertBefore(c, d);
               } else s();
-            }
           }
-        }),
+        })),
       (theme.rteInit = function () {
         function e(e) {
           e.src = e.src;
@@ -672,26 +671,24 @@
           };
         function o(e, t) {
           (this.divId = e),
-          (this.iframe = null),
-          (this.attemptedToPlay = !1),
-          (n.events = {
-            onReady: this.onVideoPlayerReady.bind(this),
-            onStateChange: this.onVideoStateChange.bind(this)
-          }),
-          (this.options = Object.assign({}, n, t)),
-          this.options &&
-            (this.options.videoParent &&
-              (this.parent = document.getElementById(this.divId).closest(this.options.videoParent)),
-            this.options.autoplay || (this.options.playerVars.autoplay = this.options.autoplay),
-            "sound" === this.options.style &&
-              ((this.options.playerVars.controls = 1), (this.options.playerVars.autoplay = 0))),
-          this.setAsLoading();
-          theme.config.youTubeReady ?
-            this.init()
-          : (
-              theme.LibraryLoader.load("youtubeSdk", window.onYouTubeIframeAPIReady),
-              document.addEventListener("youTubeReady", this.init.bind(this))
-          );
+            (this.iframe = null),
+            (this.attemptedToPlay = !1),
+            (n.events = {
+              onReady: this.onVideoPlayerReady.bind(this),
+              onStateChange: this.onVideoStateChange.bind(this)
+            }),
+            (this.options = Object.assign({}, n, t)),
+            this.options &&
+              (this.options.videoParent &&
+                (this.parent = document.getElementById(this.divId).closest(this.options.videoParent)),
+              this.options.autoplay || (this.options.playerVars.autoplay = this.options.autoplay),
+              "sound" === this.options.style &&
+                ((this.options.playerVars.controls = 1), (this.options.playerVars.autoplay = 0))),
+            this.setAsLoading(),
+            theme.config.youTubeReady
+              ? this.init()
+              : (theme.LibraryLoader.load("youtubeSdk"),
+                document.addEventListener("youTubeReady", this.init.bind(this)));
         }
         return (
           (o.prototype = Object.assign({}, o.prototype, {
@@ -1976,7 +1973,7 @@
           s = document.querySelectorAll(i);
         if (o.length || s.length) {
           var a = document.getElementById("VideoHolder");
-          o.length && theme.LibraryLoader.load("youtubeSdk", window.onYouTubeIframeAPIReady);
+          o.length && theme.LibraryLoader.load("youtubeSdk");
           var r = new theme.Modals("VideoModal", "video-modal", {
             closeOffContentClick: !0,
             solid: !0
@@ -2992,23 +2989,14 @@
                         .parseFromString(t, "text/html")
                         .querySelector('.product-section[data-product-handle="' + n + '"]');
                       this.quickAddHolder.append(i),
-                      theme.sections.register("product", theme.Product, this.quickAddHolder),
-                      window.dispatchEvent(new CustomEvent("quickadd:loaded:" + o)),
-                      document.dispatchEvent(
-                        new CustomEvent("quickadd:loaded", {
-                          detail: { productId: o, handle: n }
-                        })
-                      ),
-                      this.quickAddHolder.querySelector(".size-variant-wrapper select").addEventListener('change', () => {
-                        this.quickAddHolder.querySelector(".choose-option").classList.add("hide");
-                        this.quickAddHolder.querySelector(".payment-Atc-button").classList.remove("hide");
-                          this.quickAddHolder.querySelector(".price-in-atc span").classList.add("hide");
-                        setTimeout(function () {
-                          var price = this.quickAddHolder.querySelector(".ProductPrice span.money:first-child").innerText;
-                          this.quickAddHolder.querySelector(".price-in-atc").innerText = price;
-                        }, 500);
-                      });
-                      e.open();
+                        theme.sections.register("product", theme.Product, this.quickAddHolder),
+                        window.dispatchEvent(new CustomEvent("quickadd:loaded:" + o)),
+                        document.dispatchEvent(
+                          new CustomEvent("quickadd:loaded", {
+                            detail: { productId: o, handle: n }
+                          })
+                        ),
+                        e.open();
                     }.bind(this)
                   );
             }
@@ -4529,7 +4517,7 @@
               this.settings.inventory || (t = !1);
               var n = document.getElementById(this.selectors.inventory);
               if (n) {
-                (n.textContent = t ? (i == 1 ? theme.strings.stockLabelOne.replace('{{ count }}', i) : theme.strings.stockLabelOther.replace('{{ count }}', i)) : theme.strings.inStockLabel),
+                (n.textContent = t ? theme.strings.stockLabel.replace("[count]", i) : theme.strings.inStockLabel),
                   i <= theme.settings.inventoryThreshold
                     ? n.parentNode.classList.add("inventory--low")
                     : n.parentNode.classList.remove("inventory--low"),
@@ -4572,7 +4560,6 @@
             },
             youtubePlayerReady: function (t) {
               var i = t.target.getIframe().id;
-              console.log(t);
               if (e[i]) {
                 var n = e[i],
                   o = n.videoPlayer;
@@ -5155,7 +5142,7 @@ $(document).ready(function () {
     $(".choose-option").addClass("hide");
     $(".payment-Atc-button").removeClass("hide");
     $(".stick-atc-btn").removeClass("hide");
-    $(".price-in-atc span").hide();
+     $(".price-in-atc span").hide();
     setTimeout(function () {
       var price = $(".ProductPrice span.money").first().text();
       var Atc = $(".product-single__meta .payment-Atc-button").html();
