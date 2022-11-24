@@ -8,27 +8,11 @@
     "recently": {
       "type": "recently-viewed",
       "settings": {
-        "show_section": true,
-        "product_recommendations_heading": "You may also like"
-      }
-    },
-    "63350a03-e0f4-4e33-a5c1-0c9f82be52fd": {
-      "type": "collection-feature-product",
-      "disabled": true,
-      "settings": {
-        "title": "Black FRIDAY 2022",
-        "home_featured_products": "black-friday-2022",
-        "count": 4,
-        "mobile_scrollable": true,
-        "view_all": true,
-        "view-all-text": "Voir tout",
-        "divider": false
       }
     }
   },
   "order": [
     "main",
-    "recently",
-    "63350a03-e0f4-4e33-a5c1-0c9f82be52fd"
+    "recently"
   ]
 }
