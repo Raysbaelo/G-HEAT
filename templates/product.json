@@ -22,6 +22,15 @@
         "custom_liquid": "<script type=\"text\/javascript\">\nvar _learnq = _learnq || [];\nfunction addedToCart() {\n  fetch(`${window.location.origin}\/cart.js`)\n  .then(res => res.clone().json().then(data => {\n    var cart = {\n      total_price: data.total_price\/100,\n      $value: data.total_price\/100,\n      total_discount: data.total_discount,\n      original_total_price: data.original_total_price\/100,\n      items: data.items\n    }\n    if (item !== 'undefined') {\n      cart = Object.assign(cart, item)\n    }\n    _learnq.push(['track', 'Added to Cart', cart])\n  }))\n} \n(function (ns, fetch) {\n  ns.fetch = function() {\n    const response = fetch.apply(this, arguments);\n    response.then(res => {\n      if (`${window.location.origin}\/cart\/add.js`\n      \t.includes(res.url)) {\n        \taddedToCart()\n      }\n    });\n    return response\n  }\n}(window, window.fetch))\n$(document).ajaxComplete(function(event, request, settings){\n  if(settings.url == \"\/cart\/add.js\"){\n      addedToCart()\n  }\n})<\/script>"
       }
     },
+    "1663176976105237af": {
+      "type": "tabbed-description",
+      "settings": {
+        "bg-color": "#1b2024",
+        "font-color": "#ffffff",
+        "show_description": true,
+        "show_guide_tailles": true
+      }
+    },
     "1628062389b4167fe9": {
       "type": "advanced-content",
       "disabled": true,
@@ -41,15 +50,6 @@
       "settings": {
         "full_width": false,
         "space_around": true
-      }
-    },
-    "1663176976105237af": {
-      "type": "tabbed-description",
-      "settings": {
-        "bg-color": "#1b2024",
-        "font-color": "#ffffff",
-        "show_description": true,
-        "show_guide_tailles": true
       }
     },
     "165848595990edc998": {
@@ -218,8 +218,8 @@
   "order": [
     "main",
     "166335593466e00865",
-    "1628062389b4167fe9",
     "1663176976105237af",
+    "1628062389b4167fe9",
     "165848595990edc998",
     "16637460973d7ebae7",
     "165848533212a4ef47",
