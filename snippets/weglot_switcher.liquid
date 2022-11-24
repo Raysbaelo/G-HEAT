@@ -1,19 +1,20 @@
-<!--Start Weglot Script-->
-<script defer>
-    window.getScript("//cdn.weglot.com/weglot.min.js").then(function(){
-        Weglot.initialize({
-            api_key: "wg_13996e8af63e6c8cdf93e80e44b8d5f8",
+
+<script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+<script>
+    Weglot.initialize({
+        api_key: 'wg_13996e8af63e6c8cdf93e80e44b8d5f8',
             translate_iframes: ["#iframe", "#root"]
-        });
-        (function() {
-          var identifyLanguageToKlaviyo = function(lang) {
-            var _learnq = window._learnq || [];
-            _learnq.push(['identify', {
-              $lang: lang
-            }]);
-          }
-          identifyLanguageToKlaviyo(Weglot.getCurrentLang())
-          Weglot.on('languageChanged', identifyLanguageToKlaviyo)
-        })()
-    })
+    });
+</script>
+<script>
+(function() {
+  var identifyLanguageToKlaviyo = function(lang) {
+    var _learnq = window._learnq || [];
+    _learnq.push(['identify', {
+      $lang: lang
+    }]);
+  }
+  identifyLanguageToKlaviyo(Weglot.getCurrentLang())
+  Weglot.on('languageChanged', identifyLanguageToKlaviyo)
+})()
 </script>

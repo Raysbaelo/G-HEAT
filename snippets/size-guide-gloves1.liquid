@@ -6,17 +6,18 @@
   </div>
 
 <div class="size-guide__row">
-  {% if settings.size_chart_image_1 != blank %}
-    <div class="size-guide__image-number">
-      <span class="size-guide__number">1</span>
-      <img src="{{ settings.size_chart_image_1 | img_url: 'master' }}" loading="lazy" alt="" width="80" height="150">
-    </div>
-  {% endif %}
   
   {% if settings.size_chart_image_2 != blank %}
     <div class="size-guide__image-number">
-      <span class="size-guide__number">2</span>
+      <span class="size-guide__number">1</span>
       <img src="{{ settings.size_chart_image_2 | img_url: 'master' }}" loading="lazy" alt="" width="80" height="150">
+    </div>
+  {% endif %}
+
+    {% if settings.size_chart_image_1 != blank %}
+    <div class="size-guide__image-number">
+      <span class="size-guide__number">2</span>
+      <img src="{{ settings.size_chart_image_1 | img_url: 'master' }}" loading="lazy" alt="" width="80" height="150">
     </div>
   {% endif %}
 </div>
@@ -27,12 +28,12 @@
 
 <div class="size-guide__text">
   <span class="size-guide__number mb-10">1</span>
-  {{ settings.size_chart_text_1 }}
+  {{ settings.size_chart_text_2 }}
 </div>
 
 <div class="size-guide__text">
   <span class="size-guide__number mb-10">2</span>
-  {{ settings.size_chart_text_2 }}
+  {{ settings.size_chart_text_1 }}
 </div>
 
 <div class="size-guide-notice">
@@ -42,58 +43,58 @@
 <tbody>
 <tr>
 <td class="size-guide-notice-table-gray">Taille</td>
-<td class="size-guide-notice-table-gray">Tour de main<br>(en cm)</td>
 <td class="size-guide-notice-table-gray">Longueur de main<br>(en cm)</td>
 <td class="size-guide-notice-table-gray">Longueur du majeur<br>(en cm)</td>
+<td class="size-guide-notice-table-gray">Tour de main sans le <br> pouce(en cm)</td>
 <td class="size-guide-notice-table-gray">Taille US</td>
 </tr>
 <tr>
 <td class="size-guide-notice-table-normal">XS</td>
-<td class="size-guide-notice-table-normal">17,5 - 18,5</td>
 <td class="size-guide-notice-table-normal">16 - 17</td>
 <td class="size-guide-notice-table-normal">6,5 - 7</td>
+<td class="size-guide-notice-table-normal">17,5 - 18,5</td>
 <td class="size-guide-notice-table-normal">6/7</td>  
 </tr>
 <tr>
 <td class="size-guide-notice-table-normal">S</td>
-<td class="size-guide-notice-table-normal">18,5 - 19,5</td>
 <td class="size-guide-notice-table-normal">17 - 18</td>
 <td class="size-guide-notice-table-normal">7 - 7,5</td>
+<td class="size-guide-notice-table-normal">18,5 - 19,5</td>
 <td class="size-guide-notice-table-normal">7/8</td>
 </tr>
 <tr>
   <td class="size-guide-notice-table-normal">M</td>
-  <td class="size-guide-notice-table-normal">19,5 - 20,5</td>
   <td class="size-guide-notice-table-normal">18 - 19</td>
   <td class="size-guide-notice-table-normal">7,5 - 8</td>
+  <td class="size-guide-notice-table-normal">19,5 - 20,5</td>
   <td class="size-guide-notice-table-normal">8/9</td>
 </tr>
 <tr>
     <td class="size-guide-notice-table-normal">L</td>
-    <td class="size-guide-notice-table-normal">20,5 - 21,5</td>
     <td class="size-guide-notice-table-normal">19 - 20</td>
     <td class="size-guide-notice-table-normal">8 - 8,5</td>
+    <td class="size-guide-notice-table-normal">20,5 - 21,5</td>
     <td class="size-guide-notice-table-normal">9/10</td>
   </tr>
   <tr>
     <td class="size-guide-notice-table-normal">XL</td>
-    <td class="size-guide-notice-table-normal">21,5 - 22,5</td>
     <td class="size-guide-notice-table-normal">20 - 21</td>
     <td class="size-guide-notice-table-normal">8,5 - 9</td>
+    <td class="size-guide-notice-table-normal">21,5 - 22,5</td>
     <td class="size-guide-notice-table-normal">10/11</td>
   </tr>
   <tr>
     <td class="size-guide-notice-table-normal">XXL</td>
-    <td class="size-guide-notice-table-normal">22,5 - 23,5</td>
     <td class="size-guide-notice-table-normal">21 - 22</td>
     <td class="size-guide-notice-table-normal">9 - 10</td>
+    <td class="size-guide-notice-table-normal">22,5 - 23,5</td>
     <td class="size-guide-notice-table-normal">11/12</td>
   </tr>
   <tr>
     <td class="size-guide-notice-table-normal">XXXL</td>
-    <td class="size-guide-notice-table-normal">23,5+</td>
     <td class="size-guide-notice-table-normal">22+</td>
     <td class="size-guide-notice-table-normal">10+</td>
+    <td class="size-guide-notice-table-normal">23,5+</td>
     <td class="size-guide-notice-table-normal">12/13</td>
   </tr>
 </tbody>

@@ -1,0 +1,108 @@
+{%- comment -%}
+This file has been modified by the Yoast SEO for Shopify app.
+You can learn more about this (and learn how to cleanly revert these changes) at https://yoa.st/removing-theme-changes.
+{%- endcomment -%}
+{%- liquid
+	assign disabled_by_yoast_seo = true
+	if content_for_header contains 'yoast-active-script'
+		assign disabled_by_yoast_seo = false
+	endif
+-%}
+{% if product %}
+    {% assign ssw_review_enabled = 1 %}
+    {% if shop.metafields.ssw['review_enabled'] %}
+        {% assign ssw_review_enabled = shop.metafields.ssw['review_enabled'] | plus: 0 %}
+    {% endif %}
+    {% assign ssw_unite_reviews = 0 %}
+    {% if shop.metafields.ssw['unite_reviews'] %}
+        {% assign ssw_unite_reviews = shop.metafields.ssw['unite_reviews'] | plus: 0 %}
+    {% endif %}
+    {% if ssw_review_enabled == 1 %}
+        {% assign ssw_count_rate = 0 %}
+        {% assign ssw_avg_rate = 0 %}
+        {% assign ssw_rate_data_key = 'review' %}
+        {% if ssw_unite_reviews == 1 %}
+            {% if shop.metafields.ssw['unite_product_ids'] %}
+                {% assign ssw_unite_product_ids = shop.metafields.ssw['unite_product_ids'] | split: ',' %}
+                {% assign unite_product_id = product.id | downcase %}
+                {% if ssw_unite_product_ids contains unite_product_id %}
+                    {% assign ssw_rate_data_key = 'unite_review' %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        {% assign gwReviewRateData = product.metafields.ssw[ssw_rate_data_key] %}
+        {% if gwReviewRateData.type == 'json' %}
+            {% assign gwReviewRateData = product.metafields.ssw[ssw_rate_data_key].value %}
+        {% endif %}
+        {% if gwReviewRateData %}
+            {% assign ssw_count_rate = gwReviewRateData.count | plus: 0 %}
+            {% assign ssw_avg_rate = gwReviewRateData.avg | plus: 0 %}
+            {% assign ssw_product_id = product.id %}
+            {% if gwReviewRateData.product_id %}
+                {% assign ssw_product_id = gwReviewRateData.product_id | plus: 0 %}
+            {% endif %}
+            {% if ssw_product_id != product.id %}
+                {% assign ssw_count_rate  = 0 %}
+                {% assign ssw_avg_rate = 0 %}
+            {% endif %}
+        {% endif %}
+        {% if ssw_count_rate != 0 %}
+            {% assign detailed_review_data = product.metafields.ssw['detailed_review_data'] %}
+            {% if detailed_review_data.type == 'json' %}
+                {% assign detailed_review_data = product.metafields.ssw['detailed_review_data'].value %}
+            {% endif %}
+            {% if rich_snippet_type == 'json' %}
+                ,
+                "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": "{{ ssw_avg_rate }}",
+                    "ratingCount": "{{ ssw_count_rate }}"
+                },
+                {% if detailed_review_data %}
+                    "review": {{ detailed_review_data.json|json }}
+                {% else %}
+                "review": {
+                    "@type": "Review",
+                    "reviewRating": {
+                        "@type": "Rating",
+                        "ratingValue": "{{ ssw_avg_rate }}"
+                    },
+                    "author": {
+                        "@type": "Person",
+                        "name": "{{ shop.name }} customers"
+                    }
+                }
+                {% endif %}
+            {% else %}
+                <div {% if disabled_by_yoast_seo %}itemprop="aggregateRating"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/AggregateRating"{% endif %}>{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="ratingCount"{% endif %} content="{{ ssw_count_rate }}"/>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="ratingValue"{% endif %} content="{{ ssw_avg_rate }}"/>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}</div> {% if detailed_review_data %}
+                    {{ detailed_review_data.microdata }}
+                {% else %}
+                <div {% if disabled_by_yoast_seo %}itemprop="review"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Review"{% endif %}><div {% if disabled_by_yoast_seo %}itemprop="rating"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Rating"{% endif %}>{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="ratingValue"{% endif %} content="{{ ssw_avg_rate }}"/>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}</div><div {% if disabled_by_yoast_seo %}itemprop="author"{% endif %} {% if disabled_by_yoast_seo %}itemscope{% endif %} {% if disabled_by_yoast_seo %}itemtype="https://schema.org/Person"{% endif %}>{%- comment -%}Auto-disabled. Yoast plugin is taking care of Meta Tags output.{%- endcomment -%}
+{%- if disabled_by_yoast_seo -%}
+<meta {% if disabled_by_yoast_seo %}itemprop="name"{% endif %} content="{{ shop.name }} customers"/>
+{%- comment -%} End Yoast auto-disable. {%- endcomment -%}
+{%- endif -%}</div></div> {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+{% endif %}

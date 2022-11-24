@@ -1,0 +1,16 @@
+{% if template contains 'product' %}
+<script>
+  window.addEventListener('sswhelperload', () => {
+    if(typeof sswRun === 'function') {
+      sswRun(function(){
+        const reviewProfile = setInterval(function(){
+          if(ssw('#ssw-avg-rate-profile-html').length) {
+            ssw('.product-single__title').after(ssw('#ssw-avg-rate-profile-html'));
+            clearInterval(reviewProfile);
+          }
+        }, 1000);
+      });
+    }
+  });
+</script>
+{% endif %}
